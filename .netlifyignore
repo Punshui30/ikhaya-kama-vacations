@@ -1,0 +1,20 @@
+# Large media files that slow down deployment
+# These files are already in the public folder and will be served from there
+
+# Large video files
+dist/video/
+public/video/
+
+# Audio files
+dist/music/
+public/music/
+
+# Large image files (optional - comment out if you need them)
+# dist/images/
+# public/images/
+
+# Development files
+node_modules/
+src/
+.git/
+*.log

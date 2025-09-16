@@ -1,0 +1,374 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Fraunces:wght@400;500;600&display=swap');
+@import './tokens';
+@import './mixins';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+  overflow-x: hidden;
+  // Performance optimizations
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+  color: var(--ink);
+  background-color: #000;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+// African Cultural Patterns and Backgrounds
+:root {
+  // Traditional African patterns
+  --africa-pattern: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2L14.5 8.5L21 11L14.5 13.5L12 20L9.5 13.5L3 11L9.5 8.5L12 2Z' fill='%23D4AF37' opacity='0.1'/%3E%3C/svg%3E");
+  
+  // Kente cloth pattern
+  --kente-pattern: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='40' height='40' fill='%23F4F4F4'/%3E%3Crect x='0' y='0' width='8' height='8' fill='%23D4AF37'/%3E%3Crect x='8' y='8' width='8' height='8' fill='%23D4AF37'/%3E%3Crect x='16' y='16' width='8' height='8' fill='%23D4AF37'/%3E%3Crect x='24' y='24' width='8' height='8' fill='%23D4AF37'/%3E%3Crect x='32' y='32' width='8' height='8' fill='%23D4AF37'/%3E%3C/svg%3E");
+  
+  // Adinkra symbols pattern
+  --adinkra-pattern: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='25' fill='none' stroke='%23D4AF37' stroke-width='1' opacity='0.3'/%3E%3Cpath d='M30 10L35 20L45 20L37 27L40 37L30 32L20 37L23 27L15 20L25 20L30 10Z' fill='%23D4AF37' opacity='0.2'/%3E%3C/svg%3E");
+  
+  // Maasai-inspired pattern
+  --maasai-pattern: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='30' height='30' fill='%23F4F4F4'/%3E%3Crect x='0' y='0' width='30' height='6' fill='%23E74C3C'/%3E%3Crect x='0' y='6' width='30' height='6' fill='%23D4AF37'/%3E%3Crect x='0' y='12' width='30' height='6' fill='%23E74C3C'/%3E%3Crect x='0' y='18' width='30' height='6' fill='%23D4AF37'/%3E%3Crect x='0' y='24' width='30' height='6' fill='%23E74C3C'/%3E%3C/svg%3E");
+  
+  // Moroccan tile pattern
+  --moroccan-pattern: url("data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 50 50' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='50' height='50' fill='%23F8F9FA'/%3E%3Cpath d='M25 5L30 15L40 15L32 22L35 32L25 27L15 32L18 22L10 15L20 15L25 5Z' fill='%23E67E22' opacity='0.3'/%3E%3Ccircle cx='25' cy='25' r='8' fill='none' stroke='%23E67E22' stroke-width='1' opacity='0.4'/%3E%3C/svg%3E");
+  
+  // Ndebele-inspired pattern
+  --ndebele-pattern: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='40' height='40' fill='%23F4F4F4'/%3E%3Crect x='0' y='0' width='40' height='8' fill='%23E74C3C'/%3E%3Crect x='0' y='8' width='8' height='8' fill='%23D4AF37'/%3E%3Crect x='16' y='8' width='8' height='8' fill='%23D4AF37'/%3E%3Crect x='32' y='8' width='8' height='8' fill='%23D4AF37'/%3E%3Crect x='0' y='16' width='40' height='8' fill='%23E74C3C'/%3E%3Crect x='0' y='24' width='8' height='8' fill='%23D4AF37'/%3E%3Crect x='16' y='24' width='8' height='8' fill='%23D4AF37'/%3E%3Crect x='32' y='24' width='8' height='8' fill='%23D4AF37'/%3E%3Crect x='0' y='32' width='40' height='8' fill='%23E74C3C'/%3E%3C/svg%3E");
+}
+
+// Page-specific African Cultural Themes
+.page-home {
+  // Warm Savannah Theme - Gold and Earth Tones
+  --page-accent: #D4AF37; // Gold
+  --page-secondary: #8B4513; // Saddle Brown
+  --page-highlight: #FFD700; // Bright Gold
+  --page-pattern: var(--kente-pattern);
+  --page-bg-gradient: linear-gradient(135deg, #FFF8DC 0%, #F5DEB3 50%, #DEB887 100%);
+  --page-text-accent: #8B4513;
+  --page-border: #D4AF37;
+}
+
+.page-destinations {
+  // East African Safari Theme - Greens and Earth
+  --page-accent: #228B22; // Forest Green
+  --page-secondary: #006400; // Dark Green
+  --page-highlight: #32CD32; // Lime Green
+  --page-pattern: var(--maasai-pattern);
+  --page-bg-gradient: linear-gradient(135deg, #F0FFF0 0%, #E6FFE6 50%, #D4F4D4 100%);
+  --page-text-accent: #006400;
+  --page-border: #228B22;
+}
+
+.page-blog {
+  // West African Kente Theme - Vibrant Colors
+  --page-accent: #FF6347; // Tomato
+  --page-secondary: #DC143C; // Crimson
+  --page-highlight: #FF4500; // Orange Red
+  --page-pattern: var(--kente-pattern);
+  --page-bg-gradient: linear-gradient(135deg, #FFF5F5 0%, #FFE4E1 50%, #FFCCCB 100%);
+  --page-text-accent: #DC143C;
+  --page-border: #FF6347;
+}
+
+.page-story {
+  // South African Heritage Theme - Deep Reds and Golds
+  --page-accent: #E74C3C; // Vibrant Red
+  --page-secondary: #C0392B; // Deep Red
+  --page-highlight: #A93226; // Dark Red
+  --page-pattern: var(--ndebele-pattern);
+  --page-bg-gradient: linear-gradient(135deg, #FFF0F0 0%, #FFE6E6 50%, #FFCCCC 100%);
+  --page-text-accent: #C0392B;
+  --page-border: #E74C3C;
+}
+
+.page-services {
+  // Moroccan Luxury Theme - Oranges and Golds
+  --page-accent: #E67E22; // Dark Orange
+  --page-secondary: #D35400; // Deep Orange
+  --page-highlight: #F39C12; // Golden Orange
+  --page-pattern: var(--moroccan-pattern);
+  --page-bg-gradient: linear-gradient(135deg, #FFF8F0 0%, #FFE6CC 50%, #FFD4A3 100%);
+  --page-text-accent: #D35400;
+  --page-border: #E67E22;
+}
+
+.page-contact {
+  // Coastal African Theme - Blues and Teals
+  --page-accent: #3498DB; // Sky Blue
+  --page-secondary: #2980B9; // Deep Blue
+  --page-highlight: #5DADE2; // Light Blue
+  --page-pattern: var(--adinkra-pattern);
+  --page-bg-gradient: linear-gradient(135deg, #F0F8FF 0%, #E6F3FF 50%, #CCE7FF 100%);
+  --page-text-accent: #2980B9;
+  --page-border: #3498DB;
+}
+
+.page-planner {
+  // Ethiopian Heritage Theme - Deep Purples and Golds
+  --page-accent: #8E44AD; // Royal Purple
+  --page-secondary: #7D3C98; // Deep Purple
+  --page-highlight: #9B59B6; // Light Purple
+  --page-pattern: var(--adinkra-pattern);
+  --page-bg-gradient: linear-gradient(135deg, #F8F0FF 0%, #F0E6FF 50%, #E6CCFF 100%);
+  --page-text-accent: #7D3C98;
+  --page-border: #8E44AD;
+}
+
+.page-travel-prep {
+  // Desert Nomad Theme - Earth Tones and Browns
+  --page-accent: #CD853F; // Peru
+  --page-secondary: #A0522D; // Sienna
+  --page-highlight: #DEB887; // Burlywood
+  --page-pattern: var(--moroccan-pattern);
+  --page-bg-gradient: linear-gradient(135deg, #FFF8F0 0%, #F5E6D3 50%, #E6D4B3 100%);
+  --page-text-accent: #A0522D;
+  --page-border: #CD853F;
+}
+
+.page-custom-itineraries {
+  // Nigerian Aso-Oke Theme - Rich Purples and Golds
+  --page-accent: #6A1B9A; // Deep Purple
+  --page-secondary: #4A148C; // Very Dark Purple
+  --page-highlight: #9C27B0; // Medium Purple
+  --page-pattern: var(--kente-pattern);
+  --page-bg-gradient: linear-gradient(135deg, #F3E5F5 0%, #E1BEE7 50%, #CE93D8 100%);
+  --page-text-accent: #4A148C;
+  --page-border: #6A1B9A;
+}
+
+.page-story-explorer {
+  // Ancient Egyptian Theme - Golds and Deep Blues
+  --page-accent: #D4AF37; // Gold
+  --page-secondary: #1E3A8A; // Deep Blue
+  --page-highlight: #F59E0B; // Amber
+  --page-pattern: var(--adinkra-pattern);
+  --page-bg-gradient: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 50%, #FDE68A 100%);
+  --page-text-accent: #1E3A8A;
+  --page-border: #D4AF37;
+}
+
+// Apply consistent black background to all pages to prevent flashing
+body.page-home,
+body.page-destinations,
+body.page-blog,
+body.page-story,
+body.page-services,
+body.page-contact,
+body.page-planner,
+body.page-travel-prep,
+body.page-custom-itineraries,
+body.page-story-explorer {
+  background: #000 !important;
+}
+
+// Mobile-specific optimizations
+@media (max-width: 768px) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  button, a, [role="button"] {
+    -webkit-tap-highlight-color: rgba(212, 175, 55, 0.2);
+    touch-action: manipulation;
+  }
+  
+  video {
+    -webkit-playsinline: true;
+    -webkit-media-controls: none;
+  }
+  
+  // Prevent zoom on input focus
+  input, textarea, select {
+    font-size: 16px;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+h1 {
+  @include heading-xl;
+}
+
+h2 {
+  @include heading-lg;
+}
+
+h3 {
+  @include heading-md;
+}
+
+p {
+  @include body-text;
+  margin-bottom: var(--space-3);
+}
+
+a {
+  color: var(--brand-3);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  
+  &:hover {
+    color: var(--brand-4);
+  }
+  
+  @include focus-visible;
+}
+
+button {
+  @include focus-visible;
+  @include reduced-motion;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container {
+  @include container;
+}
+
+.section {
+  @include section-spacing;
+}
+
+// Utility classes
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.mb-1 { margin-bottom: var(--space-1); }
+.mb-2 { margin-bottom: var(--space-2); }
+.mb-3 { margin-bottom: var(--space-3); }
+.mb-4 { margin-bottom: var(--space-4); }
+.mb-6 { margin-bottom: var(--space-6); }
+.mb-8 { margin-bottom: var(--space-8); }
+
+.mt-1 { margin-top: var(--space-1); }
+.mt-2 { margin-top: var(--space-2); }
+.mt-3 { margin-top: var(--space-3); }
+.mt-4 { margin-top: var(--space-4); }
+.mt-6 { margin-top: var(--space-6); }
+.mt-8 { margin-top: var(--space-8); }
+
+.p-1 { padding: var(--space-1); }
+.p-2 { padding: var(--space-2); }
+.p-3 { padding: var(--space-3); }
+.p-4 { padding: var(--space-4); }
+.p-6 { padding: var(--space-6); }
+.p-8 { padding: var(--space-8); }
+
+// Display text for quotes and testimonials
+.display-text {
+  @include display-text;
+}
+
+// Button styles
+.btn-primary {
+  @include button-primary;
+}
+
+.btn-secondary {
+  @include button-secondary;
+}
+
+// Card styles
+.card {
+  @include card;
+}
+
+// Pattern overlay
+.pattern-overlay {
+  @include pattern-overlay;
+}
+
+// Cultural background utilities
+.cultural-bg {
+  background-image: var(--page-pattern);
+  background-size: 60px 60px;
+  background-repeat: repeat;
+  background-position: 0 0;
+  opacity: 0.1;
+}
+
+.cultural-gradient {
+  background: var(--page-bg-gradient);
+}
+
+.cultural-border {
+  border: 2px solid var(--page-border);
+  border-radius: var(--radius);
+}
+
+.cultural-text {
+  color: var(--page-text-accent);
+}
+
+.cultural-accent {
+  color: var(--page-accent);
+}
+
+.cultural-highlight {
+  color: var(--page-highlight);
+}
+
+// App container
+.app {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+// Responsive utilities
+@media (max-width: 768px) {
+  .mobile-hidden {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
+  .desktop-hidden {
+    display: none;
+  }
+}

@@ -1,0 +1,404 @@
+@import '../styles/mixins';
+
+.planner {
+  padding-top: 80px; // Account for fixed header
+  position: relative;
+  
+  @media (max-width: 768px) {
+    padding-top: 70px;
+  }
+}
+
+.hero {
+  text-align: center;
+  color: white;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.heroTitle {
+  @include heading-xl;
+  color: white;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: var(--space-4);
+}
+
+.heroSubtitle {
+  @include body-text;
+  font-size: var(--fs-lg);
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+.plannerContainer {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: var(--space-6);
+  max-width: 1400px;
+  margin: 0 auto;
+  
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+}
+
+.sidebar {
+  background: var(--brand-4);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+  height: fit-content;
+  position: sticky;
+  top: 100px;
+  
+  @media (max-width: 1024px) {
+    position: static;
+  }
+}
+
+.filters {
+  margin-bottom: var(--space-6);
+}
+
+.filterTitle {
+  @include heading-md;
+  color: var(--brand-1);
+  margin-bottom: var(--space-3);
+}
+
+.categoryFilters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin-bottom: var(--space-4);
+}
+
+.categoryButton {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: var(--space-1) var(--space-2);
+  border-radius: 20px;
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  
+  &:hover {
+    background: var(--brand-3);
+    color: white;
+  }
+  
+  &.active {
+    background: var(--brand-3);
+    color: white;
+  }
+}
+
+.searchInput {
+  width: 100%;
+  padding: var(--space-2);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius);
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
+  
+  &:focus {
+    outline: none;
+    border-color: var(--brand-3);
+  }
+}
+
+.activitiesList {
+  .activitiesTitle {
+    @include heading-md;
+    color: var(--brand-1);
+    margin-bottom: var(--space-3);
+  }
+}
+
+.activities {
+  display: grid;
+  gap: var(--space-3);
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.activityCard {
+  background: white;
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: all var(--transition-fast);
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.activityHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-2);
+}
+
+.activityName {
+  @include heading-md;
+  color: var(--ink);
+  font-size: var(--fs-md);
+  margin: 0;
+  flex: 1;
+}
+
+.activityPrice {
+  @include body-text;
+  font-weight: 600;
+  color: var(--brand-3);
+  font-size: var(--fs-sm);
+}
+
+.activityDescription {
+  @include body-text;
+  font-size: var(--fs-sm);
+  color: rgba(0, 0, 0, 0.7);
+  margin-bottom: var(--space-2);
+  line-height: 1.4;
+}
+
+.activityMeta {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.activityDuration,
+.activityLocation {
+  @include body-text;
+  font-size: var(--fs-xs);
+  color: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.05);
+  padding: 0.25rem var(--space-1);
+  border-radius: 4px;
+}
+
+.addButton {
+  @include button-primary;
+  font-size: var(--fs-xs);
+  padding: var(--space-1) var(--space-2);
+  width: 100%;
+}
+
+.mainContent {
+  background: white;
+  border-radius: var(--radius);
+  padding: var(--space-6);
+  box-shadow: var(--shadow);
+}
+
+.itineraryHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: var(--space-3);
+    align-items: flex-start;
+  }
+}
+
+.itineraryTitle {
+  @include heading-lg;
+  color: var(--brand-1);
+  margin: 0;
+}
+
+.itineraryStats {
+  display: flex;
+  gap: var(--space-4);
+  
+  @media (max-width: 768px) {
+    gap: var(--space-2);
+  }
+}
+
+.stat {
+  text-align: center;
+  
+  .statValue {
+    display: block;
+    @include heading-md;
+    color: var(--brand-3);
+    font-size: var(--fs-lg);
+  }
+  
+  .statLabel {
+    @include body-text;
+    font-size: var(--fs-xs);
+    color: rgba(0, 0, 0, 0.6);
+  }
+}
+
+.itineraryContent {
+  margin-bottom: var(--space-6);
+}
+
+.emptyState {
+  text-align: center;
+  padding: var(--space-8);
+  color: rgba(0, 0, 0, 0.5);
+  
+  h3 {
+    @include heading-md;
+    color: var(--ink);
+    margin-bottom: var(--space-2);
+  }
+  
+  p {
+    @include body-text;
+    margin: 0;
+  }
+}
+
+.itineraryList {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.itineraryItem {
+  background: var(--brand-4);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.itemHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-3);
+}
+
+.itemInfo {
+  flex: 1;
+  
+  .itemName {
+    @include heading-md;
+    color: var(--ink);
+    font-size: var(--fs-md);
+    margin-bottom: var(--space-1);
+  }
+  
+  .itemLocation {
+    @include body-text;
+    font-size: var(--fs-sm);
+    color: rgba(0, 0, 0, 0.6);
+    margin: 0;
+  }
+}
+
+.itemActions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.itemPrice {
+  @include body-text;
+  font-weight: 600;
+  color: var(--brand-3);
+  font-size: var(--fs-sm);
+}
+
+.removeButton {
+  background: #ff4757;
+  color: white;
+  border: none;
+  padding: var(--space-1) var(--space-2);
+  border-radius: 4px;
+  font-size: var(--fs-xs);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+  
+  &:hover {
+    background: #ff3742;
+  }
+}
+
+.itemDetails {
+  .itemMeta {
+    display: flex;
+    gap: var(--space-2);
+    margin-bottom: var(--space-2);
+    
+    span {
+      @include body-text;
+      font-size: var(--fs-xs);
+      color: rgba(0, 0, 0, 0.6);
+      background: white;
+      padding: 0.25rem var(--space-1);
+      border-radius: 4px;
+    }
+  }
+}
+
+.itemNotes {
+  width: 100%;
+  padding: var(--space-2);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
+  resize: vertical;
+  min-height: 60px;
+  
+  &:focus {
+    outline: none;
+    border-color: var(--brand-3);
+  }
+}
+
+.exportSection {
+  padding-top: var(--space-4);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.exportTitle {
+  @include heading-md;
+  color: var(--brand-1);
+  margin-bottom: var(--space-3);
+}
+
+.exportButtons {
+  display: flex;
+  gap: var(--space-3);
+  justify-content: center;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.exportButton {
+  @include button-secondary;
+  font-size: var(--fs-md);
+  padding: var(--space-2) var(--space-4);
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .activityCard,
+  .itineraryItem {
+    transition: none;
+    
+    &:hover {
+      transform: none;
+    }
+  }
+}

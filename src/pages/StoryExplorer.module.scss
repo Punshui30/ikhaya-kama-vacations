@@ -1,0 +1,370 @@
+@import '../styles/mixins';
+
+.storyExplorer {
+  padding-top: 80px; // Account for fixed header
+  position: relative;
+  
+  @media (max-width: 768px) {
+    padding-top: 70px;
+  }
+}
+
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.videoBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.heroVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.videoOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(15, 59, 46, 0.7) 0%,
+    rgba(169, 83, 42, 0.5) 50%,
+    rgba(15, 59, 46, 0.7) 100%
+  );
+  z-index: 2;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  color: white;
+  max-width: 800px;
+  padding: 0 var(--space-4);
+}
+
+.heroTitle {
+  @include heading-xl;
+  color: white;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: var(--space-4);
+}
+
+.heroSubtitle {
+  @include body-text;
+  font-size: var(--fs-lg);
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: var(--space-4);
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-4);
+}
+
+.muteButton {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+  
+  &.muted {
+    background: var(--brand-3);
+    border-color: var(--brand-3);
+  }
+}
+
+.explorerContainer {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: var(--space-8);
+  max-width: 1400px;
+  margin: 0 auto;
+  
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+}
+
+.mapContainer {
+  background: var(--brand-4);
+  border-radius: var(--radius);
+  padding: var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 500px;
+}
+
+.africaMap {
+  width: 100%;
+  max-width: 600px;
+}
+
+.mapSvg {
+  width: 100%;
+  height: auto;
+}
+
+.storyPin {
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  
+  &:hover {
+    r: 4;
+  }
+}
+
+.pinGlow {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    r: 6;
+    opacity: 0.6;
+  }
+  50% {
+    r: 8;
+    opacity: 0.3;
+  }
+  100% {
+    r: 6;
+    opacity: 0.6;
+  }
+}
+
+.storiesPanel {
+  background: white;
+  border-radius: var(--radius);
+  padding: var(--space-6);
+  box-shadow: var(--shadow);
+  height: fit-content;
+  position: sticky;
+  top: 100px;
+  
+  @media (max-width: 1024px) {
+    position: static;
+  }
+}
+
+.panelTitle {
+  @include heading-lg;
+  color: var(--brand-1);
+  margin-bottom: var(--space-4);
+  text-align: center;
+}
+
+.storiesList {
+  display: grid;
+  gap: var(--space-3);
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.storyCard {
+  @include card;
+  padding: var(--space-3);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  gap: var(--space-3);
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+  &.selected {
+    border: 2px solid var(--brand-3);
+    background: rgba(169, 83, 42, 0.05);
+  }
+}
+
+.storyImage {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  flex-shrink: 0;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.storyContent {
+  flex: 1;
+  
+  .storyTitle {
+    @include heading-md;
+    color: var(--ink);
+    font-size: var(--fs-md);
+    margin-bottom: var(--space-1);
+  }
+  
+  .storyLocation {
+    @include body-text;
+    font-size: var(--fs-sm);
+    color: var(--brand-3);
+    margin-bottom: var(--space-1);
+  }
+  
+  .storyDescription {
+    @include body-text;
+    font-size: var(--fs-sm);
+    color: rgba(0, 0, 0, 0.7);
+    line-height: 1.4;
+    margin-bottom: var(--space-2);
+  }
+}
+
+.audioPlayer {
+  .playButton {
+    background: var(--brand-3);
+    color: white;
+    border: none;
+    padding: 0.25rem var(--space-2);
+    border-radius: 4px;
+    font-size: var(--fs-xs);
+    cursor: pointer;
+    transition: background var(--transition-fast);
+    
+    &:hover {
+      background: var(--brand-4);
+    }
+  }
+}
+
+.storyModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: var(--space-4);
+}
+
+.modalContent {
+  background: white;
+  border-radius: var(--radius);
+  max-width: 800px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.closeButton {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--ink);
+  z-index: 1001;
+  
+  &:hover {
+    color: var(--brand-3);
+  }
+}
+
+.modalStory {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+  padding: var(--space-6);
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+}
+
+.modalImage {
+  img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: var(--radius);
+  }
+}
+
+.modalText {
+  .modalTitle {
+    @include heading-lg;
+    color: var(--brand-1);
+    margin-bottom: var(--space-2);
+  }
+  
+  .modalLocation {
+    @include body-text;
+    color: var(--brand-3);
+    font-weight: 500;
+    margin-bottom: var(--space-3);
+  }
+  
+  .modalDescription {
+    @include body-text;
+    line-height: 1.6;
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: var(--space-4);
+  }
+}
+
+.modalAudio {
+  .audioElement {
+    width: 100%;
+    height: 40px;
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .storyCard {
+    transition: none;
+    
+    &:hover {
+      transform: none;
+    }
+  }
+  
+  .pinGlow {
+    animation: none;
+  }
+}

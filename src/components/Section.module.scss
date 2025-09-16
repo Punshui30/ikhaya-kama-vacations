@@ -1,0 +1,39 @@
+@import '../styles/mixins';
+
+.section {
+  width: 100%;
+  
+  &.background-default {
+    background: #000;
+  }
+  
+  &.background-light {
+    background: var(--brand-4);
+  }
+  
+  &.background-dark {
+    background: var(--brand-1);
+    color: white;
+  }
+  
+  &.background-pattern {
+    @include pattern-overlay;
+    background: var(--bg);
+  }
+  
+  &.padding-small {
+    padding: var(--space-4) 0;
+  }
+  
+  &.padding-medium {
+    padding: var(--space-6) 0;
+  }
+  
+  &.padding-large {
+    padding: var(--space-8) 0;
+  }
+}
+
+.container {
+  @include container;
+}

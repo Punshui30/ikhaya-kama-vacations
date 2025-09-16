@@ -1,0 +1,394 @@
+[
+  {
+    "slug": "south-africa",
+    "title": "South Africa",
+    "tagline": "Vibrant cities. Untamed wilderness. Coastal beauty.",
+    "description": "South Africa is where diversity comes to life. From Cape Town's oceanside charm and wine estates to Big Five safaris in Kruger, this is a land of contrast and deep story.",
+    "highlights": [
+      "Safari in Kruger National Park or private reserves",
+      "Cape Town: Table Mountain, Robben Island, beaches",
+      "Wine tasting in Stellenbosch & Franschhoek",
+      "Drive the Garden Route",
+      "Soweto, Zulu heritage, or Xhosa community experiences"
+    ],
+    "bestTime": [
+      "Cape Town & coast: Nov–April",
+      "Safari regions: May–October"
+    ],
+    "sampleItinerary": [
+      "3 nights Cape Town",
+      "2 nights Winelands",
+      "5 nights luxury safari"
+    ],
+    "poster": "/images/SouthAfrica.png",
+    "detailImage": "/images/southafrica2.jpg",
+    "video": "/video/20250910_1508_South Africa's Natural Beauty_simple_compose_01k4tgemd1fqrsqx9h5ay1y9ce.mp4",
+    "music": "/music/A1.mp3",
+    "travelPrep": {
+      "visa": "Most visitors need a visa. US, UK, EU, and Canadian citizens can enter visa-free for up to 90 days. Check current requirements as they change frequently.",
+      "vaccines": [
+        "Yellow Fever (required if arriving from endemic areas)",
+        "Hepatitis A & B (recommended)",
+        "Typhoid (recommended)",
+        "Rabies (if planning outdoor activities)",
+        "Routine vaccines (MMR, DPT, flu)"
+      ],
+      "packing": [
+        "Layered clothing (temperatures vary greatly)",
+        "Sunscreen (high UV index)",
+        "Comfortable walking shoes",
+        "Binoculars for wildlife viewing",
+        "Camera with extra batteries",
+        "Universal power adapter (Type M plugs)",
+        "Malaria prophylaxis (for certain regions)"
+      ],
+      "currency": "South African Rand (ZAR). Credit cards widely accepted. ATMs available in cities. Tipping 10-15% is customary.",
+      "etiquette": [
+        "Greet with a handshake and maintain eye contact",
+        "Remove shoes when entering homes",
+        "Use right hand for eating and handshakes",
+        "Respect wildlife viewing distances",
+        "Ask permission before photographing people"
+      ]
+    },
+    "weather": {
+      "seasons": [
+        {
+          "label": "Summer (Dec-Feb)",
+          "summary": "Warm to hot, 20-30°C. Best for beach activities and Cape Town. Some afternoon thunderstorms."
+        },
+        {
+          "label": "Autumn (Mar-May)",
+          "summary": "Mild and pleasant, 15-25°C. Ideal for wine regions and outdoor activities. Less crowded."
+        },
+        {
+          "label": "Winter (Jun-Aug)",
+          "summary": "Cool and dry, 10-20°C. Perfect for safari viewing as animals gather around water sources."
+        },
+        {
+          "label": "Spring (Sep-Nov)",
+          "summary": "Warming up, 15-25°C. Great for whale watching and wildflower viewing in the Western Cape."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "kenya",
+    "title": "Kenya",
+    "tagline": "The original safari dream. Wild, bold, and full of story.",
+    "description": "From the Great Migration in the Maasai Mara to the Swahili coast, Kenya captures Africa's heart through wildlife and cultural depth.",
+    "highlights": [
+      "Great Migration (July–Oct)",
+      "Lake Nakuru (Great Rift Valley)",
+      "Safari in the Mara or Amboseli",
+      "Giraffe Manor or elephant sanctuaries",
+      "Nairobi food, music, and markets",
+      "Lamu or Diani Beach retreats"
+    ],
+    "bestTime": [
+      "July–October (migration, peak safari)",
+      "Jan–Feb (great for wildlife, less crowded)"
+    ],
+    "sampleItinerary": [
+      "1 night Nairobi",
+      "4 nights Maasai Mara",
+      "4 nights on the coast (Lamu or Diani)"
+    ],
+    "poster": "/images/Kenya.png",
+    "video": "/video/20250910_1535_Savanna Sunset Serenity_remix_01k4tj0hbbekd865ng1cpwyg42.mp4",
+    "music": "/music/A2.mp3",
+    "travelPrep": {
+      "visa": "Most visitors need an eVisa. Apply online before travel. US, UK, EU citizens can get visa on arrival for tourism. Valid passport required.",
+      "vaccines": [
+        "Yellow Fever (required - must show certificate)",
+        "Hepatitis A & B (highly recommended)",
+        "Typhoid (recommended)",
+        "Malaria prophylaxis (essential for most regions)",
+        "Meningitis (if traveling during dry season)",
+        "Rabies (if planning outdoor activities)"
+      ],
+      "packing": [
+        "Neutral-colored clothing (beige, khaki, green)",
+        "Long-sleeved shirts and pants (mosquito protection)",
+        "Wide-brimmed hat and sunglasses",
+        "Binoculars (essential for wildlife viewing)",
+        "Camera with telephoto lens",
+        "Insect repellent (DEET 20%+)",
+        "Malaria tablets as prescribed"
+      ],
+      "currency": "Kenyan Shilling (KES). US dollars widely accepted. Credit cards accepted in major hotels and lodges. Cash preferred for local markets.",
+      "etiquette": [
+        "Greet with 'Jambo' (hello) and a handshake",
+        "Use right hand for eating and handshakes",
+        "Remove shoes when entering homes",
+        "Respect wildlife viewing rules and distances",
+        "Ask permission before photographing people",
+        "Dress modestly, especially in rural areas"
+      ]
+    },
+    "weather": {
+      "seasons": [
+        {
+          "label": "Dry Season (Jun-Oct)",
+          "summary": "Cool and dry, 15-25°C. Best for wildlife viewing as animals gather around water sources. Peak safari season."
+        },
+        {
+          "label": "Short Rains (Nov-Dec)",
+          "summary": "Warm with brief showers, 20-28°C. Good for bird watching and fewer crowds. Some roads may be muddy."
+        },
+        {
+          "label": "Hot Season (Jan-Mar)",
+          "summary": "Hot and dry, 25-35°C. Great for beach time on the coast. Wildlife viewing still excellent."
+        },
+        {
+          "label": "Long Rains (Apr-May)",
+          "summary": "Heavy rainfall, 18-25°C. Lush green landscapes but some parks may close. Fewer tourists."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "tanzania",
+    "title": "Tanzania",
+    "tagline": "Epic landscapes and ancient rhythms.",
+    "description": "Tanzania is where safari meets scale. Serengeti, Ngorongoro, and Zanzibar—each iconic and unforgettable.",
+    "highlights": [
+      "Serengeti: endless plains and the migration",
+      "Ngorongoro Crater",
+      "Mount Kilimanjaro treks",
+      "Swahili coastal heritage",
+      "Zanzibar's spice markets & beaches"
+    ],
+    "bestTime": [
+      "June–October (dry season, best for migration)",
+      "Dec–March (calving season in Serengeti)"
+    ],
+    "sampleItinerary": [
+      "2 nights Arusha",
+      "2 nights Ngorongoro",
+      "3 nights Serengeti",
+      "3 nights Zanzibar"
+    ],
+    "poster": "/images/Tanzania.png",
+    "music": "/music/A3.mp3",
+    "travelPrep": {
+      "visa": "Coming Soon - Tanzania travel preparation information will be available soon.",
+      "vaccines": ["Coming Soon"],
+      "packing": ["Coming Soon"],
+      "currency": "Coming Soon",
+      "etiquette": ["Coming Soon"]
+    },
+    "weather": {
+      "seasons": [
+        {
+          "label": "Coming Soon",
+          "summary": "Tanzania weather information will be available soon."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "namibia",
+    "title": "Namibia",
+    "tagline": "Sculpted by wind and silence. Namibia is Africa's soul in stillness.",
+    "description": "Where orange dunes meet cobalt skies, and desert elephants roam the otherworldly landscapes. Namibia is perfect for travelers seeking solitude, beauty, and raw landscapes.",
+    "highlights": [
+      "Climb the Sossusvlei dunes",
+      "See shipwrecks on the Skeleton Coast",
+      "Game drives in Etosha",
+      "Meet Himba communities",
+      "Stargazing lodges in the desert"
+    ],
+    "bestTime": [
+      "May–October (dry, best wildlife viewing)",
+      "Nov–March (hot but stunning desert colors)"
+    ],
+    "sampleItinerary": [
+      "2 nights Sossusvlei",
+      "2 nights Swakopmund",
+      "3 nights Etosha",
+      "2 nights Damaraland (culture & desert elephants)"
+    ],
+    "poster": "/images/Namibia.png",
+    "music": "/music/A6.mp3",
+    "travelPrep": {
+      "visa": "Coming Soon - Namibia travel preparation information will be available soon.",
+      "vaccines": ["Coming Soon"],
+      "packing": ["Coming Soon"],
+      "currency": "Coming Soon",
+      "etiquette": ["Coming Soon"]
+    },
+    "weather": {
+      "seasons": [
+        {
+          "label": "Coming Soon",
+          "summary": "Namibia weather information will be available soon."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "botswana",
+    "title": "Botswana",
+    "tagline": "Wildlife paradise. Untamed beauty. Pure wilderness.",
+    "description": "Botswana offers some of Africa's most pristine wilderness areas. From the Okavango Delta's water-based safaris to the Kalahari's ancient landscapes, this is where nature reigns supreme.",
+    "highlights": [
+      "Okavango Delta water safaris",
+      "Chobe National Park (largest elephant population)",
+      "Moremi Game Reserve",
+      "Kalahari Desert experiences",
+      "Makgadikgadi Pans salt flats",
+      "San Bushman cultural encounters"
+    ],
+    "bestTime": [
+      "May–October (dry season, best wildlife viewing)",
+      "Nov–April (wet season, lush landscapes)"
+    ],
+    "sampleItinerary": [
+      "3 nights Okavango Delta",
+      "2 nights Chobe National Park",
+      "2 nights Moremi Game Reserve",
+      "2 nights Kalahari Desert"
+    ],
+    "poster": "/images/Botswana.png",
+    "music": "/music/A4.mp3",
+    "travelPrep": {
+      "visa": "Coming Soon - Botswana travel preparation information will be available soon.",
+      "vaccines": ["Coming Soon"],
+      "packing": ["Coming Soon"],
+      "currency": "Coming Soon",
+      "etiquette": ["Coming Soon"]
+    },
+    "weather": {
+      "seasons": [
+        {
+          "label": "Coming Soon",
+          "summary": "Botswana weather information will be available soon."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "zambia",
+    "title": "Zambia",
+    "tagline": "The real Africa. Raw, authentic, and unforgettable.",
+    "description": "Zambia is where you find the real Africa. From the thundering Victoria Falls to walking safaris in South Luangwa, this is adventure at its purest form.",
+    "highlights": [
+      "Victoria Falls (Mosi-oa-Tunya)",
+      "South Luangwa walking safaris",
+      "Lower Zambezi canoe safaris",
+      "Kafue National Park",
+      "Livingstone's historic sites",
+      "Traditional village experiences"
+    ],
+    "bestTime": [
+      "May–October (dry season, best for safaris)",
+      "Nov–April (wet season, Victoria Falls at full flow)"
+    ],
+    "sampleItinerary": [
+      "2 nights Livingstone (Victoria Falls)",
+      "3 nights South Luangwa",
+      "2 nights Lower Zambezi",
+      "2 nights Kafue National Park"
+    ],
+    "poster": "/images/Zambia.png",
+    "music": "/music/A5.mp3",
+    "travelPrep": {
+      "visa": "Coming Soon - Zambia travel preparation information will be available soon.",
+      "vaccines": ["Coming Soon"],
+      "packing": ["Coming Soon"],
+      "currency": "Coming Soon",
+      "etiquette": ["Coming Soon"]
+    },
+    "weather": {
+      "seasons": [
+        {
+          "label": "Coming Soon",
+          "summary": "Zambia weather information will be available soon."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "zimbabwe",
+    "title": "Zimbabwe",
+    "tagline": "Ancient ruins. Natural wonders. Cultural treasures.",
+    "description": "Zimbabwe combines incredible natural beauty with rich cultural heritage. From the majestic Victoria Falls to the ancient Great Zimbabwe ruins, this is a land of legends and wonders.",
+    "highlights": [
+      "Victoria Falls (Zimbabwe side)",
+      "Great Zimbabwe ruins",
+      "Hwange National Park",
+      "Mana Pools walking safaris",
+      "Matobo Hills rock art",
+      "Harare cultural experiences"
+    ],
+    "bestTime": [
+      "May–October (dry season, best wildlife viewing)",
+      "Nov–April (wet season, lush landscapes)"
+    ],
+    "sampleItinerary": [
+      "2 nights Victoria Falls",
+      "2 nights Hwange National Park",
+      "2 nights Mana Pools",
+      "2 nights Great Zimbabwe"
+    ],
+    "poster": "/images/Zimbabwe.png",
+    "music": "/music/A7.mp3",
+    "travelPrep": {
+      "visa": "Coming Soon - Zimbabwe travel preparation information will be available soon.",
+      "vaccines": ["Coming Soon"],
+      "packing": ["Coming Soon"],
+      "currency": "Coming Soon",
+      "etiquette": ["Coming Soon"]
+    },
+    "weather": {
+      "seasons": [
+        {
+          "label": "Coming Soon",
+          "summary": "Zimbabwe weather information will be available soon."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "uganda",
+    "title": "Uganda",
+    "tagline": "Mountain gorillas. Source of the Nile. Pearl of Africa.",
+    "description": "Uganda is the Pearl of Africa, where you can track mountain gorillas, discover the source of the Nile, and experience the continent's most diverse wildlife in a compact, accessible package.",
+    "highlights": [
+      "Mountain gorilla trekking",
+      "Source of the Nile (Jinja)",
+      "Murchison Falls National Park",
+      "Queen Elizabeth National Park",
+      "Bwindi Impenetrable Forest",
+      "Kampala cultural experiences"
+    ],
+    "bestTime": [
+      "Dec–Feb & Jun–Aug (dry seasons, best for gorilla trekking)",
+      "Mar–May & Sep–Nov (wet seasons, lush landscapes)"
+    ],
+    "sampleItinerary": [
+      "2 nights Kampala",
+      "2 nights Bwindi (gorilla trekking)",
+      "2 nights Queen Elizabeth National Park",
+      "2 nights Jinja (Nile source)"
+    ],
+    "poster": "/images/Uganda.png",
+    "music": "/music/A8.mp3",
+    "travelPrep": {
+      "visa": "Coming Soon - Uganda travel preparation information will be available soon.",
+      "vaccines": ["Coming Soon"],
+      "packing": ["Coming Soon"],
+      "currency": "Coming Soon",
+      "etiquette": ["Coming Soon"]
+    },
+    "weather": {
+      "seasons": [
+        {
+          "label": "Coming Soon",
+          "summary": "Uganda weather information will be available soon."
+        }
+      ]
+    }
+  }
+]

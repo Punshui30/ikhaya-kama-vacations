@@ -1,0 +1,150 @@
+@use "./src/styles/tokens.scss" as *;
+@import '../styles/mixins';
+
+.about {
+  min-height: 100vh;
+}
+
+.pageTitle {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--brand-1);
+}
+
+.brandPromise {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.promiseText {
+  font-size: 1.25rem;
+  line-height: 1.7;
+  color: var(--ink);
+  margin-bottom: 3rem;
+  font-style: italic;
+}
+
+.values {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.value {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: var(--bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--brand-2);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.valueIcon {
+  font-size: 1.5rem;
+  color: var(--brand-1);
+  font-weight: bold;
+}
+
+.valueText {
+  font-size: 1rem;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.founderSection {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.founderContent {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 4rem;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.founderImage {
+  position: relative;
+  
+  img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.founderText {
+  .sectionTitle {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--brand-1);
+  }
+
+  .founderIntro,
+  .founderJourney,
+  .founderMission {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+
+  .founderQuote {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--brand-1);
+    border-left: 4px solid var(--brand-2);
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+  }
+}
+
+.ctaButton {
+  display: inline-block;
+  background: var(--brand-1);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  border: 2px solid var(--brand-1);
+
+  &:hover {
+    background: var(--brand-3);
+    border-color: var(--brand-3);
+    transform: translateY(-2px);
+  }
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,342 @@
+@import '../styles/mixins';
+
+.footer {
+  background: #000;
+  color: white;
+  padding: var(--space-6) 0 var(--space-3);
+  margin-top: 0;
+}
+
+.container {
+  @include container;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--space-6);
+  margin-bottom: var(--space-4);
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+}
+
+.brand {
+  .logo {
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+    margin-bottom: var(--space-4);
+  }
+}
+
+.logoText {
+  font-family: var(--font-serif);
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  color: var(--brand-2);
+  display: block;
+  line-height: 1;
+}
+
+.logoSubtext {
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--brand-4);
+  display: block;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.tagline {
+  font-family: var(--font-sans);
+  font-size: var(--fs-md);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: var(--space-5);
+  max-width: 400px;
+  word-wrap: break-word;
+}
+
+.social {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(0, 77, 64, 0.2) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 50%;
+  color: var(--brand-1);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, var(--brand-1) 0%, var(--brand-3) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 50%;
+  }
+  
+  &:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+    border-color: var(--brand-1);
+    
+    &::before {
+      opacity: 1;
+    }
+    
+    .socialIcon {
+      color: white;
+      transform: scale(1.1);
+    }
+  }
+  
+  @include focus-visible;
+}
+
+.socialIcon {
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+}
+
+.linkGroup {
+  .linkTitle {
+    font-family: var(--font-serif);
+    font-size: var(--fs-lg);
+    font-weight: 600;
+    color: var(--brand-2);
+    margin-bottom: var(--space-3);
+  }
+}
+
+.linkList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.link {
+  display: block;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  padding: var(--space-1) 0;
+  transition: color var(--transition-fast);
+  
+  &:hover {
+    color: var(--brand-4);
+  }
+  
+  @include focus-visible;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--space-4);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: var(--space-2);
+    text-align: center;
+  }
+}
+
+.copyright {
+  p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: var(--fs-sm);
+    margin: 0;
+  }
+}
+
+.legal {
+  display: flex;
+  gap: var(--space-4);
+  
+  @media (max-width: 768px) {
+    gap: var(--space-3);
+  }
+}
+
+.legalLink {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: var(--fs-sm);
+  transition: color var(--transition-fast);
+  
+  &:hover {
+    color: var(--brand-4);
+  }
+  
+  @include focus-visible;
+}
+
+// Secret click functionality
+.copyrightText {
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: opacity 0.2s ease;
+  
+  &:hover {
+    opacity: 0.8;
+  }
+  
+  // Remove any link-like styling
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
+    color: inherit;
+    background: none;
+    border: none;
+    outline: none;
+  }
+}
+
+// SEO Documentation Modal
+.seoModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: var(--space-4);
+}
+
+.seoModalContent {
+  background: white;
+  border-radius: var(--radius-lg);
+  max-width: 800px;
+  max-height: 80vh;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.seoModalHeader {
+  background: var(--brand-1);
+  color: white;
+  padding: var(--space-4);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  h2 {
+    margin: 0;
+    font-size: var(--fs-xl);
+  }
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: white;
+  font-size: var(--fs-xl);
+  cursor: pointer;
+  padding: var(--space-1);
+  border-radius: var(--radius);
+  transition: background-color 0.2s ease;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+
+.seoContent {
+  padding: var(--space-6);
+  max-height: 60vh;
+  overflow-y: auto;
+  
+  h3 {
+    color: var(--brand-1);
+    margin-bottom: var(--space-4);
+    font-size: var(--fs-lg);
+  }
+  
+  h4 {
+    color: var(--text-1);
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-2);
+    font-size: var(--fs-md);
+  }
+}
+
+.seoSection {
+  margin-bottom: var(--space-4);
+  
+  ul, ol {
+    margin: var(--space-2) 0;
+    padding-left: var(--space-4);
+  }
+  
+  li {
+    margin-bottom: var(--space-1);
+    line-height: 1.5;
+  }
+  
+  strong {
+    color: var(--brand-1);
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .socialLink {
+    transition: none;
+    
+    &:hover {
+      transform: none;
+    }
+  }
+  
+  .copyrightText {
+    transition: none;
+  }
+  
+  .closeButton {
+    transition: none;
+  }
+}

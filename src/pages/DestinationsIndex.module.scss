@@ -1,0 +1,255 @@
+@import '../styles/mixins';
+
+.destinations {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  background: #000;
+  min-height: 100vh;
+}
+
+.destinationsSection {
+  position: relative;
+}
+
+.hero {
+  text-align: center;
+  color: white;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.heroTitle {
+  @include heading-xl;
+  color: white;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: var(--space-4);
+}
+
+.heroSubtitle {
+  @include body-text;
+  font-size: var(--fs-lg);
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+.musicHint {
+  @include body-text;
+  font-size: var(--fs-sm);
+  color: rgba(255, 255, 255, 0.8);
+  margin: var(--space-3) 0 0 0;
+  font-style: italic;
+}
+
+.destinationsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--space-6);
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+}
+
+.destinationCard {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: all var(--transition-normal);
+  cursor: pointer;
+  
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  }
+
+  &.playing {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(71, 120, 87, 0.3);
+    border: 2px solid var(--brand-3);
+  }
+}
+
+.cardImage {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+  }
+  
+  .destinationCard:hover & img {
+    transform: scale(1.05);
+  }
+}
+
+.cardOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.10) 0%,
+    rgba(0, 0, 0, 0.55) 80%
+  );
+  color: white;
+  display: grid;
+  grid-auto-rows: min-content;
+  align-content: start; /* start content at top */
+  row-gap: var(--space-2);
+  padding: clamp(20px, 3.2vw, 32px) clamp(16px, 2.4vw, 24px);
+  min-height: 240px; /* keep height consistent */
+  z-index: 1;
+}
+
+.cardTitle {
+  @include heading-lg;
+  color: white;
+  margin: 0 0 var(--space-2) 0; /* no negative or zeroed top margin */
+  font-size: var(--fs-xl);
+  line-height: 1.1;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cardTagline {
+  @include body-text;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: var(--fs-md);
+  margin: 0 0 var(--space-3) 0;
+}
+
+.cardHighlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: var(--space-3);
+}
+
+.highlight {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0.25rem var(--space-1);
+  border-radius: 12px;
+  font-size: var(--fs-xs);
+}
+
+.cardActions {
+  margin-top: var(--space-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.musicButton {
+  background: var(--brand-3);
+  color: white;
+  border: none;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: var(--fs-sm);
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+  
+  &:hover {
+    background: var(--brand-4);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+  }
+}
+
+.exploreHint {
+  font-size: var(--fs-xs);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Responsive tweaks for mobile */
+@media (max-width: 768px) {
+  .cardOverlay {
+    min-height: 200px;
+    padding: clamp(16px, 4vw, 24px);
+    row-gap: var(--space-2);
+  }
+  
+  .cardTitle { 
+    font-size: var(--fs-lg); 
+  }
+}
+
+.ctaSection {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  @include heading-xl;
+  color: var(--brand-1);
+  margin-bottom: var(--space-4);
+}
+
+.ctaText {
+  @include body-text;
+  font-size: var(--fs-lg);
+  color: rgba(0, 0, 0, 0.7);
+  margin-bottom: var(--space-6);
+}
+
+.ctaButtons {
+  display: flex;
+  gap: var(--space-4);
+  justify-content: center;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.ctaButton {
+  @include button-primary;
+  font-size: var(--fs-lg);
+  padding: var(--space-3) var(--space-6);
+}
+
+.ctaButtonSecondary {
+  @include button-secondary;
+  font-size: var(--fs-lg);
+  padding: var(--space-3) var(--space-6);
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .destinationCard {
+    transition: none;
+    
+    &:hover {
+      transform: none;
+    }
+  }
+  
+  .cardImage img {
+    transition: none;
+  }
+}

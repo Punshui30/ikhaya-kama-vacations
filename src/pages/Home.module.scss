@@ -1,0 +1,353 @@
+@import '../styles/mixins';
+
+.home {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.brandPromise {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  text-align: center;
+  margin-bottom: var(--space-4);
+  color: var(--brand-1);
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--brand-3), var(--brand-2));
+    border-radius: 2px;
+  }
+}
+
+.sectionSubtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--fs-lg);
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto var(--space-6);
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.promiseText {
+  @include body-text;
+  font-size: var(--fs-lg);
+  text-align: center;
+  margin-bottom: var(--space-6);
+  color: var(--brand-1);
+  font-weight: 500;
+}
+
+.values {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.value {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(169, 83, 42, 0.1);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--brand-3), var(--brand-2));
+  }
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    border-color: rgba(169, 83, 42, 0.2);
+  }
+}
+
+.valueIcon {
+  font-size: var(--fs-lg);
+  color: var(--brand-3);
+  flex-shrink: 0;
+}
+
+.valueText {
+  @include body-text;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.destinationsSection {
+  text-align: center;
+}
+
+.destinationsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-4);
+  margin: var(--space-6) 0;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+}
+
+.destinationCard {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all var(--transition-normal);
+  position: relative;
+  background: #000;
+  
+  &:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  }
+}
+
+.cardImage {
+  position: relative;
+  height: 250px;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  // Remove the image completely
+  img {
+    display: none;
+  }
+}
+
+.cardOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  padding: var(--space-4);
+  color: white;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.cardTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: var(--fs-xl);
+  font-weight: 600;
+  color: white;
+  margin-bottom: var(--space-2);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  line-height: 1.2;
+}
+
+.cardTagline {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--fs-sm);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  line-height: 1.4;
+}
+
+.ctaSection {
+  margin-top: var(--space-6);
+}
+
+.ctaButton {
+  @include button-primary;
+  font-family: 'Inter', sans-serif;
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  padding: var(--space-4) var(--space-8);
+  border-radius: 50px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      transparent, 
+      rgba(255, 255, 255, 0.2), 
+      transparent
+    );
+    transition: left 0.6s;
+  }
+  
+  &:hover::before {
+    left: 100%;
+  }
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(169, 83, 42, 0.3);
+  }
+}
+
+.founderSection {
+  .founderContent {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+    align-items: center;
+    
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+  }
+}
+
+.founderImage {
+  img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+}
+
+.founderText {
+  .sectionTitle {
+    text-align: left;
+    margin-bottom: var(--space-4);
+  }
+}
+
+.founderIntro {
+  @include body-text;
+  font-size: var(--fs-lg);
+  line-height: 1.7;
+  margin-bottom: var(--space-4);
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.founderQuote {
+  @include display-text;
+  font-size: var(--fs-xl);
+  line-height: 1.4;
+  margin: var(--space-6) 0;
+  padding: var(--space-4);
+  background: rgba(169, 83, 42, 0.1);
+  border-left: 4px solid var(--brand-3);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.servicesSection {
+  text-align: center;
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.serviceCard {
+  @include card;
+  text-align: center;
+  padding: var(--space-6);
+  
+  &:hover {
+    transform: translateY(-4px);
+  }
+}
+
+.serviceIcon {
+  font-size: 3rem;
+  margin-bottom: var(--space-3);
+  display: block;
+}
+
+.serviceTitle {
+  @include heading-md;
+  margin-bottom: var(--space-2);
+  color: var(--brand-1);
+}
+
+.serviceDescription {
+  @include body-text;
+  color: rgba(0, 0, 0, 0.7);
+  margin: 0;
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .destinationCard {
+    transition: none;
+    
+    &:hover {
+      transform: none;
+    }
+  }
+  
+  .cardImage img {
+    transition: none;
+  }
+  
+  .value {
+    transition: none;
+    
+    &:hover {
+      transform: none;
+    }
+  }
+  
+  .serviceCard {
+    transition: none;
+    
+    &:hover {
+      transform: none;
+    }
+  }
+}

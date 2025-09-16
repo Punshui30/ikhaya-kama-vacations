@@ -1,0 +1,134 @@
+// Color Themes
+:root[data-theme="safari"] {
+  --brand-1: #0f3b2e;
+  --brand-2: #d9c7a3;
+  --brand-3: #047857;
+  --brand-4: #065f46;
+  --ink: #2b2b2b;
+  --bg: #fffdf8;
+}
+
+:root[data-theme="coastal"] {
+  --brand-1: #0aa6c9;
+  --brand-2: #7ec3f4;
+  --brand-3: #ff7a4a;
+  --brand-4: #f5f5f2;
+  --ink: #0e2240;
+  --bg: #ffffff;
+}
+
+:root[data-theme="luxury"] {
+  --brand-1: #0c1a3a;
+  --brand-2: #c9ad6a;
+  --brand-3: #9aa0a6;
+  --brand-4: #fffff6;
+  --ink: #106a41;
+  --bg: #fcfcfa;
+}
+
+// Page-specific themes using client color schemes
+// Safari/Eco Theme (Default)
+.page-home {
+  --page-accent: var(--brand-1); // Deep Green
+  --page-secondary: var(--brand-3); // Terracotta
+  --page-highlight: var(--brand-4); // Warm Yellow
+}
+
+.page-story {
+  --page-accent: var(--brand-2); // Sand Beige
+  --page-secondary: var(--brand-3); // Terracotta
+  --page-highlight: var(--brand-5); // Charcoal Gray
+}
+
+.page-destinations {
+  --page-accent: var(--brand-1); // Deep Green
+  --page-secondary: var(--brand-2); // Sand Beige
+  --page-highlight: var(--brand-3); // Terracotta
+}
+
+// Coastal Theme (Kenya, Tanzania, Zanzibar)
+.page-kenya, .page-tanzania {
+  --page-accent: var(--coastal-1); // Turquoise
+  --page-secondary: var(--coastal-2); // Sky Blue
+  --page-highlight: var(--coastal-3); // Coral Orange
+}
+
+// Luxury Theme (Services, Contact, Planner)
+.page-services, .page-contact, .page-planner {
+  --page-accent: var(--luxury-1); // Midnight Blue
+  --page-secondary: var(--luxury-2); // Champagne Gold
+  --page-highlight: var(--luxury-5); // Emerald Green
+}
+
+.page-blog {
+  --page-accent: var(--brand-3); // Terracotta
+  --page-secondary: var(--brand-2); // Sand Beige
+  --page-highlight: var(--brand-1); // Deep Green
+}
+
+// Default theme (safari)
+:root {
+  // Safari/Eco Theme Colors
+  --brand-1: #2d5016; // Deep Green
+  --brand-2: #d4af8c; // Sand Beige
+  --brand-3: #cd853f; // Terracotta
+  --brand-4: #f4a460; // Warm Yellow
+  --brand-5: #36454f; // Charcoal Gray
+  
+  // Coastal Theme Colors
+  --coastal-1: #40e0d0; // Turquoise
+  --coastal-2: #87ceeb; // Sky Blue
+  --coastal-3: #ff7f50; // Coral Orange
+  --coastal-4: #f5f5dc; // Sand White
+  --coastal-5: #1e3a8a; // Dark Navy
+  
+  // Luxury Theme Colors
+  --luxury-1: #191970; // Midnight Blue
+  --luxury-2: #f7e7ce; // Champagne Gold
+  --luxury-3: #708090; // Stone Gray
+  --luxury-4: #fffff0; // Ivory White
+  --luxury-5: #50c878; // Emerald Green
+  
+  // South Africa Luxury Colors
+  --sa-gold: #d4af37; // Gold
+  --sa-emerald: #004d40; // Deep Emerald Green
+  --sa-warm-gray: #e5e5e5; // Warm Light Gray
+  --sa-warm-beige: #f5f5dc; // Warm Beige
+  
+  --ink: #2b2b2b;
+  --bg: #fffdf8;
+
+  // Typography
+  --font-serif: "Cormorant Garamond", "Times New Roman", serif;
+  --font-sans: "Source Sans Pro", "Helvetica Neue", sans-serif;
+  --font-display: "Fraunces", Georgia, serif;
+  --font-luxury-serif: "Playfair Display", "Times New Roman", serif;
+  --font-luxury-sans: "Inter", "Helvetica Neue", sans-serif;
+
+  // Font Sizes
+  --fs-xs: 0.875rem;
+  --fs-sm: 1rem;
+  --fs-md: 1.125rem;
+  --fs-lg: 1.5rem;
+  --fs-xl: 2rem;
+  --fs-xxl: 3rem;
+
+  // Spacing
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-6: 3rem;
+  --space-8: 4rem;
+
+  // Design Tokens
+  --radius: 14px;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --pattern-opacity: 0.06;
+
+  // Transitions
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
