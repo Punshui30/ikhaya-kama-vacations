@@ -10,7 +10,6 @@ const DestinationDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const destination = destinations.find(d => d.slug === slug);
   const audioRef = useRef<HTMLAudioElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
   const [isMusicPlaying, setIsMusicPlaying] = useState(true);
 
   // Music is now click-to-play only
@@ -24,23 +23,6 @@ const DestinationDetail: React.FC = () => {
   }, [destination?.music]);
 
 
-  // Handle video play once then stop
-  useEffect(() => {
-    if (videoRef.current) {
-      const video = videoRef.current;
-      
-      const handleVideoEnd = () => {
-        video.pause();
-        video.currentTime = 0;
-      };
-      
-      video.addEventListener('ended', handleVideoEnd);
-      
-      return () => {
-        video.removeEventListener('ended', handleVideoEnd);
-      };
-    }
-  }, []);
 
   const toggleMusic = () => {
     if (audioRef.current) {
@@ -78,12 +60,6 @@ const DestinationDetail: React.FC = () => {
           description: destination.description || `Discover ${destination.title} with Ikhaya KaMa Vacations. Experience authentic African travel and luxury safari adventures.`,
           path: `/destinations/${destination.slug}`,
           ogImage: `/og/${destination.slug}.jpg`,
-          video: destination.video ? {
-            src: destination.video,
-            type: "video/mp4",
-            width: 1920,
-            height: 1080
-          } : undefined,
           breadcrumbs: [
             { name: "Home", path: "/" },
             { name: "Destinations", path: "/destinations" },
@@ -94,29 +70,14 @@ const DestinationDetail: React.FC = () => {
       <Section background="dark" padding="large">
         <div className={styles.hero}>
           <div className={styles.heroImage}>
-            {destination.video ? (
-              <video
-                ref={videoRef}
-                src={destination.video}
-                autoPlay
-                muted
-                playsInline
-                controls={false}
-                className={`${styles.heroVideo} ${styles.noOutline}`}
-                webkit-playsinline="true"
-                x5-playsinline="true"
-                preload="auto"
-              />
-            ) : (
-              <img
-                src={destination.detailImage || destination.poster}
-                alt={destination.title}
-                loading="lazy"
-                decoding="async"
-                width="1920"
-                height="1080"
-              />
-            )}
+            <img
+              src={destination.detailImage || destination.poster}
+              alt={destination.title}
+              loading="lazy"
+              decoding="async"
+              width="1920"
+              height="1080"
+            />
             <div className={styles.heroOverlay}></div>
           </div>
           <div className={styles.heroContent}>
