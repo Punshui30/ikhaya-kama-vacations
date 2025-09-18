@@ -28,7 +28,7 @@ jobs:
         
     - name: Generate new blog posts
       run: |
-        node auto-blog-system.js --once
+        node auto-blog-system.cjs --once
         
     - name: Check for new content
       id: check_changes

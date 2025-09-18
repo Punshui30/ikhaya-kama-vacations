@@ -5,12 +5,12 @@
 ### 1. Test the system
 ```bash
 cd C:\Users\simmo\Desktop\project-bolt-github-vimxyh6v\project
-node auto-blog-system.js --once
+node auto-blog-system.cjs --once
 ```
 
 ### 2. Start automated daily posting
 ```bash
-node auto-blog-system.js --start
+node auto-blog-system.cjs --start
 ```
 
 ## How It Works
