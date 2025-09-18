@@ -70,8 +70,8 @@ const TravelPrepPanel: React.FC<TravelPrepPanelProps> = ({ destinationSlug }) =>
     );
   }
 
-  // Check if this is a placeholder destination
-  const isPlaceholder = selectedDestination.travelPrep.visa?.includes('Coming Soon');
+  // Check if this is a placeholder destination - temporarily disabled to show available data
+  const isPlaceholder = false; // selectedDestination.travelPrep.visa?.includes('Coming Soon');
 
   const { travelPrep, weather } = selectedDestination;
   const availableTabs = [];

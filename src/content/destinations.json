@@ -187,11 +187,33 @@
     ],
     "music": "/music/A3.mp3",
     "travelPrep": {
-      "visa": "Coming Soon - Tanzania travel preparation information will be available soon.",
-      "vaccines": ["Coming Soon"],
-      "packing": ["Coming Soon"],
-      "currency": "Coming Soon",
-      "etiquette": ["Coming Soon"]
+      "visa": "Most visitors need a visa. US, UK, EU, and Canadian citizens can get visa on arrival or eVisa online. Apply at eservices.immigration.go.tz for faster processing.",
+      "vaccines": [
+        "Yellow Fever (required - certificate mandatory)",
+        "Malaria prophylaxis (essential for most areas)",
+        "Hepatitis A & B (recommended)",
+        "Typhoid (recommended)",
+        "Routine vaccines (MMR, DPT, flu)"
+      ],
+      "packing": [
+        "Lightweight, neutral-colored clothing",
+        "Warm layers for Kilimanjaro/high altitude",
+        "Strong sunscreen and wide-brimmed hat",
+        "Insect repellent with DEET",
+        "Comfortable hiking boots",
+        "Binoculars for wildlife viewing",
+        "Camera with extra batteries",
+        "Universal power adapter (Type D & G plugs)"
+      ],
+      "currency": "Tanzanian Shilling (TZS). US Dollars widely accepted for tourism. Credit cards accepted in major hotels. ATMs available in cities.",
+      "etiquette": [
+        "Greet with 'Hujambo' (hello) and handshake",
+        "Dress modestly, especially in Stone Town",
+        "Remove shoes when entering homes",
+        "Use right hand for eating and greetings",
+        "Ask permission before photographing people",
+        "Tipping 10% is customary"
+      ]
     },
     "weather": {
       "seasons": [
