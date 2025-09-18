@@ -175,13 +175,17 @@ class AutoBlogger {
       .replace(/^-+|-+$/g, '');
   }
 
-  // Select random image
+  // Select random image from existing destination images
   selectImage() {
     const images = [
-      '/images/blog/africa-landscape.jpg',
-      '/images/blog/safari-wildlife.jpg',
-      '/images/blog/cultural-experience.jpg',
-      '/images/blog/adventure-travel.jpg'
+      '/images/SouthAfrica.png',
+      '/images/Kenya.png', 
+      '/images/Tanzania.png',
+      '/img/destinations/namibia/hero.jpg',
+      '/img/destinations/botswana/hero.jpg',
+      '/img/destinations/morocco/hero.jpg',
+      '/img/destinations/zimbabwe/hero.jpg',
+      '/img/destinations/uganda/hero.jpg'
     ];
     return images[Math.floor(Math.random() * images.length)];
   }

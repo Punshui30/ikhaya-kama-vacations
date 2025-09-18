@@ -31,13 +31,6 @@ const Story: React.FC = () => {
       <Section padding="large">
         <div className={styles.storyContent}>
           <div className={styles.founderSection}>
-            <div className={styles.founderImage}>
-              <img
-                src={copy.founder.image}
-                alt={copy.founder.name}
-                loading="lazy"
-              />
-            </div>
             <div className={styles.founderInfo}>
               <h2 className={styles.founderName}>{copy.founder.name}</h2>
               <p className={styles.founderTitle}>{copy.founder.title}</p>

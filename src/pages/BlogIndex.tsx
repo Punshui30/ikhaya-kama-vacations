@@ -4,13 +4,9 @@ import Section from '../components/Section';
 import SEO from '../components/SEO';
 import styles from './BlogIndex.module.scss';
 
-// Import auto-generated posts (fallback to manual posts if auto-generation not set up yet)
-let autoPosts = [];
-try {
-  autoPosts = require('../content/auto-blog-posts.json');
-} catch {
-  // Fallback to manual posts if auto-generation not running yet
-}
+// Auto-generated posts will be loaded here when the system runs
+// For now, using manual posts only
+const autoPosts: any[] = [];
 
 const BlogIndex: React.FC = () => {
   // Manual posts (your existing content)
@@ -19,7 +15,7 @@ const BlogIndex: React.FC = () => {
       id: 1,
       title: "The Great Migration: A Once-in-a-Lifetime Experience",
       excerpt: "Witness one of nature's most spectacular events as millions of wildebeest and zebra cross the Mara River in search of greener pastures.",
-      image: "/images/blog/great-migration.jpg",
+      image: "/images/Tanzania.png",
       category: "Wildlife",
       author: "Sarah Johnson",
       date: "December 15, 2023",
@@ -30,7 +26,7 @@ const BlogIndex: React.FC = () => {
       id: 2,
       title: "Cape Town's Hidden Gems: Beyond Table Mountain",
       excerpt: "Discover the secret spots and local favorites that make Cape Town one of Africa's most captivating cities.",
-      image: "/images/blog/cape-town-gems.jpg",
+      image: "/images/SouthAfrica.png",
       category: "Culture",
       author: "Michael Chen",
       date: "December 10, 2023",
@@ -41,7 +37,7 @@ const BlogIndex: React.FC = () => {
       id: 3,
       title: "Safari Packing Essentials: What to Bring to Africa",
       excerpt: "From the right clothing to essential gear, here's everything you need for the perfect African safari adventure.",
-      image: "/images/blog/safari-packing.jpg",
+      image: "/images/Kenya.png",
       category: "Travel Tips",
       author: "Lisa Rodriguez",
       date: "December 5, 2023",
@@ -52,7 +48,7 @@ const BlogIndex: React.FC = () => {
       id: 4,
       title: "Maasai Culture and Tradition: A Deep Dive",
       excerpt: "Learn about the rich cultural heritage of the Maasai people and how to respectfully engage with local communities.",
-      image: "/images/blog/maasai-culture.jpg",
+      image: "/img/destinations/uganda/hero.jpg",
       category: "Culture",
       author: "David Kimani",
       date: "November 28, 2023",
