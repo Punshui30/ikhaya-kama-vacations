@@ -72,7 +72,7 @@ const Header: React.FC = () => {
             className={styles.menuToggle}
             onClick={toggleMenu}
             aria-label="Toggle navigation menu"
-            aria-expanded={isMenuOpen}
+            aria-expanded={isMenuOpen ? "true" : "false"}
           >
             <span className={clsx(styles.hamburger, { [styles.hamburgerOpen]: isMenuOpen })}>
               <span></span>

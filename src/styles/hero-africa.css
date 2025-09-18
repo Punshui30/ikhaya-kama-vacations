@@ -1,0 +1,83 @@
+/* ==== Fully namespaced. Won't touch tiles/carousels. ==== */
+:root{
+  /* Brand tokens (gold/ivory) wired to the hero */
+  --brand-ivory: #F7F4EA;
+  --brand-gold:  #CEAE5E;
+
+  /* Theme bases */
+  --luxury-1: #08162A; --luxury-2: #132B46;   /* deep navy */
+  --safari-1: #0F2B1C; --safari-2: #1E4732;   /* deep green */
+  --coast-1:  #0A3D49; --coast-2:  #126A6A;   /* turquoise/navy blend */
+
+  /* Textile controls (can be overridden per destination) */
+  --dd-pattern-url: url("/images/patterns/default_2880x1080.jpg");
+  --dd-pattern-width: 2200px;
+  --dd-pattern-y: 42%;
+}
+
+.af-hero{
+  --af-ivory: var(--brand-ivory);
+  --af-gold:  var(--brand-gold);
+  --af-bg1: var(--luxury-1);
+  --af-bg2: var(--luxury-2);
+
+  position:relative; min-height:68vh;
+  background:linear-gradient(180deg,var(--af-bg1),var(--af-bg2));
+  overflow:hidden; isolation:isolate;
+}
+/* Switch theme via class */
+.af-hero.theme-safari{ --af-bg1: var(--safari-1); --af-bg2: var(--safari-2); }
+.af-hero.theme-coast { --af-bg1: var(--coast-1);  --af-bg2: var(--coast-2);  }
+
+/* Top textile strip */
+.af-top-strip{
+  position:absolute; inset:0 0 auto 50%; transform:translateX(-50%);
+  height:92px; width:100vw; z-index:2;
+  background-image: var(--dd-pattern-url);
+  background-repeat: repeat-x;
+  background-size: var(--dd-pattern-width) auto;
+  background-position: center var(--dd-pattern-y);
+  -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent);
+          mask-image: linear-gradient(to bottom, black 75%, transparent);
+}
+
+.af-wrap{ position:relative; z-index:1; width:min(1200px,92vw); margin:0 auto; padding-top:16px; }
+.af-copy{ color:var(--af-ivory); text-shadow:0 2px 10px rgba(0,0,0,.25); margin: 12px 0 6px; }
+.af-copy h1{ font-size:clamp(36px,5.5vw,64px); margin:.2em 0 .25em; }
+.af-copy p{ font-size:clamp(16px,1.8vw,20px); color:#dfe6ec; margin:0; }
+
+.af-map{ width:100%; height:auto; display:block; margin-top:10px; }
+
+/* Animated sheen sweeping across the map */
+.af-sheen{ animation: af-sweep 9s linear infinite; opacity:.25; }
+@keyframes af-sweep{ 0%{ transform: translateX(0); } 100%{ transform: translateX(600px); } }
+
+/* Route line draws on, then idles softly */
+.af-route{
+  stroke: var(--af-gold);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 560;
+  stroke-dashoffset: 560;
+  animation: af-draw 2.2s ease-out forwards, af-breathe 5s ease-in-out 2.4s infinite;
+}
+@keyframes af-draw{ to { stroke-dashoffset: 0; } }
+@keyframes af-breathe{
+  0%,100%{ filter: drop-shadow(0 0 0 rgba(206,174,94,.0)); }
+  50%    { filter: drop-shadow(0 0 6px rgba(206,174,94,.35)); }
+}
+
+/* Pulsing destination dots */
+.af-dot{
+  fill: var(--af-gold);
+  filter: drop-shadow(0 0 4px rgba(206,174,94,.4));
+  transform-origin: center;
+  animation: af-pulse 2.6s ease-in-out infinite;
+}
+.af-dot:nth-child(2){ animation-delay:.6s }
+.af-dot:nth-child(3){ animation-delay:1.2s }
+@keyframes af-pulse{ 0%,100%{ r:5; opacity:.9 } 50%{ r:7.5; opacity:1 } }
+
+@media (prefers-reduced-motion: reduce){
+  .af-sheen, .af-route, .af-dot{ animation: none; }
+}

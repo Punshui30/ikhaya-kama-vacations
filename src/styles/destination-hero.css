@@ -1,0 +1,182 @@
+/* styles/destination-hero.css */
+
+/* === Pattern strip controls (safe defaults) === */
+:root{
+  --dd-top-strip-h: 92px;              /* bar height */
+  --dd-pattern-url: url("/images/patterns/default_2880x1080.jpg");
+  --dd-pattern-width: 2100px;          /* bigger = larger motifs */
+  --dd-pattern-y: 50%;                 /* vertical slice to show (0–100%) */
+  --dd-pattern-darken: 0;              /* 0=none, 0.15=slight, 0.30=strong */
+  
+  --dd-theme-bg: transparent;             /* page bg usually set elsewhere */
+  --dd-wrap-w: min(1200px, 92vw);         /* content max width */
+
+  --dd-card-w: clamp(300px, 28vw, 360px); /* luxury image size */
+  --dd-card-h: clamp(420px, 52vh, 520px);
+  --dd-radius: 20px;
+
+  --dd-ivory: #f8f8f4;
+  --dd-gold: #ceae5e;
+  --dd-text: #e9eef2;
+  --dd-text-dim: #cfd7de;
+}
+
+/* Outer hero: transparent so page bg shows; never scroll-snaps/overflows weirdly */
+.dd.dd-hero{
+  position: relative;
+  min-height: calc(100vh - 200px);
+  background: transparent;
+  isolation: isolate;
+  overflow: hidden;
+  /* prevent inherited flex/grids from parents breaking layout */
+  display: block;
+}
+
+/* Top pattern strip (no tint unless you ask for it) */
+.dd .dd-strip{
+  position: absolute;
+  top: 0; left: 50%; transform: translateX(-50%);
+  width: 100vw;
+  height: var(--dd-top-strip-h);
+  z-index: 2; /* above hero overlay */
+  background-image: var(--dd-pattern-url);
+  background-repeat: repeat-x;
+  background-size: var(--dd-pattern-width) auto;
+  background-position: center var(--dd-pattern-y);
+  /* optional darken */
+  filter: brightness(calc(1 - var(--dd-pattern-darken)));
+  /* soft fade at the bottom */
+  -webkit-mask-image: linear-gradient(to bottom, black 72%, transparent);
+          mask-image: linear-gradient(to bottom, black 72%, transparent);
+}
+
+/* Ensure any hero dark overlay does NOT cover the strip */
+.dd.dd-hero::after{
+  content:"";
+  position:absolute;
+  left:0; right:0;
+  top: var(--dd-top-strip-h);          /* start AFTER the strip */
+  bottom:0;
+  background: rgba(0,0,0,0.35);        /* your readability overlay */
+  z-index: 1;                           /* below .dd-strip */
+}
+
+/* Content grid (40/60) */
+.dd .dd-wrap{
+  position: relative;
+  z-index: 1;
+  width: var(--dd-wrap-w);
+  margin: 0 auto;
+  padding-top: 18px;
+  display: grid;
+  grid-template-columns: 0.4fr 0.6fr;
+  gap: 40px;
+  align-items: center;
+}
+
+/* Card */
+.dd .dd-card{
+  width: var(--dd-card-w);
+  height: var(--dd-card-h);
+  border-radius: var(--dd-radius);
+  border: 2px solid rgba(255,255,255,.92);
+  box-shadow: 0 12px 36px rgba(0,0,0,.28);
+  overflow: hidden;
+  background: #000;
+  position: relative;
+  min-width: 0; /* flex overflow guard */
+}
+.dd .dd-photo{
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  opacity: 0; transition: opacity .8s ease;
+  display: block;
+}
+.dd .dd-photo.is-active{ opacity: 1; }
+
+/* Dots */
+.dd .dd-dots{
+  position: absolute; left: 50%; bottom: 10px; transform: translateX(-50%);
+  display: flex; gap: 8px;
+}
+.dd .dd-dot{
+  width: 8px; height: 8px; border-radius: 50%;
+  border: 0; background: rgba(255,255,255,.55);
+  cursor: pointer;
+}
+.dd .dd-dot.on{ background: #fff; }
+
+/* Copy */
+.dd .dd-copy{ min-width: 0; }
+.dd .dd-title{
+  margin: 0 0 .35em;
+  color: var(--dd-ivory);
+  font-size: clamp(36px, 5.2vw, 64px);
+  line-height: 1.05;
+  letter-spacing: .2px;
+  text-shadow: 0 2px 10px rgba(0,0,0,.25);
+}
+.dd .dd-tag{
+  margin: 0 0 12px;
+  color: var(--dd-text);
+  font-size: clamp(16px, 1.8vw, 22px);
+  text-shadow: 0 1px 6px rgba(0,0,0,.18);
+}
+
+/* Bullets */
+.dd .dd-bullets{
+  list-style: none; padding: 0; margin: 8px 0 12px;
+}
+.dd .dd-bullets li{
+  display: flex; gap: 10px; align-items: baseline;
+  color: var(--dd-text);
+  font-size: clamp(14px, 1.6vw, 18px);
+  margin: 6px 0;
+}
+.dd .dd-bullet-gem{
+  color: var(--dd-gold);
+  font-size: .9em;
+  line-height: 1;
+}
+
+/* Quick facts (fills the dead space) */
+.dd .dd-facts{
+  display: flex; flex-wrap: wrap; gap: 10px 14px;
+  margin: 18px 0 6px; padding: 0; list-style: none;
+}
+.dd .dd-facts li{
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 12px; border-radius: 999px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(206,174,94,.35);
+  color: var(--dd-text);
+  font-size: 14.5px;
+  line-height: 1;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+.dd .dd-facts li b{ font-weight: 600; color: #fff; }
+.dd .dd-ico{ font-size: 15px; opacity: .9 }
+
+/* CTA */
+.dd .dd-cta-row{ margin-top: 16px; }
+.dd .dd-btn{
+  appearance: none; border: 0; cursor: pointer;
+  background: var(--dd-gold); color: #1f252b;
+  padding: 10px 16px; border-radius: 999px;
+  font-weight: 600;
+  box-shadow: 0 6px 18px rgba(0,0,0,.25);
+}
+
+/* Mobile stack */
+@media (max-width: 900px){
+  .dd .dd-wrap{ grid-template-columns: 1fr; gap: 24px; }
+  .dd .dd-card{
+    width: clamp(280px, 70vw, 360px);
+    height: clamp(380px, 48vh, 520px);
+    margin-inline: auto;
+  }
+  .dd .dd-facts{ gap: 8px; }
+  .dd .dd-facts li{ font-size: 13.5px; }
+}

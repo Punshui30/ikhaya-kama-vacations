@@ -60,3 +60,4 @@ Write-Host "You can now upload the dist folder to Netlify" -ForegroundColor Whit
 
 
 
+

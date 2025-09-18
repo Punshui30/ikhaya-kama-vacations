@@ -3,9 +3,9 @@
     "slug": "south-africa",
     "title": "South Africa",
     "tagline": "Vibrant cities. Untamed wilderness. Coastal beauty.",
-    "description": "South Africa is where diversity comes to life. From Cape Town's oceanside charm and wine estates to Big Five safaris in Kruger, this is a land of contrast and deep story.",
+    "description": "Thrill on a Big Five safari, relax on pristine beaches, and sip world-class wines. Walk through history at Nelson Mandela & Desmond Tutu's homes and reflect at the Hector Pieterson Museum.",
     "highlights": [
-      "Safari in Kruger National Park or private reserves",
+      "Safari in Kruger or a private reserve",
       "Cape Town: Table Mountain, Robben Island, beaches",
       "Wine tasting in Stellenbosch & Franschhoek",
       "Drive the Garden Route",
@@ -22,6 +22,11 @@
     ],
     "poster": "/images/SouthAfrica.png",
     "detailImage": "/images/southafrica2.jpg",
+    "heroImages": [
+      "/images/photo-1576485375217-d6a95e34d043.jpeg",
+      "/images/valley-of-desolation-4-1440x1800.jpg",
+      "/images/L1B4607-1.jpg"
+    ],
     "video": "/video/20250910_1508_South Africa's Natural Beauty_simple_compose_01k4tgemd1fqrsqx9h5ay1y9ce.mp4",
     "music": "/music/A1.mp3",
     "travelPrep": {
@@ -76,7 +81,7 @@
     "slug": "kenya",
     "title": "Kenya",
     "tagline": "The original safari dream. Wild, bold, and full of story.",
-    "description": "From the Great Migration in the Maasai Mara to the Swahili coast, Kenya captures Africa's heart through wildlife and cultural depth.",
+    "description": "The original safari dream. Wild, bold, and full of story. From the Great Migration in the Maasai Mara to the Swahili coast, Kenya captures Africa's heart through wildlife and cultural depth.",
     "highlights": [
       "Great Migration (July–Oct)",
       "Lake Nakuru (Great Rift Valley)",
@@ -95,6 +100,11 @@
       "4 nights on the coast (Lamu or Diani)"
     ],
     "poster": "/images/Kenya.png",
+    "heroImages": [
+      "/images/Top-Destinations-to-Visit-in-Kenya.jpg",
+      "/images/15-best-places-to-visit-in-kenya-scaled.jpg",
+      "/images/IMG_2763.jpeg"
+    ],
     "video": "/video/20250910_1535_Savanna Sunset Serenity_remix_01k4tj0hbbekd865ng1cpwyg42.mp4",
     "music": "/music/A2.mp3",
     "travelPrep": {
@@ -151,7 +161,7 @@
     "slug": "tanzania",
     "title": "Tanzania",
     "tagline": "Epic landscapes and ancient rhythms.",
-    "description": "Tanzania is where safari meets scale. Serengeti, Ngorongoro, and Zanzibar—each iconic and unforgettable.",
+    "description": "Epic landscapes and ancient rhythms. Tanzania is where safari meets scale. Serengeti, Ngorongoro, and Zanzibar—each iconic and unforgettable.",
     "highlights": [
       "Serengeti: endless plains and the migration",
       "Ngorongoro Crater",
@@ -170,6 +180,11 @@
       "3 nights Zanzibar"
     ],
     "poster": "/images/Tanzania.png",
+    "heroImages": [
+      "/images/tanzania-in-pictures-beautiful-places-to-photograph-zanzibar-archipelago.jpg",
+      "/images/hero-tanzania-cheetah.jpg",
+      "/images/tanzania.avif"
+    ],
     "music": "/music/A3.mp3",
     "travelPrep": {
       "visa": "Coming Soon - Tanzania travel preparation information will be available soon.",
@@ -191,7 +206,7 @@
     "slug": "namibia",
     "title": "Namibia",
     "tagline": "Sculpted by wind and silence. Namibia is Africa's soul in stillness.",
-    "description": "Where orange dunes meet cobalt skies, and desert elephants roam the otherworldly landscapes. Namibia is perfect for travelers seeking solitude, beauty, and raw landscapes.",
+    "description": "Stand in awe of towering red dunes, vast deserts, and landscapes that take your breath away. Solitude has never felt so alive.",
     "highlights": [
       "Climb the Sossusvlei dunes",
       "See shipwrecks on the Skeleton Coast",
@@ -209,7 +224,12 @@
       "3 nights Etosha",
       "2 nights Damaraland (culture & desert elephants)"
     ],
-    "poster": "/images/Namibia.png",
+    "poster": "/img/destinations/namibia/hero.jpg",
+    "heroImages": [
+      "/images/Shutterstock559283317.jpg",
+      "/images/30453.avif",
+      "/images/IMG_9805.jpg"
+    ],
     "music": "/music/A6.mp3",
     "travelPrep": {
       "visa": "Coming Soon - Namibia travel preparation information will be available soon.",
@@ -250,7 +270,12 @@
       "2 nights Moremi Game Reserve",
       "2 nights Kalahari Desert"
     ],
-    "poster": "/images/Botswana.png",
+    "poster": "/img/destinations/botswana/hero.jpg",
+    "heroImages": [
+      "/images/hyena-pan-hide-Andrea-Kozil.jpg",
+      "/images/botswana-romantic-safari-fp-875x365.jpg",
+      "/images/botswana_0.jpg"
+    ],
     "music": "/music/A4.mp3",
     "travelPrep": {
       "visa": "Coming Soon - Botswana travel preparation information will be available soon.",
@@ -269,42 +294,75 @@
     }
   },
   {
-    "slug": "zambia",
-    "title": "Zambia",
-    "tagline": "The real Africa. Raw, authentic, and unforgettable.",
-    "description": "Zambia is where you find the real Africa. From the thundering Victoria Falls to walking safaris in South Luangwa, this is adventure at its purest form.",
+    "slug": "morocco",
+    "title": "Morocco",
+    "tagline": "Imperial cities. Desert dreams. Atlantic charm.",
+    "description": "Morocco enchants with its blend of ancient traditions and modern allure. From the bustling souks of Marrakech to the golden dunes of the Sahara, experience the magic of North Africa.",
     "highlights": [
-      "Victoria Falls (Mosi-oa-Tunya)",
-      "South Luangwa walking safaris",
-      "Lower Zambezi canoe safaris",
-      "Kafue National Park",
-      "Livingstone's historic sites",
-      "Traditional village experiences"
+      "Marrakech medina and souks",
+      "Sahara Desert camel trekking",
+      "Fez imperial architecture",
+      "Casablanca coastal elegance",
+      "Atlas Mountains hiking",
+      "Traditional riad experiences"
     ],
     "bestTime": [
-      "May–October (dry season, best for safaris)",
-      "Nov–April (wet season, Victoria Falls at full flow)"
+      "March–May (spring, mild temperatures)",
+      "September–November (autumn, comfortable weather)"
     ],
     "sampleItinerary": [
-      "2 nights Livingstone (Victoria Falls)",
-      "3 nights South Luangwa",
-      "2 nights Lower Zambezi",
-      "2 nights Kafue National Park"
+      "3 nights Marrakech",
+      "2 nights Sahara Desert",
+      "2 nights Fez",
+      "2 nights Casablanca"
     ],
-    "poster": "/images/Zambia.png",
+    "poster": "/img/destinations/morocco/hero.jpg",
+    "heroImages": [
+      "/images/chefchaouen-and-spanish-mosque.jpg",
+      "/images/What-Makes-Moroccan-Street-Markets-So-Vibrant-and-Captivating-2.png",
+      "/images/istockphoto-2149359355-612x612.jpg"
+    ],
     "music": "/music/A5.mp3",
     "travelPrep": {
-      "visa": "Coming Soon - Zambia travel preparation information will be available soon.",
-      "vaccines": ["Coming Soon"],
-      "packing": ["Coming Soon"],
-      "currency": "Coming Soon",
-      "etiquette": ["Coming Soon"]
+      "visa": "Most visitors can enter visa-free for up to 90 days. US, UK, EU, and Canadian citizens don't need a visa for tourism.",
+      "vaccines": [
+        "Hepatitis A & B (recommended)",
+        "Typhoid (recommended)",
+        "Routine vaccines (MMR, DPT, flu)"
+      ],
+      "packing": [
+        "Modest clothing for religious sites",
+        "Light layers for desert temperature changes",
+        "Comfortable walking shoes",
+        "Sun protection (hat, sunscreen)",
+        "Warm clothes for desert nights"
+      ],
+      "currency": "Moroccan Dirham (MAD)",
+      "etiquette": [
+        "Dress modestly, especially in religious areas",
+        "Remove shoes when entering homes",
+        "Use right hand for eating and greetings",
+        "Bargaining is expected in souks",
+        "Friday is the holy day"
+      ]
     },
     "weather": {
       "seasons": [
         {
-          "label": "Coming Soon",
-          "summary": "Zambia weather information will be available soon."
+          "label": "Spring (March-May)",
+          "summary": "Perfect weather with mild temperatures and blooming landscapes. Ideal for all activities."
+        },
+        {
+          "label": "Summer (June-August)",
+          "summary": "Hot and dry, especially inland. Coastal areas remain pleasant. Early mornings and evenings best for activities."
+        },
+        {
+          "label": "Autumn (September-November)",
+          "summary": "Excellent weather returns with comfortable temperatures. Great for desert excursions."
+        },
+        {
+          "label": "Winter (December-February)",
+          "summary": "Mild days but can be cold at night, especially in the desert and mountains. Good for cities."
         }
       ]
     }
@@ -332,7 +390,12 @@
       "2 nights Mana Pools",
       "2 nights Great Zimbabwe"
     ],
-    "poster": "/images/Zimbabwe.png",
+    "poster": "/img/destinations/zimbabwe/hero.jpg",
+    "heroImages": [
+      "/images/article-animals-of-zimbabwe3.jpg",
+      "/images/Zimbabwe-Victoria-Falls-Sunset.jpg",
+      "/images/Down_the_water_hole.jpg"
+    ],
     "music": "/music/A7.mp3",
     "travelPrep": {
       "visa": "Coming Soon - Zimbabwe travel preparation information will be available soon.",
@@ -353,27 +416,30 @@
   {
     "slug": "uganda",
     "title": "Uganda",
-    "tagline": "Mountain gorillas. Source of the Nile. Pearl of Africa.",
-    "description": "Uganda is the Pearl of Africa, where you can track mountain gorillas, discover the source of the Nile, and experience the continent's most diverse wildlife in a compact, accessible package.",
+    "tagline": "Lush, soulful, and full of life.",
+    "description": "Uganda is East Africa's best-kept secret. A place of mountain gorillas, warm people, and unforgettable landscapes.",
     "highlights": [
-      "Mountain gorilla trekking",
-      "Source of the Nile (Jinja)",
-      "Murchison Falls National Park",
-      "Queen Elizabeth National Park",
-      "Bwindi Impenetrable Forest",
-      "Kampala cultural experiences"
+      "Gorilla trekking in Bwindi",
+      "Chimpanzees in Kibale Forest",
+      "Boat safaris in Queen Elizabeth Park",
+      "Visit Lake Bunyonyi or Sipi Falls",
+      "Local dance, music, and food experiences"
     ],
     "bestTime": [
-      "Dec–Feb & Jun–Aug (dry seasons, best for gorilla trekking)",
-      "Mar–May & Sep–Nov (wet seasons, lush landscapes)"
+      "June–August & Dec–Feb (dry season, best for trekking)"
     ],
     "sampleItinerary": [
-      "2 nights Kampala",
-      "2 nights Bwindi (gorilla trekking)",
+      "2 nights Entebbe & Kampala",
+      "2 nights Kibale Forest",
       "2 nights Queen Elizabeth National Park",
-      "2 nights Jinja (Nile source)"
+      "2 nights Bwindi (gorilla trek)"
     ],
-    "poster": "/images/Uganda.png",
+    "poster": "/img/destinations/uganda/hero.jpg",
+    "heroImages": [
+      "/images/shutterstock_1342252106v2-2109x1406.jpg",
+      "/images/interesting-facts-about-uganda-crane.jpg",
+      "/images/murchison-falls-view.jpg"
+    ],
     "music": "/music/A8.mp3",
     "travelPrep": {
       "visa": "Coming Soon - Uganda travel preparation information will be available soon.",

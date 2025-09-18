@@ -8,8 +8,136 @@
   min-height: 100vh;
 }
 
+/* Theme system now in globals.scss */
+
+:global(.dest-hero){ display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:center; padding: 48px 24px; max-width: 1200px; margin: 0 auto; }
+:global(.dest-hero__media) { margin: 0; }
+:global(.dest-hero__img) {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: contain; /* Show full image instead of cropping */
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(0,0,0,.25);
+}
+:global(.dest-hero__copy){ position:relative; z-index:2; color:var(--c-ink, #0b0b0b) !important; }
+:global(.dest-hero__copy h1){ margin:0 0 10px; font-size: clamp(2rem,4vw,3rem); color: #0b0b0b !important; }
+:global(.dest-hero__copy p){ opacity:.95; margin: 0; color: #3a4a67 !important; }
+
+@media (max-width: 960px) {
+  :global(.dest-hero) {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Destinations hero: bigger, never full screen */
+:global(.hero--destinations){
+  position: relative;
+  height: clamp(460px, 64vh, 680px);
+  overflow: hidden;
+}
+
+/* Render the hero photograph on a pseudo-element so we can crop off the letterbox bars */
+:global(.hero--destinations)::before{
+  content: "";
+  position: absolute; inset: 0;
+  background-image: url("/images/DestinationHero.png");
+  background-repeat: no-repeat;
+  background-size: cover;               /* fill the band */
+  background-position: 50% 62%;         /* show less sky / more horizon (tune if needed) */
+
+  /* 🔥 Trim the black bars that are baked into the image */
+  --v-crop: 8%;                          /* top/bottom crop amount; adjust 6–12% if needed */
+  clip-path: inset(var(--v-crop) 0 var(--v-crop) 0);
+  z-index: 0;
+}
+
+/* Keep overlay + copy above the bg */
+:global(.hero--destinations .hero__overlay){ 
+  position:absolute; inset:0; z-index:1;
+  background: linear-gradient(180deg, rgba(0,0,0,.22) 0%, rgba(0,0,0,.10) 60%, rgba(0,0,0,.22) 100%);
+}
+:global(.hero--destinations .hero__content){
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  height: 100%;
+  text-align:center; padding: 0 24px; color:#fff; 
+  text-shadow: 0 2px 12px rgba(0,0,0,.55);
+}
+
+/* Mobile: nudge focal point a bit higher */
+@media (max-width: 640px){
+  :global(.hero--destinations)::before{
+    background-position: 50% 58%;
+    --v-crop: 10%;
+  }
+}
+
+:global(.hero--destinations .hero__content h1) {
+  margin: 0 0 10px;
+  font-size: clamp(2.6rem, 5vw, 4.2rem);
+}
+:global(.hero--destinations .hero__content p) {
+  max-width: 900px; margin: 0; opacity: .95;
+}
+
+/* scroll arrow */
+:global(.hero--destinations .hero__scroll) {
+  margin-top: 28px; width: 28px; height: 28px; border: 0; background: transparent; cursor: pointer;
+}
+:global(.hero--destinations .hero__scroll::before) {
+  content: ""; display: block; width: 0; height: 0; margin: auto;
+  border-left: 14px solid transparent; border-right: 14px solid transparent; border-top: 16px solid #ddd;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,.35));
+  animation: bounce 1.4s infinite;
+}
+@keyframes bounce { 0%,100% { transform: translateY(0) } 50% { transform: translateY(6px) } }
+
 .destinationsSection {
   position: relative;
+  background: #000;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+.destinationsContainer {
+  position: relative;
+}
+
+.heroScrollArrow {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  
+  .arrow {
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 16px solid rgba(255, 255, 255, 0.8);
+    animation: bounce 2s infinite;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      border-top-color: #d4af37;
+      transform: translateY(-3px);
+    }
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-8px);
+  }
+  60% {
+    transform: translateY(-4px);
+  }
 }
 
 .hero {
@@ -41,16 +169,7 @@
   font-style: italic;
 }
 
-.destinationsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: var(--space-6);
-  
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: var(--space-4);
-  }
-}
+/* Grid rules moved to BookDestinations.module.scss - removed conflicting rules */
 
 .destinationCard {
   text-decoration: none;

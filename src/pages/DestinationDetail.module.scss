@@ -1,704 +1,411 @@
+@use "./src/styles/tokens.scss" as *;
 @import '../styles/mixins';
 
-.destination {
-  padding-top: 80px; // Account for fixed header
-  
-  @media (max-width: 768px) {
-    padding-top: 70px;
+/* Do NOT set any background color here.
+   Each destination already sets the page background color elsewhere. */
+
+/* The hero must be transparent so the page bg shows through */
+:global(.hero){
+  position: relative;
+  min-height: calc(100vh - 200px);
+  background: transparent;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* Tunables (override per page via JS or page class) */
+:global(:root){
+  --pattern-url: url("/images/patterns/south_africa_2880x1080.jpg"); /* set per destination */
+  --pattern-width: 1800px;      /* consistent pattern scale */
+  --top-bar-height: 170px;      /* height of the top pattern strip */
+  --top-fade: 28px;             /* soften bottom edge of the strip */
+}
+
+/* PATTERN: only a top strip; no bottom pattern */
+:global(.hero::before){
+  content:"";
+  position:absolute;
+  top:0; left:50%; transform:translateX(-50%);
+  width:100vw; height: var(--top-bar-height);
+  background-image: var(--pattern-url);
+  background-size: var(--pattern-width) auto;
+  background-repeat: repeat-x;
+  background-position: center top;
+  z-index:0;
+  /* fade bottom edge into page bg */
+  -webkit-mask-image: linear-gradient(to bottom, black calc(100% - var(--top-fade)), transparent 100%);
+          mask-image: linear-gradient(to bottom, black calc(100% - var(--top-fade)), transparent 100%);
+}
+
+/* CONTENT ON TOP */
+:global(.container) { 
+  max-width: 1200px; 
+  margin: 0 auto; 
+  padding: 64px 24px; 
+  position: relative;
+  z-index: 3;
+}
+
+/* content sits above the layers */
+:global(.hero-grid){ 
+  position:relative; 
+  z-index:2;
+  display: grid; 
+  grid-template-columns: 400px 1fr; 
+  gap: 60px; 
+  align-items: center; 
+  min-height: 80vh;
+}
+
+@media (min-width: 2000px){
+  :global(:root){ --pattern-width: 2200px; }
+}
+
+/* DESTINATION IMAGE CARD */
+:global(.media-card){
+  position: relative;
+  width: 400px;
+  height: 500px;
+  border-radius: 24px;
+  border: 4px solid #fff;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  overflow: hidden;
+  background: #000; /* fallback while first img loads */
+}
+
+/* CARD CAROUSEL */
+:global(.card-carousel){ 
+  position: relative; 
+  width:100%; 
+  height:100%; 
+}
+
+:global(.hero-photo){
+  position:absolute; 
+  inset:0;
+  width:100%; 
+  height:100%;
+  object-fit: cover; 
+  object-position: center;
+  opacity: 0; 
+  transition: opacity .6s ease;
+}
+
+:global(.hero-photo.is-active){ 
+  opacity: 1; 
+}
+
+:global(.card-dots){
+  position:absolute; 
+  left:50%; 
+  bottom:10px; 
+  transform:translateX(-50%);
+  display:flex; 
+  gap:8px; 
+  z-index:3;
+}
+
+:global(.card-dots .dot){
+  width:8px; 
+  height:8px; 
+  border-radius:50%;
+  background: rgba(255,255,255,.5);
+  border: 0; 
+  cursor:pointer;
+}
+
+:global(.card-dots .dot.on){ 
+  background:#fff; 
+}
+
+/* CLEAN TEXT - SIMPLE SHADOWS */
+:global(.copy h1){ 
+  color: #FFFFFF; 
+  text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+  font-weight: 700;
+  font-size: clamp(3rem, 6vw, 5rem);
+  margin: 0 0 1rem 0;
+  line-height: 1.1;
+}
+
+:global(.copy .tagline){ 
+  color: #FFFFFF; 
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  margin: 0 0 1.5rem 0;
+  line-height: 1.4;
+  opacity: 0.95;
+  font-weight: 500;
+}
+
+:global(.copy .description){ 
+  color: #FFFFFF; 
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  margin: 0 0 2rem 0;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+:global(.copy .quick-highlights),
+:global(.copy .best-time){ 
+  margin: 1.5rem 0;
+}
+
+:global(.copy .quick-highlights h3),
+:global(.copy .best-time h3){ 
+  color: #FFFFFF; 
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+  font-size: clamp(1.1rem, 2.2vw, 1.3rem);
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+  opacity: 0.95;
+}
+
+:global(.copy .quick-highlights ul),
+:global(.copy .best-time ul){ 
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+:global(.copy .quick-highlights li),
+:global(.copy .best-time li){ 
+  color: #FFFFFF; 
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+  font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+  margin: 0.5rem 0;
+  padding-left: 1.2rem;
+  position: relative;
+  line-height: 1.4;
+  opacity: 0.9;
+}
+
+:global(.copy .quick-highlights li::before){ 
+  content: "✦";
+  position: absolute;
+  left: 0;
+  color: #4ECDC4;
+  font-weight: bold;
+}
+
+:global(.copy .best-time li::before){ 
+  content: "🌅";
+  position: absolute;
+  left: 0;
+  font-size: 0.9em;
+}
+
+@media (max-width: 768px) {
+  :global(.hero-grid) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    text-align: center;
   }
+}
+
+/* OTHER STYLES */
+.destination {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  background: #000;
+  min-height: 100vh;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
 .notFound {
   text-align: center;
-  max-width: 400px;
-  margin: 0 auto;
+  padding: 4rem 2rem;
   
   h1 {
-    @include heading-xl;
-    color: var(--brand-1);
-    margin-bottom: var(--space-3);
+    color: white;
+    margin-bottom: 1rem;
   }
   
   p {
-    @include body-text;
-    margin-bottom: var(--space-4);
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 2rem;
   }
 }
 
 .ctaButton {
-  @include button-primary;
-}
-
-.hero {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-8);
-  align-items: center;
+  display: inline-block;
+  padding: 12px 24px;
+  background: var(--brand-3);
   color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
   
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: var(--space-6);
+  &:hover {
+    background: var(--brand-2);
+    transform: translateY(-2px);
   }
 }
 
-.heroImage {
-  img, .heroVideo {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    
-    @media (max-width: 768px) {
-      height: 250px;
-    }
-    
-    @media (max-width: 480px) {
-      height: 200px;
-    }
-  }
+.musicButton {
+  margin-top: 1rem;
+  padding: 8px 16px;
+  background: var(--brand-3);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
   
-  .heroVideo {
-    border: 2px solid var(--sa-gold);
-    box-shadow: 0 8px 32px rgba(212, 175, 55, 0.3);
-    
-    // Hide any browser video controls
-    &::-webkit-media-controls {
-      display: none !important;
-    }
-    
-    &::-webkit-media-controls-panel {
-      display: none !important;
-    }
-    
-    &::-webkit-media-controls-play-button {
-      display: none !important;
-    }
-    
-    &::-webkit-media-controls-timeline {
-      display: none !important;
-    }
-    
-    &::-webkit-media-controls-current-time-display {
-      display: none !important;
-    }
-    
-    &::-webkit-media-controls-time-remaining-display {
-      display: none !important;
-    }
-    
-    &::-webkit-media-controls-mute-button {
-      display: none !important;
-    }
-    
-    &::-webkit-media-controls-volume-slider {
-      display: none !important;
-    }
-    
-    &::-webkit-media-controls-fullscreen-button {
-      display: none !important;
-    }
-    
-    &::-webkit-media-controls-overlay-play-button {
-      display: none !important;
-    }
+  &:hover {
+    background: var(--brand-2);
   }
 }
 
-.heroContent {
-  .heroTitle {
-    @include heading-xl;
-    color: white;
-    font-size: clamp(2rem, 4vw, 3rem);
-    margin-bottom: var(--space-3);
-  }
-  
-  .heroTagline {
-    @include body-text;
-    font-size: var(--fs-lg);
-    color: var(--brand-2);
-    font-weight: 500;
-    margin-bottom: var(--space-4);
-  }
-  
-  .heroDescription {
-    @include body-text;
-    font-size: var(--fs-md);
-    color: rgba(255, 255, 255, 0.9);
-    line-height: 1.7;
-  }
-
-  .musicButton {
-    background: var(--sa-emerald);
-    color: var(--sa-gold);
-    border: 2px solid var(--sa-gold);
-    padding: 0.75rem 1.5rem;
-    border-radius: 50px;
-    font-family: var(--font-luxury-sans);
-    font-size: clamp(0.9rem, 1.5vw, 1rem);
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin: var(--space-3) 0;
-    box-shadow: 0 4px 15px rgba(0, 77, 64, 0.3);
-    
-    &:hover {
-      background: var(--sa-gold);
-      color: var(--sa-emerald);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
-    }
-    
-    &:active {
-      transform: translateY(0);
-    }
-  }
+.hiddenAudio {
+  display: none;
 }
 
-.content {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.highlightsSection {
-  margin-bottom: var(--space-8);
-  
-  @media (max-width: 768px) {
-    margin-top: var(--space-6);
-    padding: 0 var(--space-2);
-  }
+.highlightsSection,
+.timingSection,
+.itinerarySection,
+.travelPrepSection,
+.ctaSection {
+  margin-bottom: 4rem;
 }
 
 .sectionTitle {
-  @include heading-lg;
-  color: var(--brand-1);
-  margin-bottom: var(--space-6);
+  color: white;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin-bottom: 1rem;
   text-align: center;
+}
+
+.sectionSubtitle {
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
 }
 
 .highlightsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: var(--space-4);
-  
-  @media (max-width: 768px) {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-    width: 100%;
-    box-sizing: border-box;
-    padding: 0 var(--space-2);
-  }
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
 }
 
 .highlightCard {
-  @include card;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
   display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-4);
-  margin-bottom: var(--space-3);
-  width: 100%;
-  box-sizing: border-box;
-  position: relative;
-  z-index: 1;
-  
-  &:hover {
-    transform: translateY(-2px);
-  }
-  
-  @media (max-width: 768px) {
-    flex-direction: column;
-    text-align: center;
-    padding: var(--space-3);
-    margin-bottom: var(--space-3);
-    position: static;
-    z-index: auto;
-  }
+  gap: 1rem;
+  align-items: flex-start;
 }
 
 .highlightNumber {
-  font-family: var(--font-serif);
-  font-size: var(--fs-xl);
-  font-weight: 700;
-  color: var(--brand-3);
-  flex-shrink: 0;
-  width: 40px;
-  height: 40px;
+  background: var(--brand-3);
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(169, 83, 42, 0.1);
-  border-radius: 50%;
-  
-  @media (max-width: 768px) {
-    margin-bottom: var(--space-2);
-  }
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.highlightContent {
+  flex: 1;
 }
 
 .highlightTitle {
-  @include heading-md;
-  color: var(--ink);
+  color: white;
   margin: 0;
-  font-size: var(--fs-md);
-}
-
-.timingSection {
-  margin-bottom: var(--space-8);
+  font-size: 1.1rem;
 }
 
 .timingGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
 }
 
 .timeCard {
-  @include card;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
   text-align: center;
-  padding: var(--space-4);
-  
-  &:hover {
-    transform: translateY(-2px);
-  }
 }
 
 .timeIcon {
   font-size: 2rem;
-  margin-bottom: var(--space-2);
-  display: block;
+  margin-bottom: 1rem;
 }
 
 .timeText {
-  @include body-text;
-  font-weight: 500;
-  color: var(--ink);
+  color: white;
   margin: 0;
-}
-
-.itinerarySection {
-  margin-bottom: var(--space-8);
+  font-weight: 600;
 }
 
 .itineraryList {
   display: grid;
-  gap: var(--space-4);
+  gap: 1rem;
 }
 
 .itineraryDay {
-  @include card;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
   display: flex;
-  gap: var(--space-4);
-  padding: var(--space-4);
+  gap: 1rem;
   align-items: flex-start;
-  
-  &:hover {
-    transform: translateY(-2px);
-  }
 }
 
 .dayNumber {
-  font-family: var(--font-serif);
-  font-size: var(--fs-xl);
-  font-weight: 700;
-  color: var(--brand-3);
-  background: rgba(169, 83, 42, 0.1);
-  width: 50px;
-  height: 50px;
+  background: var(--brand-3);
+  color: white;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: 600;
   flex-shrink: 0;
 }
 
 .dayContent {
   flex: 1;
-  
-  .dayTitle {
-    @include heading-md;
-    color: var(--brand-1);
-    margin-bottom: var(--space-1);
-    font-size: var(--fs-md);
-  }
-  
-  .dayDescription {
-    @include body-text;
-    color: rgba(0, 0, 0, 0.7);
-    margin: 0;
-  }
 }
 
-.travelPrepSection {
-  max-width: 1000px;
-  margin: 0 auto;
-  
-  .sectionTitle {
-    @include heading-lg;
-    color: var(--brand-1);
-    text-align: center;
-    margin-bottom: var(--space-6);
-  }
+.dayTitle {
+  color: white;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
 }
 
-.ctaSection {
-  text-align: center;
-  max-width: 600px;
-  margin: 0 auto;
+.dayDescription {
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
 }
 
 .ctaText {
-  @include body-text;
-  font-size: var(--fs-lg);
-  color: rgba(0, 0, 0, 0.7);
-  margin-bottom: var(--space-6);
-}
-
-.ctaButtons {
-  display: flex;
-  gap: var(--space-4);
-  justify-content: center;
-  
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
-.ctaButton {
-  @include button-primary;
-  font-size: var(--fs-lg);
-  padding: var(--space-3) var(--space-6);
-}
-
-.ctaButtonSecondary {
-  @include button-secondary;
-  font-size: var(--fs-lg);
-  padding: var(--space-3) var(--space-6);
-}
-
-// New vibrant African-themed styles
-.musicControls {
-  margin-bottom: var(--space-4);
+  color: rgba(255, 255, 255, 0.9);
   text-align: center;
-}
-
-.musicButton {
-  background: var(--brand-3);
-  color: white;
-  border: none;
-  padding: var(--space-2) var(--space-4);
-  border-radius: var(--radius);
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
-  margin: var(--space-2) auto;
-  display: block;
-  
-  &:hover {
-    background: var(--brand-4);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
-  }
-  
-  @media (max-width: 768px) {
-    margin: var(--space-1) auto;
-    padding: var(--space-1) var(--space-3);
-    font-size: 0.9rem;
-  }
-}
-
-.heroStats {
-  display: flex;
-  gap: var(--space-6);
-  margin-top: var(--space-6);
-  justify-content: center;
-  
-  @media (max-width: 768px) {
-    position: static;
-    transform: none;
-    margin: var(--space-4) auto;
-    background: rgba(0, 0, 0, 0.7);
-    padding: var(--space-2) var(--space-4);
-    border-radius: 20px;
-    display: inline-flex;
-    gap: var(--space-4);
-    flex-wrap: wrap;
-    width: fit-content;
-  }
-}
-
-.stat {
-  text-align: center;
-  background: rgba(255, 255, 255, 0.1);
-  padding: var(--space-3);
-  border-radius: var(--radius);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.statNumber {
-  display: block;
-  font-size: var(--fs-2xl);
-  font-weight: 700;
-  color: var(--brand-3);
-  line-height: 1;
-}
-
-.statLabel {
-  font-size: var(--fs-sm);
-  color: rgba(255, 255, 255, 0.8);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.sectionSubtitle {
-  text-align: center;
-  color: var(--text-2);
-  margin-bottom: var(--space-6);
-  font-size: var(--fs-lg);
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.highlightContent {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  
-  @media (max-width: 768px) {
-    flex-direction: column !important;
-    justify-content: center !important;
-    text-align: center !important;
-    gap: var(--space-2) !important;
-    display: flex !important;
-    align-items: center !important;
-  }
-}
-
-.highlightIcon {
-  font-size: var(--fs-xl);
-  margin-left: var(--space-3);
-}
-
-.dayIcon {
-  font-size: var(--fs-lg);
-  margin-top: var(--space-2);
-  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
 }
 
 .musicNote {
+  color: rgba(255, 255, 255, 0.7);
   text-align: center;
-  margin-top: var(--space-4);
   font-style: italic;
-  color: var(--text-2);
-  font-size: var(--fs-sm);
+  font-size: 0.9rem;
 }
-
-// Enhanced hero image with overlay
-.heroImage {
-  position: relative;
-  
-  img {
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  }
-}
-
-.heroOverlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 0.3) 0%,
-    rgba(0, 0, 0, 0.1) 50%,
-    rgba(0, 0, 0, 0.3) 100%
-  );
-  border-radius: var(--radius);
-}
-
-// Reduced motion support
-@media (prefers-reduced-motion: reduce) {
-  .highlightCard,
-  .timeCard,
-  .itineraryDay {
-    transition: none;
-    
-    &:hover {
-      transform: none;
-    }
-  }
-  
-  .musicButton {
-    transition: none;
-    
-    &:hover {
-      transform: none;
-    }
-  }
-}
-
-// Mobile optimizations - COMPLETELY REWRITTEN
-@media (max-width: 768px) {
-  .destination {
-    padding: 0;
-  }
-  
-  .hero {
-    display: block;
-    padding: 2rem 1rem;
-    text-align: center;
-  }
-  
-  .heroImage {
-    margin-bottom: 2rem;
-    
-    img, .heroVideo {
-      height: 250px;
-      width: 100%;
-      object-fit: cover;
-      border-radius: 12px;
-    }
-  }
-  
-  .heroContent {
-    padding: 0;
-    text-align: center;
-    position: static;
-    
-    .heroTitle {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      line-height: 1.2;
-    }
-    
-    .heroTagline {
-      font-size: 1rem;
-      margin-bottom: 1rem;
-    }
-    
-    .heroDescription {
-      font-size: 0.95rem;
-      line-height: 1.5;
-      margin-bottom: 2rem;
-      padding: 0;
-    }
-    
-    .musicButton {
-      margin: 1rem auto;
-      padding: 0.75rem 1.5rem;
-      font-size: 0.9rem;
-      display: block;
-      width: fit-content;
-    }
-  }
-  
-  .heroStats {
-    margin: 2rem auto;
-    padding: 1rem;
-    background: rgba(0, 0, 0, 0.7);
-    border-radius: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-    width: fit-content;
-    position: static;
-    transform: none;
-  }
-  
-  .highlightsSection {
-    padding: 2rem 1rem;
-    margin: 0;
-  }
-  
-  .highlightsGrid {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 0;
-  }
-  
-  .highlightCard {
-    display: block;
-    text-align: center;
-    padding: 1.5rem;
-    margin-bottom: 1rem;
-    position: static;
-    z-index: auto;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  
-  .highlightNumber {
-    margin: 0 auto 1rem;
-    width: 50px;
-    height: 50px;
-  }
-  
-  .highlightTitle {
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero {
-    padding: 1.5rem 0.75rem;
-  }
-  
-  .heroImage {
-    img, .heroVideo {
-      height: 200px;
-    }
-  }
-  
-  .heroContent {
-    .heroTitle {
-      font-size: 1.5rem;
-    }
-    
-    .heroTagline {
-      font-size: 0.9rem;
-    }
-    
-    .heroDescription {
-      font-size: 0.9rem;
-    }
-    
-    .musicButton {
-      padding: 0.6rem 1.2rem;
-      font-size: 0.8rem;
-    }
-  }
-  
-  .heroStats {
-    padding: 0.75rem;
-    gap: 0.75rem;
-  }
-  
-  .highlightsSection {
-    padding: 1.5rem 0.75rem;
-  }
-  
-  .highlightCard {
-    padding: 1.25rem;
-  }
-}
-
-// Additional utility classes
-.noOutline {
-  outline: none !important;
-}
-
-.hiddenAudio {
-  display: none !important;
-}
-

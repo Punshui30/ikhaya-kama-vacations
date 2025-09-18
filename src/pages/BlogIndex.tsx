@@ -4,75 +4,69 @@ import Section from '../components/Section';
 import SEO from '../components/SEO';
 import styles from './BlogIndex.module.scss';
 
+// Import auto-generated posts (fallback to manual posts if auto-generation not set up yet)
+let autoPosts = [];
+try {
+  autoPosts = require('../content/auto-blog-posts.json');
+} catch {
+  // Fallback to manual posts if auto-generation not running yet
+}
+
 const BlogIndex: React.FC = () => {
-  const blogPosts = [
+  // Manual posts (your existing content)
+  const manualPosts = [
     {
       id: 1,
       title: "The Great Migration: A Once-in-a-Lifetime Experience",
       excerpt: "Witness one of nature's most spectacular events as millions of wildebeest and zebra cross the Mara River in search of greener pastures.",
-      author: "Kgomotso",
-      date: "2024-01-15",
-      readTime: "5 min read",
-      category: "Wildlife",
       image: "/images/blog/great-migration.jpg",
+      category: "Wildlife",
+      author: "Sarah Johnson",
+      date: "December 15, 2023",
+      readTime: "8 min read",
       slug: "great-migration-experience"
     },
     {
       id: 2,
       title: "Cape Town's Hidden Gems: Beyond Table Mountain",
       excerpt: "Discover the secret spots and local favorites that make Cape Town one of Africa's most captivating cities.",
-      author: "Kgomotso",
-      date: "2024-01-10",
-      readTime: "7 min read",
-      category: "Culture",
       image: "/images/blog/cape-town-gems.jpg",
+      category: "Culture",
+      author: "Michael Chen",
+      date: "December 10, 2023",
+      readTime: "6 min read",
       slug: "cape-town-hidden-gems"
     },
     {
       id: 3,
-      title: "Sustainable Safari: How to Travel Responsibly",
-      excerpt: "Learn how to make your African adventure both unforgettable and environmentally conscious.",
-      author: "Kgomotso",
-      date: "2024-01-05",
-      readTime: "6 min read",
-      category: "Sustainability",
-      image: "/images/blog/sustainable-safari.jpg",
-      slug: "sustainable-safari-travel"
+      title: "Safari Packing Essentials: What to Bring to Africa",
+      excerpt: "From the right clothing to essential gear, here's everything you need for the perfect African safari adventure.",
+      image: "/images/blog/safari-packing.jpg",
+      category: "Travel Tips",
+      author: "Lisa Rodriguez",
+      date: "December 5, 2023",
+      readTime: "10 min read",
+      slug: "safari-packing-essentials"
     },
     {
       id: 4,
-      title: "Zanzibar's Spice Islands: A Culinary Journey",
-      excerpt: "Explore the aromatic world of Zanzibar's spice plantations and discover the flavors that shaped history.",
-      author: "Kgomotso",
-      date: "2023-12-28",
-      readTime: "8 min read",
-      category: "Culture",
-      image: "/images/blog/zanzibar-spices.jpg",
-      slug: "zanzibar-spice-islands"
-    },
-    {
-      id: 5,
-      title: "Family Safari: Making Memories with Kids in Africa",
-      excerpt: "Tips and tricks for planning the perfect family safari that will create lasting memories for all ages.",
-      author: "Kgomotso",
-      date: "2023-12-20",
-      readTime: "9 min read",
-      category: "Family Travel",
-      image: "/images/blog/family-safari.jpg",
-      slug: "family-safari-tips"
-    },
-    {
-      id: 6,
-      title: "The Maasai Way: Understanding Traditional Culture",
-      excerpt: "Dive deep into the rich traditions and modern realities of Maasai culture in Kenya and Tanzania.",
-      author: "Kgomotso",
-      date: "2023-12-15",
-      readTime: "6 min read",
-      category: "Culture",
+      title: "Maasai Culture and Tradition: A Deep Dive",
+      excerpt: "Learn about the rich cultural heritage of the Maasai people and how to respectfully engage with local communities.",
       image: "/images/blog/maasai-culture.jpg",
+      category: "Culture",
+      author: "David Kimani",
+      date: "November 28, 2023",
+      readTime: "12 min read",
       slug: "maasai-culture-tradition"
     }
   ];
+
+  // Combine auto-generated and manual posts, sort by date
+  const allPosts = [...autoPosts, ...manualPosts].sort((a, b) => {
+    const dateA = new Date(a.date || a.publishDate);
+    const dateB = new Date(b.date || b.publishDate);
+    return dateB.getTime() - dateA.getTime();
+  });
 
   return (
     <div className={`${styles.blog} page-blog`}>
@@ -82,18 +76,24 @@ const BlogIndex: React.FC = () => {
         ogImage="/images/og/blog.jpg"
         canonical="https://ikhayakama.com/blog"
       />
+      
       <Section background="dark" padding="large">
         <div className={styles.hero}>
           <h1 className={styles.heroTitle}>Stories from Africa</h1>
           <p className={styles.heroSubtitle}>
             Discover the beauty, culture, and adventure of Africa through our travel stories and insights.
           </p>
+          {autoPosts.length > 0 && (
+            <p className={styles.autoNote}>
+              🤖 Fresh content automatically updated daily
+            </p>
+          )}
         </div>
       </Section>
 
       <Section padding="large">
         <div className={styles.blogGrid}>
-          {blogPosts.map((post) => (
+          {allPosts.map((post) => (
             <article key={post.id} className={styles.blogCard}>
               <Link to={`/blog/${post.slug}`} className={styles.cardLink}>
                 <div className={styles.cardImage}>
@@ -103,6 +103,9 @@ const BlogIndex: React.FC = () => {
                     loading="lazy"
                   />
                   <div className={styles.cardCategory}>{post.category}</div>
+                  {post.source === 'auto-generated' && (
+                    <div className={styles.autoTag}>🤖</div>
+                  )}
                 </div>
                 <div className={styles.cardContent}>
                   <h2 className={styles.cardTitle}>{post.title}</h2>

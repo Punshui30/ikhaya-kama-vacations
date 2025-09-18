@@ -1,0 +1,38 @@
+:root{
+  --brand-ivory:#F7F4EA; --brand-gold:#CEAE5E;
+
+  --luxury-1:#08162A; --luxury-2:#132B46;   /* navy */
+  --safari-1:#0F2B1C; --safari-2:#1E4732;   /* green */
+  --coast-1:#0A3D49;  --coast-2:#126A6A;    /* turquoise */
+
+  /* textile defaults (overridden per destination if you want) */
+  --dd-pattern-url:url("/images/patterns/default_2880x1080.jpg");
+  --dd-pattern-width:2200px;
+  --dd-pattern-y:42%;
+}
+
+.hs-hero{
+  --hs-bg1:var(--luxury-1); --hs-bg2:var(--luxury-2);
+  background:linear-gradient(180deg,var(--hs-bg1),var(--hs-bg2));
+  min-height:68vh; position:relative; overflow:hidden; isolation:isolate;
+}
+.hs-hero.theme-safari{ --hs-bg1:var(--safari-1); --hs-bg2:var(--safari-2); }
+.hs-hero.theme-coast { --hs-bg1:var(--coast-1);  --hs-bg2:var(--coast-2);  }
+
+.hs-top-strip{
+  position:absolute; inset:0 0 auto 50%; transform:translateX(-50%);
+  height:92px; width:100vw; z-index:2;
+  background-image:var(--dd-pattern-url);
+  background-size:var(--dd-pattern-width) auto;
+  background-repeat:repeat-x;
+  background-position:center var(--dd-pattern-y);
+  -webkit-mask-image:linear-gradient(to bottom,black 75%,transparent);
+          mask-image:linear-gradient(to bottom,black 75%,transparent);
+}
+
+.hs-wrap{ width:min(1200px,92vw); margin:0 auto; padding:16px 0 24px; position:relative; z-index:1; }
+.hs-copy{ color:var(--brand-ivory); text-shadow:0 2px 10px rgba(0,0,0,.25); margin:10px 0 4px; }
+.hs-copy h1{ font-size:clamp(36px,5.5vw,64px); margin:.25em 0 .25em; }
+.hs-copy p{ font-size:clamp(16px,1.8vw,20px); color:#dfe6ec; margin:0; }
+
+.hs-map{ width:100%; height:auto; display:block; margin-top:12px; }

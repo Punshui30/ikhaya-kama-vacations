@@ -24,7 +24,7 @@
   gap: var(--space-3);
   
   h3 {
-    color: var(--brand-1);
+    color: #2c5234;
     font-size: var(--fs-xl);
     font-weight: 600;
     margin: 0;
@@ -39,7 +39,7 @@
   label {
     font-size: var(--fs-sm);
     font-weight: 500;
-    color: var(--ink-70);
+    color: #2c5234 !important;
   }
 }
 
@@ -48,7 +48,7 @@
   border: 1px solid color-mix(in srgb, var(--ink) 20%, transparent);
   border-radius: var(--radius-sm);
   background: var(--bg);
-  color: var(--ink);
+  color: #2c5234 !important;
   font-size: var(--fs-sm);
   min-width: 200px;
   
@@ -62,10 +62,10 @@
 .emptyState {
   text-align: center;
   padding: var(--space-6);
-  color: var(--ink-60);
+  color: #2c5234 !important;
   
   h3 {
-    color: var(--ink-80);
+    color: #2c5234 !important;
     margin-bottom: var(--space-2);
   }
 }
@@ -97,7 +97,7 @@
   
   &:hover {
     background: color-mix(in srgb, var(--brand-1) 10%, transparent);
-    color: var(--ink);
+    color: #2c5234 !important;
   }
   
   &.active {
@@ -144,7 +144,7 @@
   padding: var(--space-3) var(--space-4);
   border: none;
   background: var(--bg);
-  color: var(--ink);
+  color: #2c5234 !important;
   font-size: var(--fs-sm);
   font-weight: 500;
   text-align: left;
@@ -188,13 +188,13 @@
 
 // Content Styles
 .text {
-  color: var(--ink-80);
+  color: #2c5234 !important;
   line-height: 1.6;
   margin: 0;
   
   // Ensure text is visible on dark backgrounds
   .panel & {
-    color: var(--ink-80);
+    color: #2c5234 !important;
   }
 }
 
@@ -205,7 +205,7 @@
   
   li {
     padding: var(--space-1) 0;
-    color: var(--ink-80);
+    color: #2c5234 !important;
     line-height: 1.6;
     position: relative;
     padding-left: var(--space-4);
@@ -240,7 +240,7 @@
   }
   
   p {
-    color: var(--ink-70);
+    color: #2c5234 !important;
     font-size: var(--fs-sm);
     line-height: 1.5;
     margin: 0;

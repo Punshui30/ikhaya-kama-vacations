@@ -1,11 +1,22 @@
 import React from 'react';
 import Section from '../components/Section';
-import BackgroundVideoHero from '../components/BackgroundVideoHero';
-import BookDestinations from '../components/BookDestinations';
 import HeadTags from '../components/HeadTags';
+import HeroVideo from '../components/HeroVideo';
+import DestinationsRail from '../components/DestinationsRail';
+import '../styles/destination-textiles.css';
 import styles from './DestinationsIndex.module.scss';
 
 const DestinationsIndex: React.FC = () => {
+  const cards = [
+    { title: "South Africa", image: "/images/SouthAfrica.png", href: "/destinations/south-africa" },
+    { title: "Kenya", image: "/images/Kenya.png", href: "/destinations/kenya" },
+    { title: "Tanzania", image: "/images/Tanzania.png", href: "/destinations/tanzania" },
+    { title: "Namibia", image: "/img/destinations/namibia/hero.jpg", href: "/destinations/namibia" },
+    { title: "Botswana", image: "/img/destinations/botswana/hero.jpg", href: "/destinations/botswana" },
+    { title: "Morocco", image: "/img/destinations/morocco/hero.jpg", href: "/destinations/morocco" },
+    { title: "Zimbabwe", image: "/img/destinations/zimbabwe/hero.jpg", href: "/destinations/zimbabwe" },
+    { title: "Uganda", image: "/img/destinations/uganda/hero.jpg", href: "/destinations/uganda" },
+  ];
 
   return (
     <div className={`${styles.destinations} page-destinations`}>
@@ -21,18 +32,13 @@ const DestinationsIndex: React.FC = () => {
           ]
         }}
       />
-      <BackgroundVideoHero
-        videoSrc="https://i.imgur.com/ylqL8RT.mp4"
-        posterSrc="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=1200&h=800&fit=crop&crop=center"
-        title="Discover Africa"
-        subtitle="Turn the pages of our travel book and discover the stories of Africa's most captivating destinations."
-        ctaText="Open the Book"
-        ctaLink="#destinations"
-      />
+      
+      <HeroVideo theme="luxury" />
+      <DestinationsRail cards={cards} />
       
       <Section background="default" padding="large">
         <div id="destinations" className={styles.destinationsSection}>
-          <BookDestinations />
+          {/* Additional content can go here */}
         </div>
       </Section>
     </div>

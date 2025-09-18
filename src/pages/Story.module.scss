@@ -139,6 +139,13 @@
 .valueTitle {
   @include heading-md;
   color: white;
+  margin: 0 0 var(--space-3) 0;
+}
+
+.valueDescription {
+  @include body-text;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
   margin: 0;
 }
 

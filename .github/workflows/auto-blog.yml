@@ -1,0 +1,58 @@
+name: Automated Blog Generation
+
+on:
+  schedule:
+    # Run daily at 9 AM UTC (adjust timezone as needed)
+    - cron: '0 9 * * *'
+  workflow_dispatch: # Allow manual triggering
+
+jobs:
+  generate-blog-posts:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        
+    - name: Install dependencies
+      run: |
+        npm install -g pnpm
+        pnpm install
+        
+    - name: Generate new blog posts
+      run: |
+        node auto-blog-system.js --once
+        
+    - name: Check for new content
+      id: check_changes
+      run: |
+        if git diff --quiet src/content/auto-blog-posts.json; then
+          echo "No new blog posts generated"
+          echo "has_changes=false" >> $GITHUB_OUTPUT
+        else
+          echo "New blog posts generated!"
+          echo "has_changes=true" >> $GITHUB_OUTPUT
+        fi
+        
+    - name: Commit and push new blog posts
+      if: steps.check_changes.outputs.has_changes == 'true'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "Auto Blog Bot"
+        git add src/content/auto-blog-posts.json
+        git add src/content/processed-links.json
+        git commit -m "🤖 Auto-generated blog posts - $(date +%Y-%m-%d)"
+        git push
+        
+    - name: Trigger Netlify rebuild
+      if: steps.check_changes.outputs.has_changes == 'true'
+      run: |
+        echo "🚀 New content pushed - Netlify will auto-rebuild and deploy"
+        echo "📝 Generated posts will be live in ~2 minutes"

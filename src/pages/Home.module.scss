@@ -321,6 +321,37 @@
   margin: 0;
 }
 
+.welcomeSection {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.subtitle {
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+  line-height: 1.7;
+  color: rgba(0, 0, 0, 0.8);
+  margin: 0;
+  font-weight: 400;
+}
+
+.missionSection {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  color: white;
+}
+
+.missionText,
+.purposeText,
+.visionText {
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 3rem 0;
+  font-weight: 400;
+}
+
 // Reduced motion support
 @media (prefers-reduced-motion: reduce) {
   .destinationCard {

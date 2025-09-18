@@ -49,23 +49,43 @@ const Story: React.FC = () => {
 
           <div className={styles.storySections}>
             <div className={styles.storySection}>
-              <h3 className={styles.sectionTitle}>Roots & Exile</h3>
+              <h3 className={styles.sectionTitle}>Who I Am</h3>
               <p className={styles.storyText}>{copy.founder.story.intro}</p>
             </div>
 
             <div className={styles.storySection}>
-              <h3 className={styles.sectionTitle}>The Journey</h3>
+              <h3 className={styles.sectionTitle}>My Journey Across Borders</h3>
               <p className={styles.storyText}>{copy.founder.story.journey}</p>
             </div>
 
             <div className={styles.storySection}>
-              <h3 className={styles.sectionTitle}>The Mission</h3>
+              <h3 className={styles.sectionTitle}>Travel as Identity</h3>
+              <p className={styles.storyText}>{copy.founder.story.travelPhilosophy}</p>
+            </div>
+
+            <div className={styles.storySection}>
+              <h3 className={styles.sectionTitle}>From Necessity to Passion</h3>
+              <p className={styles.storyText}>{copy.founder.story.transformation}</p>
+            </div>
+
+            <div className={styles.storySection}>
+              <h3 className={styles.sectionTitle}>Ikhaya KaMa Vacations</h3>
               <p className={styles.storyText}>{copy.founder.story.mission}</p>
             </div>
 
             <div className={styles.storySection}>
-              <h3 className={styles.sectionTitle}>The Philosophy</h3>
-              <p className={styles.storyText}>{copy.founder.story.philosophy}</p>
+              <h3 className={styles.sectionTitle}>My Invitation to You</h3>
+              <p className={styles.storyText}>{copy.founder.story.invitation}</p>
+            </div>
+
+            <div className={styles.storySection}>
+              <h3 className={styles.sectionTitle}>The Promise</h3>
+              <p className={styles.storyText}>{copy.founder.story.promise}</p>
+            </div>
+
+            <div className={styles.storySection}>
+              <h3 className={styles.sectionTitle}>Your Story Awaits</h3>
+              <p className={styles.storyText}>{copy.founder.story.conclusion}</p>
             </div>
           </div>
         </div>
@@ -78,7 +98,8 @@ const Story: React.FC = () => {
             {copy.brand.values.map((value, index) => (
               <div key={index} className={styles.valueCard}>
                 <div className={styles.valueNumber}>{String(index + 1).padStart(2, '0')}</div>
-                <h3 className={styles.valueTitle}>{value}</h3>
+                <h3 className={styles.valueTitle}>{value.title}</h3>
+                <p className={styles.valueDescription}>{value.description}</p>
               </div>
             ))}
           </div>

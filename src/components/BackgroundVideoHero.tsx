@@ -10,6 +10,7 @@ interface BackgroundVideoHeroProps {
   ctaText: string;
   ctaLink: string;
   overlayOpacity?: number;
+  autoPlay?: boolean;
 }
 
 const BackgroundVideoHero: React.FC<BackgroundVideoHeroProps> = ({
@@ -19,7 +20,8 @@ const BackgroundVideoHero: React.FC<BackgroundVideoHeroProps> = ({
   subtitle,
   ctaText,
   ctaLink,
-  overlayOpacity = 0.4
+  overlayOpacity = 0.4,
+  autoPlay = true
 }) => {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
@@ -45,8 +47,9 @@ const BackgroundVideoHero: React.FC<BackgroundVideoHeroProps> = ({
         {videoSrc ? (
           <video
             className={`${styles.video} ${isVideoLoaded ? styles.loaded : ''}`}
-            autoPlay
+            autoPlay={autoPlay}
             muted
+            loop={autoPlay}
             playsInline
             preload="auto"
             poster={posterSrc}

@@ -1,594 +1,191 @@
 @use "./src/styles/tokens.scss" as *;
 @import '../styles/mixins';
 
-// Luxury Travel Magazine Aesthetic
 .services {
-  background: #fffdf8; // Ivory base
   min-height: 100vh;
-  position: relative;
-  
-  // Subtle African pattern overlay
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-      radial-gradient(circle at 20% 80%, rgba(169, 83, 42, 0.02) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(15, 59, 46, 0.02) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: 1;
-  }
-}
-
-// Hero Section - Magazine Style
-.heroSection {
-  background: linear-gradient(135deg, #fffdf8 0%, #f5f1e8 100%);
-  position: relative;
-  z-index: 2;
-  
-  // Mudcloth pattern watermark
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-      linear-gradient(45deg, rgba(169, 83, 42, 0.03) 25%, transparent 25%),
-      linear-gradient(-45deg, rgba(169, 83, 42, 0.03) 25%, transparent 25%),
-      linear-gradient(45deg, transparent 75%, rgba(169, 83, 42, 0.03) 75%),
-      linear-gradient(-45deg, transparent 75%, rgba(169, 83, 42, 0.03) 75%);
-    background-size: 60px 60px;
-    background-position: 0 0, 0 30px, 30px -30px, -30px 0px;
-    opacity: 0.3;
-    pointer-events: none;
-  }
+  background: linear-gradient(180deg, #143b1f 0%, #d9c6a3 100%);
+  color: #f6f1e8;
 }
 
 .hero {
-  text-align: center;
-  padding: 6rem 0 4rem;
   position: relative;
-  z-index: 3;
+  min-height: 40vh; /* SMALLER HERO TO SHOW CARDS */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem 2rem; /* LESS PADDING */
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1));
+}
+
+.heroContent {
   max-width: 800px;
-  margin: 0 auto;
   
-  .heroTitle {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(3rem, 6vw, 4.5rem);
-    font-weight: 700;
-    color: #0f3b2e; // Deep green
-    margin: 0 0 2rem 0;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
-    
-    // Elegant golden underline
-    position: relative;
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: -1rem;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 3px;
-      background: linear-gradient(90deg, transparent, #c9ad6a, transparent);
-    }
+  h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: 1.5rem;
+    color: #f6f1e8;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
   }
   
-  .heroSubtitle {
-    font-family: 'Inter', sans-serif;
-    font-size: clamp(1.1rem, 2.2vw, 1.4rem);
-    color: #4a4a4a;
+  p {
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
     line-height: 1.6;
-    font-weight: 400;
-    letter-spacing: 0.01em;
+    color: rgba(246, 241, 232, 0.9);
+    margin: 0;
   }
 }
 
-// Services Section
 .servicesSection {
-  background: #fffdf8;
-  position: relative;
-  z-index: 2;
+  padding: 1rem 0; /* MOVE CARDS UP */
+  background: rgba(0,0,0,0.1);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
 .servicesGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2.5rem;
-  padding: 4rem 0;
-  max-width: 1200px;
-  margin: 0 auto;
-  
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 2rem 0;
-  }
-}
-
-// Service Cards - Elegant Design
-.serviceCard {
-  background: #f5f1e8; // Sand beige
-  border-radius: 16px;
-  padding: 2.5rem;
-  box-shadow: 
-    0 8px 32px rgba(15, 59, 46, 0.08),
-    0 0 0 1px rgba(201, 173, 106, 0.1);
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  position: relative;
-  overflow: hidden;
-  
-  // Woven pattern accent
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, 
-      transparent 0%, 
-      #c9ad6a 20%, 
-      #a9532a 50%, 
-      #c9ad6a 80%, 
-      transparent 100%);
-    opacity: 0.6;
-  }
-  
-  &:hover {
-    transform: translateY(-8px);
-    box-shadow: 
-      0 16px 48px rgba(15, 59, 46, 0.12),
-      0 0 0 1px rgba(201, 173, 106, 0.2);
-  }
-  
-  @media (max-width: 768px) {
-    padding: 2rem;
-    margin: 0 1rem;
-  }
-}
-
-.serviceIcon {
-  font-size: 3rem;
-  text-align: center;
-  margin-bottom: 1.5rem;
-  filter: grayscale(0.2);
-}
-
-.serviceContent {
+  gap: 2rem;
   margin-bottom: 2rem;
 }
 
-.serviceTitle {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.8rem;
-  font-weight: 600;
-  color: #0f3b2e;
-  margin: 0 0 1rem 0;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-}
-
-.serviceDescription {
-  font-family: 'Inter', sans-serif;
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #4a4a4a;
-  margin-bottom: 1.5rem;
-  font-weight: 400;
-}
-
-.serviceFeatures {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  
-  .feature {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    color: #6a6a6a;
-    margin-bottom: 0.5rem;
-    position: relative;
-    padding-left: 1.2rem;
-    
-    &::before {
-      content: '•';
-      color: #c9ad6a;
-      font-weight: bold;
-      position: absolute;
-      left: 0;
-    }
-  }
-}
-
-.serviceCta {
-  text-align: center;
-  margin-top: auto;
-}
-
-.learnMoreBtn {
-  display: inline-block;
-  background: transparent;
-  color: #0f3b2e;
-  text-decoration: none;
-  padding: 0.75rem 2rem;
-  border: 2px solid #0f3b2e;
-  border-radius: 50px;
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
-  font-size: 0.9rem;
-  letter-spacing: 0.02em;
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  position: relative;
-  overflow: hidden;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: #0f3b2e;
-    transition: left 0.4s ease;
-    z-index: -1;
-  }
+.serviceCard {
+  background: #fff8ef;
+  color: #0b1a33;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   
   &:hover {
-    color: #fffdf8;
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+  }
+  
+  h3 {
+    color: #0b1a33;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  
+  p {
+    color: #2a2a2a;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem 0;
+    
+    li {
+      color: #2a2a2a;
+      padding: 0.5rem 0;
+      position: relative;
+      padding-left: 1.5rem;
+      
+      &:before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #c9a44c;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.btn {
+  display: inline-block;
+  background: #c9a44c;
+  color: #0a1a33;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: #b8934a;
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(15, 59, 46, 0.2);
-    
-    &::before {
-      left: 0;
-    }
+    box-shadow: 0 4px 12px rgba(201, 164, 76, 0.3);
   }
 }
 
-// Process Section - Timeline Design
 .processSection {
-  background: linear-gradient(135deg, #0f3b2e 0%, #1a4d3a 100%);
-  position: relative;
-  z-index: 2;
-  
-  // Terracotta pattern overlay
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-      radial-gradient(circle at 30% 20%, rgba(169, 83, 42, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 70% 80%, rgba(201, 173, 106, 0.1) 0%, transparent 50%);
-    pointer-events: none;
-  }
-}
-
-.processContainer {
-  text-align: center;
   padding: 4rem 0;
-  position: relative;
-  z-index: 3;
-  max-width: 1000px;
-  margin: 0 auto;
+  background: rgba(0,0,0,0.05);
+  
+  h2 {
+    text-align: center;
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    margin-bottom: 3rem;
+    color: #f6f1e8;
+  }
 }
 
-.processTitle {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
-  font-weight: 700;
-  color: #fffdf8;
-  margin: 0 0 4rem 0;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-}
-
-.processTimeline {
+.processSteps {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 3rem;
-  position: relative;
-  
-  // Connecting line
-  &::before {
-    content: '';
-    position: absolute;
-    top: 60px;
-    left: 10%;
-    right: 10%;
-    height: 2px;
-    background: linear-gradient(90deg, 
-      transparent 0%, 
-      #c9ad6a 20%, 
-      #a9532a 50%, 
-      #c9ad6a 80%, 
-      transparent 100%);
-    z-index: 1;
-    
-    @media (max-width: 768px) {
-      display: none;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
 }
 
-.processStep {
+.step {
   text-align: center;
-  position: relative;
-  z-index: 2;
+  padding: 2rem;
+  
+  h4 {
+    color: #f6f1e8;
+    font-size: 1.5rem;
+    margin: 1rem 0;
+  }
+  
+  p {
+    color: rgba(246, 241, 232, 0.8);
+    line-height: 1.6;
+    margin: 0;
+  }
 }
 
 .stepNumber {
-  font-family: 'Playfair Display', serif;
-  font-size: 3rem;
-  font-weight: 700;
-  color: #c9ad6a;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  background: linear-gradient(135deg, 
-    rgba(201, 173, 106, 0.1) 0%, 
-    rgba(169, 83, 42, 0.1) 100%);
+  background: linear-gradient(135deg, #c9a44c, #b8934a);
+  color: #0a1a33;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 1.5rem;
-  box-shadow: 
-    0 8px 24px rgba(201, 173, 106, 0.2),
-    inset 0 0 0 2px rgba(201, 173, 106, 0.3);
-  position: relative;
-  
-  // Gold gradient medallion
-  &::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(135deg, 
-      #c9ad6a 0%, 
-      #f1b434 50%, 
-      #c9ad6a 100%);
-    border-radius: 50%;
-    z-index: -1;
-  }
-}
-
-.stepContent {
-  max-width: 250px;
-  margin: 0 auto;
-}
-
-.stepTitle {
-  font-family: 'Playfair Display', serif;
   font-size: 1.5rem;
-  font-weight: 600;
-  color: #fffdf8;
-  margin-bottom: 1rem;
-  letter-spacing: -0.01em;
+  font-weight: bold;
+  margin: 0 auto 1rem;
+  box-shadow: 0 6px 20px rgba(201, 164, 76, 0.3);
 }
 
-.stepDescription {
-  font-family: 'Inter', sans-serif;
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #d9c7a3; // Sand beige
-  font-weight: 400;
-}
-
-// CTA Section - Centered Luxury Design
-.ctaSection {
-  background: linear-gradient(135deg, #fffdf8 0%, #f5f1e8 100%);
-  position: relative;
-  z-index: 2;
-  
-  // Woven African textile texture
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-      linear-gradient(90deg, rgba(169, 83, 42, 0.02) 1px, transparent 1px),
-      linear-gradient(rgba(169, 83, 42, 0.02) 1px, transparent 1px);
-    background-size: 20px 20px;
-    opacity: 0.3;
-    pointer-events: none;
-  }
-}
-
-.ctaContainer {
-  text-align: center;
-  padding: 6rem 0;
-  position: relative;
-  z-index: 3;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.ctaTitle {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
-  font-weight: 700;
-  color: #0f3b2e;
-  margin: 0 0 2rem 0;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-}
-
-.ctaSubtitle {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.2rem;
-  line-height: 1.6;
-  color: #4a4a4a;
-  margin-bottom: 3rem;
-  font-weight: 400;
-  letter-spacing: 0.01em;
-}
-
-.ctaButtons {
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  
-  @media (max-width: 768px) {
-    flex-direction: column;
+// Responsive
+@media (max-width: 768px) {
+  .servicesGrid {
+    grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-}
-
-.ctaPrimary {
-  display: inline-block;
-  background: linear-gradient(135deg, #c9ad6a 0%, #f1b434 100%);
-  color: #0f3b2e;
-  text-decoration: none;
-  padding: 1rem 2.5rem;
-  border-radius: 50px;
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
-  font-size: 1rem;
-  letter-spacing: 0.02em;
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  box-shadow: 0 8px 24px rgba(201, 173, 106, 0.3);
-  position: relative;
-  overflow: hidden;
   
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    transition: left 0.6s ease;
+  .serviceCard {
+    padding: 1.5rem;
   }
   
-  &:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 12px 32px rgba(201, 173, 106, 0.4);
-    
-    &::before {
-      left: 100%;
-    }
-  }
-}
-
-.ctaSecondary {
-  display: inline-block;
-  background: transparent;
-  color: #0f3b2e;
-  text-decoration: none;
-  padding: 1rem 2.5rem;
-  border: 2px solid #0f3b2e;
-  border-radius: 50px;
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
-  font-size: 1rem;
-  letter-spacing: 0.02em;
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  position: relative;
-  overflow: hidden;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: #0f3b2e;
-    transition: left 0.4s ease;
-    z-index: -1;
+  .processSteps {
+    grid-template-columns: 1fr;
   }
   
-  &:hover {
-    color: #fffdf8;
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 12px 32px rgba(15, 59, 46, 0.2);
-    
-    &::before {
-      left: 0;
-    }
-  }
-}
-
-// Mobile Optimizations
-@media (max-width: 768px) {
   .hero {
-    padding: 4rem 0 3rem;
-  }
-  
-  .serviceCard {
-    margin: 0 1rem;
-    padding: 2rem;
-  }
-  
-  .serviceIcon {
-    font-size: 2.5rem;
-  }
-  
-  .serviceTitle {
-    font-size: 1.6rem;
-  }
-  
-  .processContainer {
-    padding: 3rem 0;
-  }
-  
-  .ctaContainer {
-    padding: 4rem 0;
-  }
-  
-  .ctaButtons {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .ctaPrimary,
-  .ctaSecondary {
-    width: 100%;
-    max-width: 300px;
-    text-align: center;
-  }
-}
-
-// Accessibility
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    transition-delay: 0ms !important;
-  }
-}
-
-// High contrast mode
-@media (prefers-contrast: high) {
-  .serviceCard {
-    border: 2px solid #0f3b2e;
-  }
-  
-  .ctaPrimary,
-  .ctaSecondary {
-    border-width: 3px;
+    min-height: 50vh;
+    padding: 2rem 1rem;
   }
 }

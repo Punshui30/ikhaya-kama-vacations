@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     
     <!-- iOS specific meta tags -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -44,5 +44,31 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    
+    <script>
+      // Scroll from hero arrow to destinations grid
+      document.addEventListener('click', function(e){
+        const btn = e.target.closest('.hero__scroll');
+        if (!btn) return;
+        const target = document.querySelector('.destinations');
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+
+      // Tile -> detail image persistence
+      document.querySelectorAll('.postcard').forEach(card=>{
+        card.addEventListener('click', ()=> {
+          const hero = card.getAttribute('data-hero');
+          if (hero) sessionStorage.setItem('destHero', hero);
+        });
+      });
+      
+      (function(){
+        const stored = sessionStorage.getItem('destHero');
+        if (stored) {
+          document.querySelectorAll('.destination-page')
+            .forEach(el => el.style.setProperty('--hero-img', `url('${stored}')`));
+        }
+      })();
+    </script>
   </body>
 </html>

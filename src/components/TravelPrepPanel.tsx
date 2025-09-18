@@ -154,7 +154,8 @@ const TravelPrepPanel: React.FC<TravelPrepPanelProps> = ({ destinationSlug }) =>
               <button
                 className={`${styles.accordionButton} ${activeTab === tab.id ? styles.active : ''}`}
                 onClick={() => setActiveTab(activeTab === tab.id ? '' : tab.id)}
-                aria-expanded={activeTab === tab.id ? "true" : "false"}
+                aria-expanded={activeTab === tab.id ? 'true' : 'false'}
+                type="button"
               >
                 {tab.label}
                 <span className={styles.accordionIcon}>

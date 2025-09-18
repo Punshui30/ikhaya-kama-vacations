@@ -1,0 +1,42 @@
+/* Uses body[data-dest="slug"] to pick the nicest band of each textile */
+
+body[data-dest="south-africa"]{
+  --dd-pattern-url: url("/images/patterns/south_africa_2880x1080.jpg");
+  --dd-pattern-width: 2200px;
+  --dd-pattern-y: 38%;
+}
+body[data-dest="kenya"]{
+  --dd-pattern-url: url("/images/kenya_pattern_strip_132h.png");
+  --dd-pattern-width: 2300px;
+  --dd-pattern-y: 50%;
+}
+body[data-dest="tanzania"]{
+  --dd-pattern-url: url("/images/patterns/tanzania_2880x1080.jpg");
+  --dd-pattern-width: 2200px;
+  --dd-pattern-y: 46%;
+}
+body[data-dest="namibia"]{
+  --dd-pattern-url: url("/images/patterns/namibia_2880x1080.jpg");
+  --dd-pattern-width: 2400px;
+  --dd-pattern-y: 50%;
+}
+body[data-dest="uganda"]{
+  --dd-pattern-url: url("/images/patterns/uganda_2880x1080.jpg");
+  --dd-pattern-width: 2300px;
+  --dd-pattern-y: 40%;
+}
+body[data-dest="zimbabwe"]{
+  --dd-pattern-url: url("/images/patterns/zimbabwe_2880x1080.jpg");
+  --dd-pattern-width: 2200px;
+  --dd-pattern-y: 43%;
+}
+body[data-dest="morocco"]{
+  --dd-pattern-url: url("/images/patterns/morocco_2880x1080.jpg");
+  --dd-pattern-width: 2500px;
+  --dd-pattern-y: 36%;
+}
+body[data-dest="botswana"]{
+  --dd-pattern-url: url("/images/patterns/botswana_2880x1080.jpg");
+  --dd-pattern-width: 2300px;
+  --dd-pattern-y: 48%;
+}

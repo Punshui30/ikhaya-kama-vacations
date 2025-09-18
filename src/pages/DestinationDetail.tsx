@@ -6,11 +6,68 @@ import HeadTags from '../components/HeadTags';
 import destinations from '../content/destinations.json';
 import styles from './DestinationDetail.module.scss';
 
+// Custom hook for carousel
+function useCarousel(count: number, ms = 4000) {
+  const [i, setI] = useState(0);
+  const timer = useRef<number | null>(null);
+  
+  useEffect(() => {
+    const start = () => {
+      if (timer.current) clearInterval(timer.current);
+      timer.current = window.setInterval(() => setI(v => (v + 1) % count), ms);
+    };
+    const stop = () => {
+      if (timer.current) clearInterval(timer.current);
+    };
+    
+    start();
+    return stop;
+  }, [count, ms]);
+  
+  return [i, setI] as const;
+}
+
 const DestinationDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const destination = destinations.find(d => d.slug === slug);
   const audioRef = useRef<HTMLAudioElement>(null);
-  const [isMusicPlaying, setIsMusicPlaying] = useState(true);
+  const [isMusicPlaying, setIsMusicPlaying] = useState(false);
+  
+  // Carousel setup
+  const heroImages = (destination as any)?.heroImages?.slice(0, 3) ?? [(destination as any)?.detailImage || destination?.poster];
+  const [activeImage, setActiveImage] = useCarousel(heroImages.length, 4000);
+  
+  // Swipe handling
+  const x0 = useRef<number | null>(null);
+  const onPointerDown = (e: React.PointerEvent | React.TouchEvent) => {
+    x0.current = 'clientX' in e ? e.clientX : e.touches?.[0]?.clientX ?? null;
+  };
+  const onPointerUp = (e: React.PointerEvent | React.TouchEvent) => {
+    if (x0.current == null) return;
+    const x1 = 'clientX' in e ? e.clientX : e.changedTouches?.[0]?.clientX ?? 0;
+    const dx = x1 - x0.current;
+    if (Math.abs(dx) > 40) {
+      setActiveImage((activeImage + (dx < 0 ? 1 : heroImages.length - 1)) % heroImages.length);
+    }
+    x0.current = null;
+  };
+
+  // Determine theme based on destination
+  const getDestinationTheme = (slug: string) => {
+    const coastalDestinations = ['kenya', 'south-africa'];
+    const safariDestinations = ['tanzania', 'namibia', 'botswana', 'uganda', 'zimbabwe', 'morocco'];
+    
+    if (coastalDestinations.includes(slug)) return 'theme-coast';
+    if (safariDestinations.includes(slug)) return 'theme-safari';
+    return 'theme-luxe';
+  };
+
+  const theme = destination ? getDestinationTheme(destination.slug) : 'theme-safari';
+  
+  // Debug: log destination data
+  console.log('Destination data:', { slug, destination, theme });
+  
+  // Removed hero positioning - using natural image sizing now
 
   // Music is now click-to-play only
   useEffect(() => {
@@ -52,8 +109,43 @@ const DestinationDetail: React.FC = () => {
     );
   }
 
+  // Add body class for page backdrop and set pattern URL
+  useEffect(() => {
+    document.body.className = `dest-${destination.slug}`;
+    document.body.setAttribute('data-dest', destination.slug);
+    
+    // Set pattern URL per destination - simplified for top strip only
+    const patternUrls: Record<string, string> = {
+      'south-africa': 'url("/images/SouthAfrica_background.png")',
+      'kenya': 'url("/images/Kenya_background.jpg")',
+      'tanzania': 'url("/images/Tanzania_background.jpg")',
+      'namibia': 'url("/images/Namibia_background.jpg")',
+      'botswana': 'url("/images/Botswana_background.jpg")',
+      'morocco': 'url("/images/Morocco_background.jpg")',
+      'zimbabwe': 'url("/images/Zimbabwe_background.jpg")',
+      'uganda': 'url("/images/Uganda_background.jpg")'
+    };
+    
+    const patternUrl = patternUrls[destination.slug];
+    if (patternUrl) {
+      document.documentElement.style.setProperty('--pattern-url', patternUrl);
+      document.documentElement.style.setProperty('--pattern-width', '1800px');
+      document.documentElement.style.setProperty('--top-bar-height', '170px');
+    }
+    
+    return () => {
+      document.body.className = '';
+      document.body.removeAttribute('data-dest');
+      document.documentElement.style.removeProperty('--pattern-url');
+      document.documentElement.style.removeProperty('--pattern-width');
+      document.documentElement.style.removeProperty('--top-bar-height');
+    };
+  }, [destination.slug]);
+
   return (
-    <div className={`${styles.destination} page-destinations`}>
+    <main 
+      className={`destination-page ${theme} dest-${destination.slug}`}
+    >
       <HeadTags 
         seo={{
           title: `${destination.title} - African Safari Destination | Ikhaya KaMa Vacations`,
@@ -67,52 +159,89 @@ const DestinationDetail: React.FC = () => {
           ]
         }}
       />
-      <Section background="dark" padding="large">
-        <div className={styles.hero}>
-          <div className={styles.heroImage}>
-            <img
-              src={destination.detailImage || destination.poster}
-              alt={destination.title}
-              loading="lazy"
-              decoding="async"
-              width="1920"
-              height="1080"
-            />
-            <div className={styles.heroOverlay}></div>
-          </div>
-          <div className={styles.heroContent}>
-            <h1 className={styles.heroTitle}>{destination.title}</h1>
-            <p className={styles.heroTagline}>{destination.tagline}</p>
-            <p className={styles.heroDescription}>{destination.description}</p>
-            
-            {/* Music Control Button */}
-            {destination.music && (
-              <button 
-                className={styles.musicButton}
-                onClick={toggleMusic}
-                aria-label={isMusicPlaying ? 'Pause music' : 'Play music'}
+      
+      <section className={`hero hero--${destination.slug}`}>
+        <div className="container">
+          <div className="hero-grid">
+            <figure className="media-card">
+              <div 
+                className="card-carousel" 
+                aria-roledescription="carousel"
+                onPointerDown={onPointerDown}
+                onPointerUp={onPointerUp}
+                onTouchStart={onPointerDown}
+                onTouchEnd={onPointerUp}
               >
-                {isMusicPlaying ? '⏸️ Pause Music' : '▶️ Play Music'}
-              </button>
-            )}
-            
-            <div className={styles.heroStats}>
-              <div className={styles.stat}>
-                <span className={styles.statNumber}>{destination.highlights.length}</span>
-                <span className={styles.statLabel}>Must-See Places</span>
+                {heroImages.map((src: string, i: number) => (
+                  <img
+                    key={i}
+                    src={src}
+                    alt={`${destination.title} photo ${i + 1}`}
+                    className={`hero-photo ${i === activeImage ? 'is-active' : ''}`}
+                    loading={i === 0 ? "eager" : "lazy"}
+                  />
+                ))}
+                <div className="card-dots" role="tablist" aria-label="Hero images">
+                  {heroImages.map((_: string, i: number) => (
+                    <button
+                      key={i}
+                      role="tab"
+                      aria-selected={i === activeImage}
+                      aria-label={`Go to image ${i + 1}`}
+                      className={`dot ${i === activeImage ? 'on' : ''}`}
+                      onClick={() => setActiveImage(i)}
+                    />
+                  ))}
+                </div>
               </div>
-              <div className={styles.stat}>
-                <span className={styles.statNumber}>{destination.sampleItinerary.length}</span>
-                <span className={styles.statLabel}>Day Itinerary</span>
-              </div>
-              <div className={styles.stat}>
-                <span className={styles.statNumber}>{destination.bestTime.length}</span>
-                <span className={styles.statLabel}>Best Seasons</span>
-              </div>
+            </figure>
+            <div className="copy">
+              <h1>{destination.title}</h1>
+              <p className="tagline">{destination.tagline}</p>
+              
+              {/* Description */}
+              {destination.description && (
+                <p className="description">{destination.description}</p>
+              )}
+              
+              {/* Quick Highlights */}
+              {destination.highlights && destination.highlights.length > 0 && (
+                <div className="quick-highlights">
+                  <h3>Experience Highlights:</h3>
+                  <ul>
+                    {destination.highlights.slice(0, 3).map((highlight, index) => (
+                      <li key={index}>{highlight}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              
+              {/* Best Time */}
+              {destination.bestTime && destination.bestTime.length > 0 && (
+                <div className="best-time">
+                  <h3>Best Time to Visit:</h3>
+                  <ul>
+                    {destination.bestTime.map((time, index) => (
+                      <li key={index}>{time}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              
+              {/* Music Control Button */}
+              {destination.music && (
+                <button 
+                  className={styles.musicButton}
+                  onClick={toggleMusic}
+                  aria-label={isMusicPlaying ? 'Pause music' : 'Play music'}
+                >
+                  {isMusicPlaying ? '⏸️ Pause Music' : '▶️ Play Music'}
+                </button>
+              )}
             </div>
           </div>
         </div>
-      </Section>
+      </section>
 
       <Section background="dark" padding="large">
         <div className={styles.content}>
@@ -204,7 +333,20 @@ const DestinationDetail: React.FC = () => {
           className={styles.hiddenAudio}
         />
       )}
-    </div>
+      
+      {/* Hero persistence script */}
+      <script dangerouslySetInnerHTML={{
+        __html: `
+          (function(){
+            const stored = sessionStorage.getItem('destHero');
+            if (stored) {
+              document.querySelectorAll('.destination-page')
+                .forEach(el => el.style.setProperty('--hero-img', \`url('\${stored}')\`));
+            }
+          })();
+        `
+      }} />
+    </main>
   );
 };
 
