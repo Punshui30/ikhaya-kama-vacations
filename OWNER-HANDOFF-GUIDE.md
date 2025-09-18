@@ -59,6 +59,69 @@ Your developer can adjust the AI's writing style by editing the "brand voice" in
 
 ---
 
+## 🧠 AI Content Rewriting (Optional Upgrade)
+
+### 📊 **Current System vs. AI Upgrade:**
+
+**What you have now (Basic):**
+- ✅ Finds African travel news
+- ✅ Copies headlines and descriptions  
+- ✅ Adds your company branding
+- ✅ **Cost: FREE**
+
+**With AI Upgrade:**
+- ✅ Everything above, PLUS:
+- 🤖 **Completely rewrites content** in your unique voice
+- 🎯 **Improves quality** and readability
+- ✨ **Creates original content** (not just copies)
+- 🏆 **Professional, engaging articles**
+- 💰 **Cost: $5-15/month**
+
+### 🔑 **How to Add AI Rewriting:**
+
+#### Step 1: Get an OpenAI Account
+1. Go to https://platform.openai.com/
+2. Sign up with your email
+3. Add a payment method (they give you $5 free credit)
+4. Go to "API Keys" and create a new key
+5. **Copy the key** (starts with "sk-...")
+
+#### Step 2: Add the Key to Your Website
+1. Go to your GitHub repository settings
+2. Click "Secrets and variables" → "Actions"  
+3. Click "New repository secret"
+4. Name: `OPENAI_API_KEY`
+5. Value: Paste your OpenAI key
+6. Click "Add secret"
+
+#### Step 3: That's It!
+- ✅ The system automatically detects the AI key
+- ✅ Starts using AI rewriting immediately
+- ✅ Your next blog posts will be much higher quality
+
+### 💡 **AI Rewriting Examples:**
+
+**Before (Basic):**
+> "Kenya safari animals spotted in Masai Mara reserve during migration season... Experience authentic Africa with Ikhaya KaMa Vacations."
+
+**After (AI):**
+> "The thundering hooves of a million wildebeest echo across the golden plains of Kenya's Masai Mara, where nature's greatest spectacle unfolds before your eyes. This is more than wildlife viewing—it's witnessing the ancient rhythms that have shaped Africa for millennia. At Ikhaya KaMa Vacations, we position you at the heart of this incredible journey, where every moment becomes a story you'll treasure forever."
+
+### 🎯 **Benefits of AI Upgrade:**
+- 🏆 **Professional quality** blog content
+- 🎨 **Matches your luxury brand** voice perfectly  
+- 📈 **Better Google rankings** with unique content
+- 💼 **Builds trust** with expertly written articles
+- ⏰ **Saves time** - no need to write blog posts manually
+
+### ⚠️ **Important Notes:**
+- **You control the cost** - set spending limits in OpenAI dashboard
+- **You can turn it off anytime** - just remove the API key
+- **Your website keeps working** even if AI is disabled
+- **Manual blog posts** always work regardless of AI status
+
+---
+
 ## 📧 Contact & Booking Management
 
 ### Email Setup:
