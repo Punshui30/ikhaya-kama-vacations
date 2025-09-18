@@ -180,7 +180,7 @@ const TravelPrepPanel: React.FC<TravelPrepPanelProps> = ({ destinationSlug }) =>
                 className={`${styles.tab} ${activeTab === tab.id ? styles.active : ''}`}
                 onClick={() => setActiveTab(tab.id)}
                 role="tab"
-                aria-selected={activeTab === tab.id}
+                aria-selected={activeTab === tab.id ? 'true' : 'false'}
                 aria-controls={`tabpanel-${tab.id}`}
                 id={`tab-${tab.id}`}
               >
