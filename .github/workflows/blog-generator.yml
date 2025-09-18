@@ -1,4 +1,4 @@
-name: Automated Blog Generation
+name: Blog Content Generator
 
 on:
   schedule:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch: # Allow manual triggering
 
 jobs:
-  generate-blog-posts:
+  generate-content:
     runs-on: ubuntu-latest
     
     steps:
@@ -26,46 +26,52 @@ jobs:
         npm install -g pnpm
         pnpm install
         
-    - name: Generate new blog posts
+    - name: Generate blog content
       run: |
-        echo "🤖 Starting blog generation..."
-        echo "📁 Current directory:"
-        pwd
-        echo "📋 Checking for blog generator:"
+        echo "🤖 Starting blog content generation..."
+        echo "📁 Working directory: $(pwd)"
+        echo "📋 Available files:"
+        ls -la | grep -E "\.(js|mjs|cjs)$" || echo "No JS files found"
+        
         if [ -f "generate-blog.cjs" ]; then
-          echo "✅ generate-blog.cjs found"
-          echo "🚀 Running standalone CommonJS generator:"
+          echo "✅ Found generate-blog.cjs"
+          echo "🚀 Running CommonJS blog generator:"
           node generate-blog.cjs
+        elif [ -f "auto-blog-system.mjs" ]; then
+          echo "✅ Found auto-blog-system.mjs"  
+          echo "🚀 Running ES module blog generator:"
+          node auto-blog-system.mjs --once
         else
-          echo "❌ generate-blog.cjs NOT found"
-          echo "📂 Directory contents:"
+          echo "❌ No blog generator found!"
+          echo "📂 Full directory listing:"
           ls -la
           exit 1
         fi
         
-    - name: Check for new content
+    - name: Check for changes
       id: check_changes
       run: |
         if git diff --quiet src/content/auto-blog-posts.json; then
-          echo "No new blog posts generated"
+          echo "No new content generated"
           echo "has_changes=false" >> $GITHUB_OUTPUT
         else
-          echo "New blog posts generated!"
+          echo "New content generated!"
           echo "has_changes=true" >> $GITHUB_OUTPUT
         fi
         
-    - name: Commit and push new blog posts
+    - name: Commit new content
       if: steps.check_changes.outputs.has_changes == 'true'
       run: |
         git config --local user.email "action@github.com"
-        git config --local user.name "Auto Blog Bot"
+        git config --local user.name "Blog Generator Bot"
         git add src/content/auto-blog-posts.json
         git add src/content/processed-links.json
-        git commit -m "🤖 Auto-generated blog posts - $(date +%Y-%m-%d)"
+        git commit -m "🤖 Auto-generated blog content - $(date +%Y-%m-%d)"
         git push
         
-    - name: Trigger Netlify rebuild
+    - name: Deployment info
       if: steps.check_changes.outputs.has_changes == 'true'
       run: |
-        echo "🚀 New content pushed - Netlify will auto-rebuild and deploy"
-        echo "📝 Generated posts will be live in ~2 minutes"
+        echo "🚀 New content pushed to GitHub"
+        echo "📝 Netlify will automatically rebuild and deploy"
+        echo "⏱️ Changes will be live in ~2-3 minutes"
