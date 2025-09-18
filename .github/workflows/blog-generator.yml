@@ -51,11 +51,15 @@ jobs:
     - name: Check for changes
       id: check_changes
       run: |
-        if git diff --quiet src/content/auto-blog-posts.json; then
-          echo "No new content generated"
+        # Ensure files exist before checking for changes
+        if [ ! -f "src/content/auto-blog-posts.json" ]; then
+          echo "📝 auto-blog-posts.json not found - no changes to commit"
+          echo "has_changes=false" >> $GITHUB_OUTPUT
+        elif git diff --quiet src/content/auto-blog-posts.json; then
+          echo "📝 No changes in auto-blog-posts.json"
           echo "has_changes=false" >> $GITHUB_OUTPUT
         else
-          echo "New content generated!"
+          echo "✅ Changes detected in auto-blog-posts.json"
           echo "has_changes=true" >> $GITHUB_OUTPUT
         fi
         
@@ -64,8 +68,24 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "Blog Generator Bot"
-        git add src/content/auto-blog-posts.json
-        git add src/content/processed-links.json
+        
+        # Only add files that exist
+        if [ -f "src/content/auto-blog-posts.json" ]; then
+          git add src/content/auto-blog-posts.json
+          echo "✅ Added auto-blog-posts.json"
+        fi
+        
+        if [ -f "src/content/processed-links.json" ]; then
+          git add src/content/processed-links.json
+          echo "✅ Added processed-links.json"
+        fi
+        
+        # Check if there are actually files to commit
+        if git diff --cached --quiet; then
+          echo "📝 No files to commit after adding"
+          exit 0
+        fi
+        
         git commit -m "🤖 Auto-generated blog content - $(date +%Y-%m-%d)"
         git push
         

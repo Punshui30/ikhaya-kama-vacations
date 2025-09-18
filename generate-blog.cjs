@@ -10,9 +10,9 @@ class BlogGenerator {
   constructor() {
     this.sources = [
       'https://www.africageographic.com/feed/',
-      'https://blog.safari-bookings.com/feed/',
       'https://www.go2africa.com/blog/feed',
       'https://africafreak.com/feed'
+      // Removed problematic safari-bookings feed
     ];
     
     this.processedFile = 'src/content/processed-links.json';
@@ -189,9 +189,11 @@ class BlogGenerator {
       }
     }
     
+    // Always save files to ensure they exist for the workflow
+    await this.savePosts(posts);
+    await this.saveProcessed(processed);
+    
     if (newCount > 0) {
-      await this.savePosts(posts);
-      await this.saveProcessed(processed);
       console.log(`✅ Generated ${newCount} new posts!`);
     } else {
       console.log('📝 No new posts (all processed)');
