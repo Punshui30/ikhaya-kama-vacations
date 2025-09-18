@@ -28,7 +28,8 @@ jobs:
         
     - name: Generate new blog posts
       run: |
-        echo "Starting blog generation..."
+        echo "Starting blog generation with .cjs file..."
+        ls -la auto-blog-system.*
         node auto-blog-system.cjs --once
         
     - name: Check for new content
