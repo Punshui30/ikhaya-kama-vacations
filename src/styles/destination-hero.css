@@ -74,6 +74,49 @@
   align-items: center;
 }
 
+/* Mobile: stack vertically */
+@media (max-width: 768px) {
+  .dd .dd-wrap {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 16px;
+    text-align: center;
+  }
+  
+  .dd .dd-card {
+    width: min(320px, 90vw);
+    height: min(400px, 70vw);
+    margin: 0 auto;
+  }
+  
+  .dd .dd-copy {
+    padding: 0 16px;
+  }
+  
+  .dd .dd-title {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    line-height: 1.2;
+  }
+  
+  .dd .dd-tag {
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
+    margin-bottom: 1rem;
+  }
+  
+  .dd .dd-bullets {
+    font-size: 0.9rem;
+    text-align: left;
+    max-width: 300px;
+    margin: 0 auto 1.5rem;
+  }
+  
+  .dd .dd-facts {
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+  }
+}
+
 /* Card */
 .dd .dd-card{
   width: var(--dd-card-w);

@@ -66,6 +66,10 @@
   @media (max-width: 768px) {
     font-size: var(--fs-xs);
   }
+  
+  @media (max-width: 480px) {
+    font-size: 10px;
+  }
 }
 
 .nav {
@@ -106,6 +110,10 @@
     flex-direction: column;
     gap: 0;
     padding: var(--space-4);
+  }
+  
+  @media (max-width: 768px) {
+    padding: var(--space-3);
   }
 }
 

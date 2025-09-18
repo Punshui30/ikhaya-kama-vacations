@@ -28,23 +28,20 @@ jobs:
         
     - name: Generate new blog posts
       run: |
-        echo "🤖 Starting blog generation with .mjs file..."
-        echo "📁 Checking current directory:"
+        echo "🤖 Starting blog generation..."
+        echo "📁 Current directory:"
         pwd
-        echo "📋 Listing auto-blog files:"
-        ls -la auto-blog-system.* || echo "No auto-blog-system files found"
-        echo "📄 Checking if .mjs file exists:"
-        if [ -f "auto-blog-system.mjs" ]; then
-          echo "✅ auto-blog-system.mjs found"
-          echo "🔍 File contents preview:"
-          head -5 auto-blog-system.mjs
+        echo "📋 Checking for blog generator:"
+        if [ -f "generate-blog.cjs" ]; then
+          echo "✅ generate-blog.cjs found"
+          echo "🚀 Running standalone CommonJS generator:"
+          node generate-blog.cjs
         else
-          echo "❌ auto-blog-system.mjs NOT found"
-          echo "📂 All files in directory:"
+          echo "❌ generate-blog.cjs NOT found"
+          echo "📂 Directory contents:"
           ls -la
+          exit 1
         fi
-        echo "🚀 Running the script:"
-        node auto-blog-system.mjs --once
         
     - name: Check for new content
       id: check_changes
