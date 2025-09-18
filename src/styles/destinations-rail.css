@@ -45,6 +45,7 @@
   width:40px; height:40px; border-radius:50%; border:1px solid rgba(255,255,255,.6);
   background:rgba(13,18,22,.45); color:white; font-size:26px; line-height:38px;
   display:grid; place-items:center; cursor:pointer; z-index:2;
+  -webkit-backdrop-filter:saturate(140%) blur(6px);
   backdrop-filter:saturate(140%) blur(6px);
 }
 .dr-nav:hover{ background:rgba(13,18,22,.7); }

@@ -84,9 +84,9 @@
   }
   
   .dd .dd-card {
-    width: min(280px, 75vw);
-    height: min(300px, 55vw);
-    max-height: 350px;
+    width: min(240px, 65vw);
+    height: min(260px, 45vw);
+    max-height: 300px;
     margin: 0 auto;
   }
   
@@ -121,13 +121,18 @@
 /* Extra small mobile phones */
 @media (max-width: 480px) {
   .dd .dd-card {
-    width: min(250px, 85vw);
-    height: min(260px, 50vw);
-    max-height: 300px;
+    width: min(200px, 80vw);
+    height: min(220px, 40vw);
+    max-height: 250px;
   }
   
   .dd .dd-title {
-    font-size: clamp(1.5rem, 6vw, 2rem);
+    font-size: clamp(1.4rem, 5vw, 1.8rem);
+  }
+  
+  .dd .dd-wrap {
+    padding: 8px;
+    gap: 16px;
   }
 }
 
