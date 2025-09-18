@@ -51,15 +51,30 @@ jobs:
     - name: Check for changes
       id: check_changes
       run: |
-        # Ensure files exist before checking for changes
+        # Check if files exist and have been modified
+        echo "📋 Checking for file changes..."
+        
+        # Check if files exist
         if [ ! -f "src/content/auto-blog-posts.json" ]; then
-          echo "📝 auto-blog-posts.json not found - no changes to commit"
+          echo "❌ auto-blog-posts.json not found"
           echo "has_changes=false" >> $GITHUB_OUTPUT
-        elif git diff --quiet src/content/auto-blog-posts.json; then
-          echo "📝 No changes in auto-blog-posts.json"
+          exit 0
+        fi
+        
+        if [ ! -f "src/content/processed-links.json" ]; then
+          echo "❌ processed-links.json not found"  
+          echo "has_changes=false" >> $GITHUB_OUTPUT
+          exit 0
+        fi
+        
+        # Check if files are tracked by git and have changes
+        git add src/content/auto-blog-posts.json src/content/processed-links.json
+        
+        if git diff --cached --quiet; then
+          echo "📝 No changes to commit"
           echo "has_changes=false" >> $GITHUB_OUTPUT
         else
-          echo "✅ Changes detected in auto-blog-posts.json"
+          echo "✅ Changes detected, ready to commit"
           echo "has_changes=true" >> $GITHUB_OUTPUT
         fi
         
@@ -69,25 +84,11 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "Blog Generator Bot"
         
-        # Only add files that exist
-        if [ -f "src/content/auto-blog-posts.json" ]; then
-          git add src/content/auto-blog-posts.json
-          echo "✅ Added auto-blog-posts.json"
-        fi
-        
-        if [ -f "src/content/processed-links.json" ]; then
-          git add src/content/processed-links.json
-          echo "✅ Added processed-links.json"
-        fi
-        
-        # Check if there are actually files to commit
-        if git diff --cached --quiet; then
-          echo "📝 No files to commit after adding"
-          exit 0
-        fi
-        
+        # Files are already staged from the check step
+        echo "📝 Committing staged changes..."
         git commit -m "🤖 Auto-generated blog content - $(date +%Y-%m-%d)"
         git push
+        echo "✅ Changes pushed to repository"
         
     - name: Deployment info
       if: steps.check_changes.outputs.has_changes == 'true'
