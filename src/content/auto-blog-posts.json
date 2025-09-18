@@ -1,1 +1,47 @@
-[]
+[
+  {
+    "title": "Discover the Magic of African Safaris",
+    "description": "Experience the thrill of seeing the Big Five in their natural habitat. From the vast plains of the Serengeti to the lush Okavango Delta, Africa offers unforgettable wildlife encounters.",
+    "slug": "discover-african-safaris",
+    "publishedAt": "2025-09-18T23:53:14.679Z",
+    "author": "Ikhaya KaMa Team",
+    "category": "safari",
+    "imageUrl": "/img/blog/safari-hero.jpg"
+  },
+  {
+    "title": "Cultural Immersion in South Africa",
+    "description": "Connect with local communities and learn about rich traditions. Visit historical sites like Robben Island and experience authentic Zulu and Xhosa cultures.",
+    "slug": "cultural-immersion-south-africa",
+    "publishedAt": "2025-09-17T23:53:14.692Z",
+    "author": "Ikhaya KaMa Team",
+    "category": "culture",
+    "imageUrl": "/img/blog/culture-hero.jpg"
+  },
+  {
+    "title": "Best Time to Visit East Africa",
+    "description": "Plan your perfect African adventure with our seasonal guide. Learn when to witness the Great Migration, enjoy dry season safaris, or experience the green season's beauty.",
+    "slug": "best-time-east-africa",
+    "publishedAt": "2025-09-16T23:53:14.692Z",
+    "author": "Ikhaya KaMa Team",
+    "category": "tips",
+    "imageUrl": "/img/blog/seasonal-guide.jpg"
+  },
+  {
+    "title": "Luxury Safari Lodges in Botswana",
+    "description": "Stay in world-class accommodations while exploring the Okavango Delta. Our curated selection of luxury lodges offers exceptional comfort and incredible wildlife viewing opportunities.",
+    "slug": "luxury-safari-lodges-botswana",
+    "publishedAt": "2025-09-15T23:53:14.692Z",
+    "author": "Ikhaya KaMa Team",
+    "category": "accommodation",
+    "imageUrl": "/img/blog/luxury-lodge.jpg"
+  },
+  {
+    "title": "Adventure Activities in Namibia",
+    "description": "From climbing the towering sand dunes of Sossusvlei to exploring the Skeleton Coast, Namibia offers adventure seekers unforgettable experiences in stunning desert landscapes.",
+    "slug": "adventure-activities-namibia",
+    "publishedAt": "2025-09-14T23:53:14.692Z",
+    "author": "Ikhaya KaMa Team",
+    "category": "adventure",
+    "imageUrl": "/img/blog/namibia-adventure.jpg"
+  }
+]

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ikhaya KaMa - Add Blog Post</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .form-container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #143b1f;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #143b1f;
+        }
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        .btn {
+            background: #143b1f;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #1a4b25;
+        }
+        .preview {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #143b1f;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>🌍 Add Blog Post - Ikhaya KaMa</h1>
+        
+        <form id="blogForm">
+            <div class="form-group">
+                <label for="title">Title *</label>
+                <input type="text" id="title" name="title" required placeholder="Amazing African Safari Experience">
+            </div>
+            
+            <div class="form-group">
+                <label for="description">Description *</label>
+                <textarea id="description" name="description" required placeholder="Brief description of the blog post..."></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="category">Category</label>
+                <select id="category" name="category">
+                    <option value="safari">Safari & Wildlife</option>
+                    <option value="culture">Culture & Heritage</option>
+                    <option value="adventure">Adventure Travel</option>
+                    <option value="tips">Travel Tips</option>
+                    <option value="destinations">Destinations</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="imageUrl">Image URL (optional)</label>
+                <input type="url" id="imageUrl" name="imageUrl" placeholder="https://example.com/image.jpg">
+            </div>
+            
+            <button type="submit" class="btn">📝 Add Blog Post</button>
+        </form>
+        
+        <div class="preview">
+            <h3>Preview:</h3>
+            <div id="preview"></div>
+        </div>
+        
+        <div class="success" id="successMessage">
+            ✅ Blog post added successfully! Refresh the blog page to see it.
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('blogForm');
+        const preview = document.getElementById('preview');
+        const successMessage = document.getElementById('successMessage');
+        
+        // Update preview as user types
+        form.addEventListener('input', updatePreview);
+        
+        function updatePreview() {
+            const title = document.getElementById('title').value;
+            const description = document.getElementById('description').value;
+            const category = document.getElementById('category').value;
+            
+            preview.innerHTML = `
+                <h4>${title || 'Blog Post Title'}</h4>
+                <p><strong>Category:</strong> ${category}</p>
+                <p>${description || 'Description will appear here...'}</p>
+            `;
+        }
+        
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(form);
+            const postData = {
+                title: formData.get('title'),
+                description: formData.get('description'),
+                category: formData.get('category'),
+                imageUrl: formData.get('imageUrl'),
+                slug: generateSlug(formData.get('title')),
+                publishedAt: new Date().toISOString(),
+                author: 'Ikhaya KaMa Team'
+            };
+            
+            try {
+                // Save to localStorage (you can change this to save to a file)
+                const existingPosts = JSON.parse(localStorage.getItem('blogPosts') || '[]');
+                existingPosts.unshift(postData);
+                localStorage.setItem('blogPosts', JSON.stringify(existingPosts));
+                
+                successMessage.style.display = 'block';
+                form.reset();
+                updatePreview();
+                
+                // Copy JSON to clipboard for easy pasting
+                await navigator.clipboard.writeText(JSON.stringify([postData], null, 2));
+                console.log('📋 Blog post JSON copied to clipboard!');
+                
+            } catch (error) {
+                alert('Error saving blog post: ' + error.message);
+            }
+        });
+        
+        function generateSlug(title) {
+            return title
+                .toLowerCase()
+                .replace(/[^a-z0-9 -]/g, '')
+                .replace(/\s+/g, '-')
+                .replace(/-+/g, '-')
+                .trim();
+        }
+        
+        // Initial preview
+        updatePreview();
+    </script>
+</body>
+</html>

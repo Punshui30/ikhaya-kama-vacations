@@ -5,30 +5,32 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "prebuild": "node ./scripts/generate-sitemap.mjs && node ./scripts/generate-rss.mjs && node ./scripts/check-social-media.mjs",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "update-blog": "node update-blog.js",
+    "update-blog-netlify": "node update-blog-netlify.js",
+    "generate-blog": "node simple-blog-update.js"
   },
   "dependencies": {
-    "clsx": "^2.0.0",
-    "framer-motion": "^12.23.12",
-    "ics": "^2.42.0",
-    "jspdf": "^2.5.1",
-    "lz-string": "^1.5.0",
+    "@types/node": "^20.11.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-helmet-async": "^2.0.5",
-    "react-router-dom": "^6.20.1"
+    "react-router-dom": "^6.21.1"
   },
   "devDependencies": {
-    "@types/lz-string": "^1.3.2",
-    "@types/react": "^18.2.37",
-    "@types/react-dom": "^18.2.15",
-    "@vitejs/plugin-react": "^4.1.1",
+    "@eslint/js": "^9.0.0",
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^9.0.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "globals": "^15.0.0",
+    "postcss": "^8.4.32",
     "sass": "^1.69.5",
     "typescript": "^5.2.2",
-    "vite": "^5.0.0",
-    "vite-plugin-svgr": "^4.5.0"
+    "vite": "^5.0.8"
   }
 }
