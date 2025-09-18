@@ -2,7 +2,7 @@ name: Automated Blog Generation
 
 on:
   schedule:
-    # Run daily at 9 AM UTC (adjust timezone as needed)
+    # Run daily at 9 AM UTC
     - cron: '0 9 * * *'
   workflow_dispatch: # Allow manual triggering
 
@@ -28,7 +28,7 @@ jobs:
         
     - name: Generate new blog posts
       run: |
-        echo "Starting blog generation with .cjs file..."
+        echo "🤖 Starting blog generation with .cjs file..."
         ls -la auto-blog-system.*
         node auto-blog-system.cjs --once
         
