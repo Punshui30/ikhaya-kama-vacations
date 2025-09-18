@@ -13,6 +13,7 @@ import DestinationsIndex from './pages/DestinationsIndex';
 import DestinationDetail from './pages/DestinationDetail';
 import Services from './pages/Services';
 import BlogIndex from './pages/BlogIndex';
+import BlogPost from './pages/BlogPost';
 import Contact from './pages/Contact';
 import Planner from './pages/Planner';
 import CustomItineraries from './pages/CustomItineraries';
@@ -45,7 +46,7 @@ const App: React.FC = () => {
             <Route path="/destinations/:slug" element={<DestinationDetail />} />
             <Route path="/services" element={<Services />} />
             <Route path="/blog" element={<BlogIndex />} />
-            <Route path="/blog/:slug" element={<BlogIndex />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/planner" element={<Planner />} />
             <Route path="/custom-itineraries" element={<CustomItineraries />} />
