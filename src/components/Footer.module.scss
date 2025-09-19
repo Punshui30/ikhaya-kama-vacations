@@ -273,6 +273,32 @@
   }
 }
 
+.tabButtons {
+  display: flex;
+  gap: 8px;
+}
+
+.tabButton {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+  
+  &.active {
+    background: white;
+    color: var(--brand-1);
+  }
+}
+
 .closeButton {
   background: none;
   border: none;

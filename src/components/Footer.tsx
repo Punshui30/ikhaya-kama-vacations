@@ -6,6 +6,7 @@ const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
   const [clickCount, setClickCount] = useState(0);
   const [showSeoDoc, setShowSeoDoc] = useState(false);
+  const [activeTab, setActiveTab] = useState<'client' | 'developer'>('client');
 
   const footerLinks = {
     company: [
@@ -139,6 +140,20 @@ const Footer: React.FC = () => {
           <div className={styles.seoModalContent}>
             <div className={styles.seoModalHeader}>
               <h2>🌍 Complete Website Owner's Guide</h2>
+              <div className={styles.tabButtons}>
+                <button 
+                  className={`${styles.tabButton} ${activeTab === 'client' ? styles.active : ''}`}
+                  onClick={() => setActiveTab('client')}
+                >
+                  👤 For You
+                </button>
+                <button 
+                  className={`${styles.tabButton} ${activeTab === 'developer' ? styles.active : ''}`}
+                  onClick={() => setActiveTab('developer')}
+                >
+                  🔧 For Developers
+                </button>
+              </div>
               <button 
                 className={styles.closeButton}
                 onClick={closeSeoDoc}
@@ -148,8 +163,10 @@ const Footer: React.FC = () => {
             </div>
             
             <div className={styles.seoContent}>
-              <h3>🎉 Your Website Owner's Handbook!</h3>
-              <p><strong>Everything you need to know about your new website, explained in plain English.</strong></p>
+              {activeTab === 'client' ? (
+                <>
+                  <h3>🎉 Your Website Owner's Handbook!</h3>
+                  <p><strong>Everything you need to know about your new website, explained in plain English.</strong></p>
               
               <div className={styles.seoSection}>
                 <h4>🚀 Getting Your Website Live on the Internet</h4>
@@ -332,6 +349,227 @@ const Footer: React.FC = () => {
                 
                 <p><strong>Remember:</strong> You got an incredible website for $700. Use it actively and it will pay for itself many times over!</p>
               </div>
+                </>
+              ) : (
+                <>
+                  <h3>🔧 Technical Documentation for Developers</h3>
+                  <p><strong>Complete technical specifications and handoff information for web professionals.</strong></p>
+                  
+                  <div className={styles.seoSection}>
+                    <h4>🏗️ Tech Stack & Architecture</h4>
+                    <ul>
+                      <li><strong>Framework:</strong> React 18 with TypeScript</li>
+                      <li><strong>Build Tool:</strong> Vite 5.0 with hot reload</li>
+                      <li><strong>Styling:</strong> SCSS Modules + CSS Custom Properties</li>
+                      <li><strong>Routing:</strong> React Router DOM 6.21 (client-side)</li>
+                      <li><strong>Package Manager:</strong> pnpm (not npm)</li>
+                      <li><strong>Deployment:</strong> Netlify with SPA redirects</li>
+                      <li><strong>Domain:</strong> Custom domain ready via Netlify DNS</li>
+                    </ul>
+                  </div>
+                  
+                  <div className={styles.seoSection}>
+                    <h4>📁 Project Structure</h4>
+                    <ul>
+                      <li><strong>/src/pages/</strong> - Route components (Home, Destinations, etc.)</li>
+                      <li><strong>/src/components/</strong> - Reusable UI components</li>
+                      <li><strong>/src/content/</strong> - JSON data (destinations, blog posts)</li>
+                      <li><strong>/src/styles/</strong> - Global styles, tokens, mixins</li>
+                      <li><strong>/public/</strong> - Static assets (images, videos, icons)</li>
+                      <li><strong>/scripts/</strong> - Build-time generators (sitemap, etc.)</li>
+                    </ul>
+                  </div>
+                  
+                  <div className={styles.seoSection}>
+                    <h4>⚡ Build Commands</h4>
+                    <ul>
+                      <li><strong>pnpm install</strong> - Install dependencies</li>
+                      <li><strong>pnpm run dev</strong> - Development server (localhost:5173)</li>
+                      <li><strong>pnpm run build</strong> - Production build to /dist</li>
+                      <li><strong>pnpm run preview</strong> - Test production build locally</li>
+                      <li><strong>pnpm run lint</strong> - ESLint code quality check</li>
+                      <li><strong>pnpm run generate-blog</strong> - Create sample blog posts</li>
+                    </ul>
+                  </div>
+                  
+                  <div className={styles.seoSection}>
+                    <h4>🎯 SEO Implementation</h4>
+                    <p><strong>Meta Tags & Head Management:</strong></p>
+                    <ul>
+                      <li><strong>HeadTags.tsx</strong> - Dynamic meta tags with react-helmet-async</li>
+                      <li><strong>SEO.tsx</strong> - Lightweight meta tag updates</li>
+                      <li><strong>Canonical URLs</strong> - Duplicate content prevention</li>
+                      <li><strong>Open Graph</strong> - Facebook/LinkedIn previews</li>
+                      <li><strong>Twitter Cards</strong> - Twitter/X social previews</li>
+                      <li><strong>Video OG tags</strong> - Social video previews</li>
+                    </ul>
+                    
+                    <p><strong>Structured Data (JSON-LD):</strong></p>
+                    <ul>
+                      <li><strong>Organization Schema</strong> - Business entity markup</li>
+                      <li><strong>Website Schema</strong> - Site search integration</li>
+                      <li><strong>Breadcrumb Schema</strong> - Navigation structure</li>
+                      <li><strong>Article Schema</strong> - Blog post markup</li>
+                    </ul>
+                    
+                    <p><strong>Technical SEO:</strong></p>
+                    <ul>
+                      <li><strong>XML Sitemap</strong> - Auto-generated from routes</li>
+                      <li><strong>Robots.txt</strong> - Search engine instructions</li>
+                      <li><strong>Clean URLs</strong> - /destinations/kenya structure</li>
+                      <li><strong>Heading Hierarchy</strong> - Proper H1/H2/H3 structure</li>
+                      <li><strong>Image Alt Text</strong> - Accessibility and SEO</li>
+                      <li><strong>Lazy Loading</strong> - Performance optimization</li>
+                    </ul>
+                  </div>
+                  
+                  <div className={styles.seoSection}>
+                    <h4>📱 Mobile & Performance</h4>
+                    <ul>
+                      <li><strong>Responsive Design</strong> - Mobile-first approach</li>
+                      <li><strong>Touch Interactions</strong> - Optimized for mobile devices</li>
+                      <li><strong>Core Web Vitals</strong> - Google performance standards</li>
+                      <li><strong>Image Optimization</strong> - WebP support, lazy loading</li>
+                      <li><strong>Font Loading</strong> - Preload critical fonts</li>
+                      <li><strong>Bundle Splitting</strong> - Vite code splitting</li>
+                    </ul>
+                  </div>
+                  
+                  <div className={styles.seoSection}>
+                    <h4>🔧 Development Setup</h4>
+                    <p><strong>Prerequisites:</strong></p>
+                    <ul>
+                      <li><strong>Node.js 18+</strong> - Runtime environment</li>
+                      <li><strong>pnpm</strong> - Package manager (not npm/yarn)</li>
+                      <li><strong>Git</strong> - Version control</li>
+                      <li><strong>VS Code</strong> - Recommended editor with extensions</li>
+                    </ul>
+                    
+                    <p><strong>Environment Variables (.env):</strong></p>
+                    <ul>
+                      <li><strong>VITE_SITE_URL</strong> - Production domain</li>
+                      <li><strong>VITE_GA4_ID</strong> - Google Analytics tracking</li>
+                      <li><strong>VITE_GTM_ID</strong> - Google Tag Manager</li>
+                      <li><strong>VITE_FB_PIXEL_ID</strong> - Facebook Pixel</li>
+                    </ul>
+                  </div>
+                  
+                  <div className={styles.seoSection}>
+                    <h4>📊 Content Management</h4>
+                    <ul>
+                      <li><strong>Destinations:</strong> /src/content/destinations.json</li>
+                      <li><strong>Blog Posts:</strong> /src/content/auto-blog-posts.json</li>
+                      <li><strong>Copy/Content:</strong> /src/content/copy.ts</li>
+                      <li><strong>Blog Generator:</strong> simple-blog-update.js (Node.js)</li>
+                      <li><strong>Content Manager:</strong> content-manager.html (client tool)</li>
+                    </ul>
+                  </div>
+                  
+                  <div className={styles.seoSection}>
+                    <h4>🎨 Styling System</h4>
+                    <ul>
+                      <li><strong>CSS Architecture:</strong> SCSS Modules with global utilities</li>
+                      <li><strong>Design Tokens:</strong> /src/styles/tokens.scss</li>
+                      <li><strong>Mixins:</strong> /src/styles/mixins.scss</li>
+                      <li><strong>Global Styles:</strong> /src/styles/globals.scss</li>
+                      <li><strong>Theme System:</strong> CSS custom properties</li>
+                      <li><strong>Responsive:</strong> Mobile-first breakpoints</li>
+                    </ul>
+                  </div>
+                  
+                  <div className={styles.seoSection}>
+                    <h4>🚀 Deployment & Hosting</h4>
+                    <p><strong>Netlify Configuration:</strong></p>
+                    <ul>
+                      <li><strong>Build Command:</strong> pnpm install && pnpm run build</li>
+                      <li><strong>Publish Directory:</strong> dist</li>
+                      <li><strong>Node Version:</strong> 18</li>
+                      <li><strong>SPA Redirects:</strong> /* → /index.html (200)</li>
+                    </ul>
+                    
+                    <p><strong>Domain Setup:</strong></p>
+                    <ul>
+                      <li><strong>DNS Provider:</strong> Netlify or external</li>
+                      <li><strong>SSL:</strong> Auto-provisioned by Netlify</li>
+                      <li><strong>CDN:</strong> Global edge caching included</li>
+                    </ul>
+                  </div>
+                  
+                  <div className={styles.seoSection}>
+                    <h4>🔍 SEO Technical Details</h4>
+                    <p><strong>Meta Tag Implementation:</strong></p>
+                    <ul>
+                      <li><strong>Dynamic Titles:</strong> HeadTags component with react-helmet-async</li>
+                      <li><strong>Meta Descriptions:</strong> Per-page SEO configuration</li>
+                      <li><strong>Canonical URLs:</strong> Absolute URLs with domain</li>
+                      <li><strong>OG Images:</strong> 1200x630px social previews</li>
+                      <li><strong>Twitter Cards:</strong> summary_large_image format</li>
+                    </ul>
+                    
+                    <p><strong>Structured Data:</strong></p>
+                    <ul>
+                      <li><strong>Organization:</strong> Business entity with contact info</li>
+                      <li><strong>Website:</strong> Site search integration ready</li>
+                      <li><strong>Breadcrumbs:</strong> Navigation hierarchy</li>
+                      <li><strong>Articles:</strong> Blog post metadata</li>
+                    </ul>
+                  </div>
+                  
+                  <div className={styles.seoSection}>
+                    <h4>📝 Content System</h4>
+                    <p><strong>Blog Management:</strong></p>
+                    <ul>
+                      <li><strong>Manual Posts:</strong> Hard-coded in BlogIndex.tsx and BlogPost.tsx</li>
+                      <li><strong>Auto Posts:</strong> JSON file updated by scripts</li>
+                      <li><strong>Content Manager:</strong> HTML tool for client self-service</li>
+                      <li><strong>RSS Integration:</strong> Fetch external travel news</li>
+                    </ul>
+                    
+                    <p><strong>Data Management:</strong></p>
+                    <ul>
+                      <li><strong>Destinations:</strong> JSON with travel prep, images, themes</li>
+                      <li><strong>Copy/Content:</strong> TypeScript object with brand messaging</li>
+                      <li><strong>Images:</strong> /public/img/ organized by type</li>
+                    </ul>
+                  </div>
+                  
+                  <div className={styles.seoSection}>
+                    <h4>🎯 Key Features</h4>
+                    <ul>
+                      <li><strong>Responsive Design:</strong> Mobile-first with breakpoints</li>
+                      <li><strong>Image Carousel:</strong> Touch-friendly destination previews</li>
+                      <li><strong>Travel Prep:</strong> Dynamic visa/vaccine information</li>
+                      <li><strong>Theme System:</strong> Per-destination color schemes</li>
+                      <li><strong>Secret Handbook:</strong> 6-click footer documentation</li>
+                      <li><strong>Content Manager:</strong> Client self-service tool</li>
+                    </ul>
+                  </div>
+                  
+                  <div className={styles.seoSection}>
+                    <h4>🚨 Known Issues & Solutions</h4>
+                    <ul>
+                      <li><strong>GitHub Actions:</strong> Disabled due to module conflicts</li>
+                      <li><strong>Blog System:</strong> Use manual scripts instead of automation</li>
+                      <li><strong>Mobile Safari:</strong> Added -webkit-backdrop-filter for compatibility</li>
+                      <li><strong>ARIA Warnings:</strong> Fixed string literals for screen readers</li>
+                    </ul>
+                  </div>
+                  
+                  <div className={styles.seoSection}>
+                    <h4>📞 Developer Handoff Notes</h4>
+                    <p><strong>Client paid $700 for complete website build.</strong> Ongoing rates:</p>
+                    <ul>
+                      <li><strong>Blog posts:</strong> $50 each</li>
+                      <li><strong>Content management:</strong> $150/month unlimited</li>
+                      <li><strong>Updates/changes:</strong> $75/hour</li>
+                      <li><strong>Analytics setup:</strong> $100 one-time</li>
+                      <li><strong>Emergency support:</strong> 2-4 hour response time</li>
+                    </ul>
+                    
+                    <p><strong>Client Contact:</strong> KG@Ikhayakama.com, +1 (202) 699-1940, +27 78 430 6704</p>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>
