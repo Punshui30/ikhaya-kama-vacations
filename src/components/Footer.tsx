@@ -356,113 +356,136 @@ const Footer: React.FC = () => {
                   <p><strong>Complete technical specifications and handoff information for web professionals.</strong></p>
                   
                   <div className={styles.seoSection}>
-                    <h4>🏗️ Tech Stack & Architecture</h4>
+                    <h4>🏗️ Complete Tech Stack</h4>
                     <ul>
-                      <li><strong>Framework:</strong> React 18 with TypeScript</li>
-                      <li><strong>Build Tool:</strong> Vite 5.0 with hot reload</li>
-                      <li><strong>Styling:</strong> SCSS Modules + CSS Custom Properties</li>
-                      <li><strong>Routing:</strong> React Router DOM 6.21 (client-side)</li>
-                      <li><strong>Package Manager:</strong> pnpm (not npm)</li>
-                      <li><strong>Deployment:</strong> Netlify with SPA redirects</li>
-                      <li><strong>Domain:</strong> Custom domain ready via Netlify DNS</li>
+                      <li><strong>Framework:</strong> React 18.2.0 with TypeScript 5.2.2</li>
+                      <li><strong>Build Tool:</strong> Vite 5.0.8 with hot module replacement</li>
+                      <li><strong>Styling:</strong> SCSS Modules with CSS Custom Properties and design tokens</li>
+                      <li><strong>Routing:</strong> React Router DOM 6.21.1 with client-side navigation</li>
+                      <li><strong>Package Manager:</strong> pnpm (required - not npm or yarn)</li>
+                      <li><strong>Deployment:</strong> Netlify with automatic SPA redirects configured</li>
+                      <li><strong>Domain:</strong> Custom domain ready via Netlify DNS management</li>
+                      <li><strong>Node Version:</strong> 18+ required for build process</li>
                     </ul>
                   </div>
                   
                   <div className={styles.seoSection}>
-                    <h4>📁 Project Structure</h4>
+                    <h4>📁 Complete Project Structure</h4>
                     <ul>
-                      <li><strong>/src/pages/</strong> - Route components (Home, Destinations, etc.)</li>
-                      <li><strong>/src/components/</strong> - Reusable UI components</li>
-                      <li><strong>/src/content/</strong> - JSON data (destinations, blog posts)</li>
-                      <li><strong>/src/styles/</strong> - Global styles, tokens, mixins</li>
-                      <li><strong>/public/</strong> - Static assets (images, videos, icons)</li>
-                      <li><strong>/scripts/</strong> - Build-time generators (sitemap, etc.)</li>
+                      <li><strong>/src/pages/</strong> - Route components (Home.tsx, DestinationsIndex.tsx, DestinationDetail.tsx, etc.)</li>
+                      <li><strong>/src/components/</strong> - Reusable UI components (Header, Footer, BookDestinations, etc.)</li>
+                      <li><strong>/src/content/</strong> - JSON data files (destinations.json, auto-blog-posts.json, copy.ts)</li>
+                      <li><strong>/src/styles/</strong> - SCSS architecture (globals.scss, tokens.scss, mixins.scss, ik-mobile-fixes.scss)</li>
+                      <li><strong>/public/</strong> - Static assets organized by type (images, videos, icons, sitemap.xml)</li>
+                      <li><strong>/scripts/</strong> - Build utilities (generate-sitemap.mjs for SEO)</li>
+                      <li><strong>Root files:</strong> package.json, vite.config.ts, netlify.toml, tsconfig.json</li>
                     </ul>
                   </div>
                   
                   <div className={styles.seoSection}>
-                    <h4>⚡ Build Commands</h4>
+                    <h4>⚡ Essential Build Commands</h4>
                     <ul>
-                      <li><strong>pnpm install</strong> - Install dependencies</li>
-                      <li><strong>pnpm run dev</strong> - Development server (localhost:5173)</li>
-                      <li><strong>pnpm run build</strong> - Production build to /dist</li>
-                      <li><strong>pnpm run preview</strong> - Test production build locally</li>
-                      <li><strong>pnpm run lint</strong> - ESLint code quality check</li>
-                      <li><strong>pnpm run generate-blog</strong> - Create sample blog posts</li>
+                      <li><strong>pnpm install</strong> - Install all project dependencies (required first step)</li>
+                      <li><strong>pnpm run dev</strong> - Start development server at localhost:5173 with hot reload</li>
+                      <li><strong>pnpm run build</strong> - Create production-ready build in /dist folder</li>
+                      <li><strong>pnpm run preview</strong> - Test the production build locally before deployment</li>
+                      <li><strong>pnpm run lint</strong> - Run ESLint for code quality and error checking</li>
+                      <li><strong>pnpm run generate-blog</strong> - Generate 5 sample blog posts for content</li>
+                      <li><strong>pnpm run update-blog</strong> - Fetch real RSS content from travel sources</li>
                     </ul>
                   </div>
                   
                   <div className={styles.seoSection}>
-                    <h4>🎯 SEO Implementation</h4>
+                    <h4>🎯 Complete SEO Implementation</h4>
                     <p><strong>Meta Tags & Head Management:</strong></p>
                     <ul>
-                      <li><strong>HeadTags.tsx</strong> - Dynamic meta tags with react-helmet-async</li>
-                      <li><strong>SEO.tsx</strong> - Lightweight meta tag updates</li>
-                      <li><strong>Canonical URLs</strong> - Duplicate content prevention</li>
-                      <li><strong>Open Graph</strong> - Facebook/LinkedIn previews</li>
-                      <li><strong>Twitter Cards</strong> - Twitter/X social previews</li>
-                      <li><strong>Video OG tags</strong> - Social video previews</li>
+                      <li><strong>HeadTags.tsx</strong> - Dynamic meta tags using react-helmet-async library</li>
+                      <li><strong>SEO.tsx</strong> - Lightweight component for meta tag updates</li>
+                      <li><strong>Canonical URLs</strong> - Prevents duplicate content penalties</li>
+                      <li><strong>Open Graph tags</strong> - Professional Facebook/LinkedIn link previews</li>
+                      <li><strong>Twitter Cards</strong> - Enhanced Twitter/X social sharing</li>
+                      <li><strong>Video OG tags</strong> - Social video previews for destination pages</li>
                     </ul>
                     
-                    <p><strong>Structured Data (JSON-LD):</strong></p>
+                    <p><strong>Structured Data (JSON-LD Schema):</strong></p>
                     <ul>
-                      <li><strong>Organization Schema</strong> - Business entity markup</li>
-                      <li><strong>Website Schema</strong> - Site search integration</li>
-                      <li><strong>Breadcrumb Schema</strong> - Navigation structure</li>
-                      <li><strong>Article Schema</strong> - Blog post markup</li>
+                      <li><strong>Organization Schema</strong> - Business entity with contact info and social profiles</li>
+                      <li><strong>Website Schema</strong> - Site search integration for Google</li>
+                      <li><strong>Breadcrumb Schema</strong> - Navigation hierarchy for better search results</li>
+                      <li><strong>Article Schema</strong> - Blog post metadata with author, date, and images</li>
                     </ul>
                     
-                    <p><strong>Technical SEO:</strong></p>
+                    <p><strong>Technical SEO Features:</strong></p>
                     <ul>
-                      <li><strong>XML Sitemap</strong> - Auto-generated from routes</li>
-                      <li><strong>Robots.txt</strong> - Search engine instructions</li>
-                      <li><strong>Clean URLs</strong> - /destinations/kenya structure</li>
-                      <li><strong>Heading Hierarchy</strong> - Proper H1/H2/H3 structure</li>
-                      <li><strong>Image Alt Text</strong> - Accessibility and SEO</li>
-                      <li><strong>Lazy Loading</strong> - Performance optimization</li>
+                      <li><strong>XML Sitemap</strong> - Auto-generated from routes in /public/sitemap.xml</li>
+                      <li><strong>Robots.txt</strong> - Search engine crawling instructions</li>
+                      <li><strong>Clean URL structure</strong> - Human-readable paths like /destinations/kenya</li>
+                      <li><strong>Proper heading hierarchy</strong> - Semantic H1/H2/H3 structure throughout</li>
+                      <li><strong>Image alt attributes</strong> - Accessibility and SEO descriptions for all images</li>
+                      <li><strong>Lazy loading</strong> - Images load on scroll for better performance</li>
                     </ul>
                   </div>
                   
                   <div className={styles.seoSection}>
-                    <h4>📱 Mobile & Performance</h4>
+                    <h4>📱 Mobile & Performance Optimization</h4>
                     <ul>
-                      <li><strong>Responsive Design</strong> - Mobile-first approach</li>
-                      <li><strong>Touch Interactions</strong> - Optimized for mobile devices</li>
-                      <li><strong>Core Web Vitals</strong> - Google performance standards</li>
-                      <li><strong>Image Optimization</strong> - WebP support, lazy loading</li>
-                      <li><strong>Font Loading</strong> - Preload critical fonts</li>
-                      <li><strong>Bundle Splitting</strong> - Vite code splitting</li>
+                      <li><strong>Mobile-first responsive design</strong> - Breakpoints at 768px, 480px, 400px</li>
+                      <li><strong>Touch-optimized interactions</strong> - Carousel swiping, tap targets, smooth scrolling</li>
+                      <li><strong>Core Web Vitals compliant</strong> - Meets Google's speed and usability standards</li>
+                      <li><strong>Advanced image optimization</strong> - Lazy loading, WebP support, responsive sizing</li>
+                      <li><strong>Font performance</strong> - Preloaded critical fonts, optimized loading</li>
+                      <li><strong>Code splitting</strong> - Vite automatic bundle optimization for faster loads</li>
+                      <li><strong>Mobile fixes file</strong> - Isolated ik-mobile-fixes.scss for targeted mobile CSS</li>
                     </ul>
                   </div>
                   
                   <div className={styles.seoSection}>
-                    <h4>🔧 Development Setup</h4>
-                    <p><strong>Prerequisites:</strong></p>
+                    <h4>🔧 Complete Development Setup</h4>
+                    <p><strong>Required Prerequisites:</strong></p>
                     <ul>
-                      <li><strong>Node.js 18+</strong> - Runtime environment</li>
-                      <li><strong>pnpm</strong> - Package manager (not npm/yarn)</li>
-                      <li><strong>Git</strong> - Version control</li>
-                      <li><strong>VS Code</strong> - Recommended editor with extensions</li>
+                      <li><strong>Node.js 18+</strong> - JavaScript runtime environment (download from nodejs.org)</li>
+                      <li><strong>pnpm package manager</strong> - MUST use pnpm, not npm or yarn (install: npm install -g pnpm)</li>
+                      <li><strong>Git version control</strong> - For code management and deployment</li>
+                      <li><strong>VS Code editor</strong> - Recommended with TypeScript and SCSS extensions</li>
                     </ul>
                     
-                    <p><strong>Environment Variables (.env):</strong></p>
+                    <p><strong>Environment Variables (.env file):</strong></p>
                     <ul>
-                      <li><strong>VITE_SITE_URL</strong> - Production domain</li>
-                      <li><strong>VITE_GA4_ID</strong> - Google Analytics tracking</li>
-                      <li><strong>VITE_GTM_ID</strong> - Google Tag Manager</li>
-                      <li><strong>VITE_FB_PIXEL_ID</strong> - Facebook Pixel</li>
+                      <li><strong>VITE_SITE_URL</strong> - Production domain (e.g., https://ikhayakama.com)</li>
+                      <li><strong>VITE_GA4_ID</strong> - Google Analytics 4 tracking ID (format: G-XXXXXXXXXX)</li>
+                      <li><strong>VITE_GTM_ID</strong> - Google Tag Manager container ID (format: GTM-XXXXXXX)</li>
+                      <li><strong>VITE_FB_PIXEL_ID</strong> - Facebook Pixel tracking ID (numbers only)</li>
                     </ul>
+                    
+                    <p><strong>Development Workflow:</strong></p>
+                    <ol>
+                      <li>Clone repository and run <code>pnpm install</code></li>
+                      <li>Copy .env.example to .env and add tracking IDs</li>
+                      <li>Run <code>pnpm run dev</code> for development</li>
+                      <li>Make changes and test locally</li>
+                      <li>Run <code>pnpm run build</code> to create production build</li>
+                      <li>Deploy /dist folder to Netlify</li>
+                    </ol>
                   </div>
                   
                   <div className={styles.seoSection}>
-                    <h4>📊 Content Management</h4>
+                    <h4>📊 Complete Content Management System</h4>
                     <ul>
-                      <li><strong>Destinations:</strong> /src/content/destinations.json</li>
-                      <li><strong>Blog Posts:</strong> /src/content/auto-blog-posts.json</li>
-                      <li><strong>Copy/Content:</strong> /src/content/copy.ts</li>
-                      <li><strong>Blog Generator:</strong> simple-blog-update.js (Node.js)</li>
-                      <li><strong>Content Manager:</strong> content-manager.html (client tool)</li>
+                      <li><strong>Destinations data:</strong> /src/content/destinations.json - All 8 countries with travel prep, images, themes</li>
+                      <li><strong>Blog posts:</strong> /src/content/auto-blog-posts.json - Dynamic blog content storage</li>
+                      <li><strong>Brand copy:</strong> /src/content/copy.ts - All website text, taglines, and messaging</li>
+                      <li><strong>Blog generator:</strong> simple-blog-update.js - Node.js script for creating sample posts</li>
+                      <li><strong>Client content tool:</strong> content-manager.html - Self-service blog creation interface</li>
+                      <li><strong>RSS integration:</strong> update-blog.js - Fetches real travel news from external sources</li>
                     </ul>
+                    
+                    <p><strong>Content Update Process:</strong></p>
+                    <ol>
+                      <li>Client creates content using content-manager.html</li>
+                      <li>Exports JSON and sends to developer</li>
+                      <li>Developer adds to appropriate JSON file</li>
+                      <li>Rebuild and deploy to update live site</li>
+                    </ol>
                   </div>
                   
                   <div className={styles.seoSection}>
@@ -548,25 +571,39 @@ const Footer: React.FC = () => {
                   <div className={styles.seoSection}>
                     <h4>🚨 Known Issues & Solutions</h4>
                     <ul>
-                      <li><strong>GitHub Actions:</strong> Disabled due to module conflicts</li>
-                      <li><strong>Blog System:</strong> Use manual scripts instead of automation</li>
-                      <li><strong>Mobile Safari:</strong> Added -webkit-backdrop-filter for compatibility</li>
-                      <li><strong>ARIA Warnings:</strong> Fixed string literals for screen readers</li>
+                      <li><strong>GitHub Actions disabled:</strong> Module conflicts resolved by using manual blog scripts instead</li>
+                      <li><strong>Blog system approach:</strong> Use simple-blog-update.js and content-manager.html rather than automation</li>
+                      <li><strong>Safari compatibility:</strong> Added -webkit-backdrop-filter vendor prefix for iOS/macOS</li>
+                      <li><strong>ARIA accessibility:</strong> Fixed string literals for screen reader compatibility</li>
+                      <li><strong>Mobile carousel:</strong> Isolated fixes in ik-mobile-fixes.scss to prevent desktop regressions</li>
+                      <li><strong>Image cropping:</strong> Specific positioning for 4 tall destination images with baked-in titles</li>
                     </ul>
                   </div>
                   
                   <div className={styles.seoSection}>
-                    <h4>📞 Developer Handoff Notes</h4>
-                    <p><strong>Client paid $700 for complete website build.</strong> Ongoing rates:</p>
+                    <h4>📞 Complete Developer Handoff Information</h4>
+                    <p><strong>Project History:</strong> Client paid $700 for complete website build (incredible value vs. $5K-15K industry standard)</p>
+                    
+                    <p><strong>Ongoing Service Rates:</strong></p>
                     <ul>
-                      <li><strong>Blog posts:</strong> $50 each</li>
-                      <li><strong>Content management:</strong> $150/month unlimited</li>
-                      <li><strong>Updates/changes:</strong> $75/hour</li>
-                      <li><strong>Analytics setup:</strong> $100 one-time</li>
-                      <li><strong>Emergency support:</strong> 2-4 hour response time</li>
+                      <li><strong>Blog post creation:</strong> $50 per post (write, optimize, and publish)</li>
+                      <li><strong>Unlimited content management:</strong> $150 per month (all blog posts and updates)</li>
+                      <li><strong>General updates and changes:</strong> $75 per hour (design tweaks, feature additions)</li>
+                      <li><strong>Analytics and tracking setup:</strong> $100 one-time fee (GA4, Facebook Pixel, etc.)</li>
+                      <li><strong>Emergency support:</strong> 2-4 hour response time for critical issues</li>
+                      <li><strong>SEO optimization:</strong> $200 per month for advanced search ranking</li>
                     </ul>
                     
-                    <p><strong>Client Contact:</strong> KG@Ikhayakama.com, +1 (202) 699-1940, +27 78 430 6704</p>
+                    <p><strong>Client Contact Information:</strong></p>
+                    <ul>
+                      <li><strong>Email:</strong> KG@Ikhayakama.com</li>
+                      <li><strong>Phone (US):</strong> +1 (202) 699-1940</li>
+                      <li><strong>Phone (South Africa):</strong> +27 78 430 6704</li>
+                      <li><strong>WhatsApp:</strong> +1 (202) 699-1940</li>
+                      <li><strong>Business:</strong> Ikhaya KaMa Vacations (African travel experiences)</li>
+                    </ul>
+                    
+                    <p><strong>Support Expectations:</strong> Client expects professional service, clear communication, and fair pricing. Website is their primary business tool for attracting safari customers.</p>
                   </div>
                 </>
               )}
