@@ -732,3 +732,99 @@ img {
     object-position: center 11%; 
   }
 }
+
+/* ========= MOBILE HARD OVERRIDES (keep at the very end) ========= */
+@media (max-width: 768px) {
+
+  /* 1) PREVIEW TILES — force a consistent window & crop bias for tall images */
+  /* These selectors use high specificity + !important to beat prior rules. */
+  :where(body) .destinations,
+  :where(body) .destinations-rail,
+  :where(body) .carousel-track { overflow: visible !important; }
+
+  :where(body) .postcard {
+    aspect-ratio: 4 / 5 !important;
+    max-height: 420px !important;
+    overflow: hidden !important;
+    border-radius: 18px !important;
+  }
+
+  :where(body) .postcard img {
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+    object-fit: cover !important;
+    object-position: center center !important; /* default for square tiles */
+  }
+
+  /* Only the 4 tall images: bias upward so baked-in titles show */
+  :where(body) .postcard[data-slug="south-africa"] img { object-position: center 10% !important; }
+  :where(body) .postcard[data-slug="botswana"]     img { object-position: center 12% !important; }
+  :where(body) .postcard[data-slug="morocco"]      img { object-position: center 14% !important; }
+  :where(body) .postcard[data-slug="zimbabwe"]     img { object-position: center 11% !important; }
+
+  /* 2) DETAIL HERO CARD — center the card, keep top in view, small dots */
+  :where(body) .hero { display: grid !important; place-items: center !important; padding-inline: 16px !important; }
+
+  :where(body) .media-card {
+    width: min(92vw, 420px) !important;
+    aspect-ratio: 4 / 5 !important;
+    margin: 0 auto !important;
+    border-radius: 18px !important;
+    overflow: hidden !important;
+    position: relative !important;
+  }
+
+  /* Nuke any rogue width/height hacks Cursor added */
+  :where(body) .media-card img,
+  :where(body) .media-card picture,
+  :where(body) .media-card video {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    object-fit: cover !important;
+    object-position: center 28% !important; /* slight top bias; adjust +/- 2% if needed */
+    transform: none !important;
+  }
+
+  /* 3) DOTS — make small, stop scaling */
+  :where(body) .carousel-dots,
+  :where(body) .swiper-pagination-bullets {
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    bottom: 10px !important; /* inside the card */
+    display: flex !important;
+    gap: 6px !important;
+    z-index: 2 !important;
+  }
+
+  :where(body) .carousel-dots .dot,
+  :where(body) .carousel-dots button,
+  :where(body) .swiper-pagination-bullet {
+    width: 7px !important;
+    height: 7px !important;
+    border-radius: 50% !important;
+    background: rgba(255,255,255,0.85) !important;
+    border: 1px solid rgba(0,0,0,0.18) !important;
+    opacity: 0.85 !important;
+    transform: none !important;
+  }
+
+  :where(body) .carousel-dots .dot--active,
+  :where(body) .carousel-dots button[aria-current="true"],
+  :where(body) .swiper-pagination-bullet-active {
+    background: #fff !important;
+    opacity: 1 !important;
+    transform: none !important; /* kill any library scale-up */
+  }
+
+  /* 4) Ensure the hero grid doesn't force two columns on phones */
+  :where(body) .hero-grid { display: block !important; }
+}
+
+/* Swiper variables for dot sizing */
+:root {
+  --swiper-pagination-bullet-size: 7px;
+  --swiper-pagination-bullet-horizontal-gap: 6px;
+}
