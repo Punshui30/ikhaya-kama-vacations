@@ -93,3 +93,4 @@ exports.handler = async (event, context) => {
 if (require.main === module) {
   generateBlogPosts().catch(console.error);
 }
+

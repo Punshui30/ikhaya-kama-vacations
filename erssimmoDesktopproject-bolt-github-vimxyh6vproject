@@ -1,0 +1,19 @@
+warning: in the working copy of 'OWNER-HANDOFF-GUIDE.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/components/BookDestinations.module.scss', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/pages/BlogPost.module.scss', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/pages/DestinationDetail.module.scss', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/router.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/styles/destination-hero.css', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/styles/destinations-rail.css', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/styles/globals.scss', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'update-blog.js', LF will be replaced by CRLF the next time Git touches it
+BLOG-ALTERNATIVES.md
+CLIENT-HANDBOOK.md
+TRIGGER-DEPLOY.md
+TRIGGER-WORKFLOW.md
+admin-add-post.html
+content-manager.html
+simple-blog-update.js
+src/components/BookDestinations.module.scss
+src/styles/ik-mobile-fixes.scss
+update-blog-netlify.js

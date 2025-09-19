@@ -54,3 +54,4 @@ pnpm run update-blog
 ```
 
 Then check your blog page to see the new posts!
+
