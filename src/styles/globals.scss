@@ -584,4 +584,9 @@ img {
 
 /* Clean mobile destinations implementation - no conflicts */
 
+<<<<<<< HEAD
 /* Mobile fixes are now imported at the top of the file */
+=======
+/* Import mobile fixes last to ensure they win the cascade */
+@use "ik-mobile-fixes";
+>>>>>>> 5aa36b2fad04ab4839b52796ba61c8a44080e3a5

@@ -1,0 +1,98 @@
+name: Blog Content Generator
+
+on:
+  schedule:
+    # Run daily at 9 AM UTC
+    - cron: '0 9 * * *'
+  workflow_dispatch: # Allow manual triggering
+
+jobs:
+  generate-content:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        
+    - name: Install dependencies
+      run: |
+        npm install -g pnpm
+        pnpm install
+        
+    - name: Generate blog content
+      run: |
+        echo "🤖 Starting blog content generation..."
+        echo "📁 Working directory: $(pwd)"
+        echo "📋 Available files:"
+        ls -la | grep -E "\.(js|mjs|cjs)$" || echo "No JS files found"
+        
+        if [ -f "generate-blog.cjs" ]; then
+          echo "✅ Found generate-blog.cjs"
+          echo "🚀 Running CommonJS blog generator:"
+          node generate-blog.cjs
+        elif [ -f "auto-blog-system.mjs" ]; then
+          echo "✅ Found auto-blog-system.mjs"  
+          echo "🚀 Running ES module blog generator:"
+          node auto-blog-system.mjs --once
+        else
+          echo "❌ No blog generator found!"
+          echo "📂 Full directory listing:"
+          ls -la
+          exit 1
+        fi
+        
+    - name: Check for changes
+      id: check_changes
+      run: |
+        # Check if files exist and have been modified
+        echo "📋 Checking for file changes..."
+        
+        # Check if files exist
+        if [ ! -f "src/content/auto-blog-posts.json" ]; then
+          echo "❌ auto-blog-posts.json not found"
+          echo "has_changes=false" >> $GITHUB_OUTPUT
+          exit 0
+        fi
+        
+        if [ ! -f "src/content/processed-links.json" ]; then
+          echo "❌ processed-links.json not found"  
+          echo "has_changes=false" >> $GITHUB_OUTPUT
+          exit 0
+        fi
+        
+        # Check if files are tracked by git and have changes
+        git add src/content/auto-blog-posts.json src/content/processed-links.json
+        
+        if git diff --cached --quiet; then
+          echo "📝 No changes to commit"
+          echo "has_changes=false" >> $GITHUB_OUTPUT
+        else
+          echo "✅ Changes detected, ready to commit"
+          echo "has_changes=true" >> $GITHUB_OUTPUT
+        fi
+        
+    - name: Commit new content
+      if: steps.check_changes.outputs.has_changes == 'true'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "Blog Generator Bot"
+        
+        # Files are already staged from the check step
+        echo "📝 Committing staged changes..."
+        git commit -m "🤖 Auto-generated blog content - $(date +%Y-%m-%d)"
+        git push
+        echo "✅ Changes pushed to repository"
+        
+    - name: Deployment info
+      if: steps.check_changes.outputs.has_changes == 'true'
+      run: |
+        echo "🚀 New content pushed to GitHub"
+        echo "📝 Netlify will automatically rebuild and deploy"
+        echo "⏱️ Changes will be live in ~2-3 minutes"
