@@ -188,7 +188,7 @@ const Footer: React.FC = () => {
                 <ul>
                   <li><strong>$50 per blog post</strong> - We write and publish for you</li>
                   <li><strong>$150/month</strong> - Unlimited content management</li>
-                  <li><strong>$1.75/hour</strong> - Custom updates and changes</li>
+                  <li><strong>$75/hour</strong> - Custom updates and changes</li>
                 </ul>
               </div>
 
@@ -513,18 +513,50 @@ const Footer: React.FC = () => {
               </div>
               
               <div className={styles.seoSection}>
-                <h4>🎯 SEO FEATURES INCLUDED</h4>
+                <h4>🎯 COMPLETE SEO FEATURES INCLUDED</h4>
+                <p><strong>Meta Tags & Head Elements:</strong></p>
                 <ul>
-                  <li>✅ Dynamic page titles and descriptions</li>
-                  <li>✅ Open Graph and Twitter Card meta tags</li>
-                  <li>✅ Structured data (JSON-LD) for search engines</li>
+                  <li>✅ Dynamic page titles and descriptions (HeadTags component)</li>
+                  <li>✅ Canonical URLs for duplicate content prevention</li>
+                  <li>✅ Robots meta tags (index/noindex control)</li>
+                  <li>✅ Viewport meta tag for mobile optimization</li>
+                  <li>✅ Language and locale tags (en-US)</li>
+                </ul>
+                
+                <p><strong>Social Media Integration:</strong></p>
+                <ul>
+                  <li>✅ Open Graph meta tags (og:title, og:description, og:image, og:url)</li>
+                  <li>✅ Twitter Card meta tags (summary_large_image)</li>
+                  <li>✅ OG image dimensions (1200x630px) and type specified</li>
+                  <li>✅ Video meta tags for social sharing (og:video)</li>
+                  <li>✅ Site name and type declarations</li>
+                </ul>
+                
+                <p><strong>Structured Data (JSON-LD):</strong></p>
+                <ul>
+                  <li>✅ Organization schema (business info, logo, social profiles)</li>
+                  <li>✅ Website schema with search action</li>
                   <li>✅ Breadcrumb navigation schema</li>
-                  <li>✅ Video meta tags for social sharing</li>
-                  <li>✅ Mobile-optimized viewport settings</li>
-                  <li>✅ Every page has proper page title (shows in Google)</li>
-                  <li>✅ Social previews (Facebook/Twitter/LinkedIn) show image and summary</li>
-                  <li>✅ Background code tells Google who we are (business schema)</li>
-                  <li>✅ Images lazy-load; videos have posters</li>
+                  <li>✅ Article schema for blog posts (title, author, date, image)</li>
+                </ul>
+                
+                <p><strong>Technical SEO:</strong></p>
+                <ul>
+                  <li>✅ Auto-generated XML sitemap (/sitemap.xml)</li>
+                  <li>✅ Robots.txt file with sitemap reference</li>
+                  <li>✅ Clean, SEO-friendly URL structure (/destinations/kenya)</li>
+                  <li>✅ Proper heading hierarchy (H1, H2, H3)</li>
+                  <li>✅ Image alt attributes for accessibility</li>
+                  <li>✅ Lazy loading for images and videos</li>
+                  <li>✅ Font preloading for performance</li>
+                </ul>
+                
+                <p><strong>Performance & Mobile:</strong></p>
+                <ul>
+                  <li>✅ Mobile-first responsive design</li>
+                  <li>✅ Fast loading speeds and optimized images</li>
+                  <li>✅ Touch-friendly navigation and interactions</li>
+                  <li>✅ Optimized for Core Web Vitals</li>
                 </ul>
               </div>
               
