@@ -6,9 +6,9 @@ body[data-dest="south-africa"]{
   --dd-pattern-y: 38%;
 }
 body[data-dest="kenya"]{
-  --dd-pattern-url: url("/images/kenya_pattern_strip_132h.png");
+  --dd-pattern-url: url("/images/Kenya_background.jpg");
   --dd-pattern-width: 2300px;
-  --dd-pattern-y: 50%;
+  --dd-pattern-y: 25%;
 }
 body[data-dest="tanzania"]{
   --dd-pattern-url: url("/images/patterns/tanzania_2880x1080.jpg");
