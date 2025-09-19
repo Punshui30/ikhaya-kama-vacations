@@ -8,6 +8,17 @@ const BookDestinations: React.FC = () => {
   const [isTurning, setIsTurning] = useState<boolean>(false);
   const navigate = useNavigate();
 
+  // Only these four need top-focused cropping to keep country names visible
+  const TOP_LABEL_FIX = new Set(['south-africa', 'botswana', 'morocco', 'zimbabwe']);
+
+  // Per-image fine-tune for focal positioning
+  const FOCAL_Y: Record<string, string> = {
+    'south-africa': '8%',
+    'botswana': '10%',
+    'morocco': '7%',
+    'zimbabwe': '11%',
+  };
+
   // Snap carousel into view on mount and resize
   useEffect(() => {
     const snapCarouselIntoView = (viewport: HTMLElement | null) => {
@@ -43,8 +54,16 @@ const BookDestinations: React.FC = () => {
     <section className="destinations-rail">
       <div className="carousel-viewport">
         <div className="carousel-track">
-          {destinations.map((destination, index) => (
-            <article className="carousel-item" key={destination.slug}>
+          {destinations.map((destination, index) => {
+            const needsFix = TOP_LABEL_FIX.has(destination.slug);
+            const focalY = FOCAL_Y[destination.slug];
+
+            return (
+            <article 
+              className={`carousel-item ${needsFix ? 'fix-top' : ''}`} 
+              key={destination.slug}
+              style={needsFix && focalY ? ({ ['--focal-y' as any]: focalY } as React.CSSProperties) : undefined}
+            >
               <motion.a
                 className={`postcard ${isTurning ? 'turning' : ''}`}
                 href={`/destinations/${destination.slug}`}
@@ -105,7 +124,8 @@ const BookDestinations: React.FC = () => {
                 </div>
               </motion.a>
             </article>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

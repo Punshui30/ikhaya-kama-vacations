@@ -662,3 +662,35 @@ img {
 .carousel-track {
   transform: none !important;       /* remove accidental translateX/scale on mobile */
 }
+
+/* ===== TITLE CROP FIX FOR SPECIFIC TILES ===== */
+
+/* Base tile structure for carousel */
+.destinations-rail .carousel-item {
+  aspect-ratio: 16 / 10;        /* existing card shape */
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+/* Default behavior for all tiles (square ones like Rwanda stay centered) */
+.destinations-rail .carousel-item .postcard .postcard__inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;     /* center by default */
+  display: block;
+}
+
+/* Top-focused crop ONLY for flagged tiles (the 4 with baked-in titles) */
+.destinations-rail .carousel-item.fix-top .postcard .postcard__inner img {
+  object-position: 50% var(--focal-y, 10%); /* nudge the crop down from the top */
+}
+
+/* Optional: slightly taller tile for very narrow phones */
+@media (max-width: 400px) {
+  .destinations-rail .carousel-item {
+    aspect-ratio: 17 / 11;
+  }
+}
