@@ -71,6 +71,19 @@
   box-shadow: 0 10px 30px rgba(0,0,0,.35);
   overflow: hidden;
   background: #000; /* fallback while first img loads */
+  
+  @media (max-width: 768px) {
+    width: 280px;
+    height: 350px;
+    border-radius: 16px;
+    border: 2px solid #fff;
+  }
+  
+  @media (max-width: 480px) {
+    width: 240px;
+    height: 300px;
+    border-radius: 12px;
+  }
 }
 
 /* CARD CAROUSEL */

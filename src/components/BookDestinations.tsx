@@ -31,7 +31,7 @@ const BookDestinations: React.FC = () => {
                 className={`postcard ${isTurning ? 'turning' : ''}`}
                 href={`/destinations/${destination.slug}`}
                 data-hero={destination.poster}
-                onClick={(e) => {
+                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
                   e.preventDefault();
                   // Store hero image for detail page
                   sessionStorage.setItem('destHero', destination.poster);

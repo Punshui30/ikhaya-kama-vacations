@@ -98,17 +98,17 @@
 .articleContent {
   @include body-text;
   line-height: 1.8;
-  color: var(--ink);
+  color: #1a1a1a;
   
   h2 {
     @include heading-lg;
-    color: var(--brand-1);
+    color: #2c5aa0;
     margin: 2rem 0 1rem;
   }
   
   h3 {
     @include heading-md;
-    color: var(--brand-1);
+    color: #2c5aa0;
     margin: 1.5rem 0 0.75rem;
   }
   
@@ -126,16 +126,16 @@
   }
   
   strong {
-    color: var(--brand-1);
+    color: #2c5aa0;
     font-weight: 600;
   }
   
   blockquote {
-    border-left: 4px solid var(--brand-3);
+    border-left: 4px solid #2c5aa0;
     padding-left: 1.5rem;
     margin: 2rem 0;
     font-style: italic;
-    color: rgba(0, 0, 0, 0.8);
+    color: #444444;
   }
 }
 

@@ -11,7 +11,6 @@ const Footer: React.FC = () => {
     company: [
       { label: 'Our Story', path: '/story' },
       { label: 'Services', path: '/services' },
-      { label: 'Testimonials', path: '/testimonials' },
       { label: 'Contact', path: '/contact' }
     ],
     destinations: [
@@ -22,17 +21,14 @@ const Footer: React.FC = () => {
     ],
     resources: [
       { label: 'Blog', path: '/blog' },
-      { label: 'Travel Planner', path: '/planner' },
-      { label: 'Custom Itineraries', path: '/custom-itineraries' },
-      { label: 'Story Explorer', path: '/story-explorer' }
+      { label: 'Travel Prep', path: '/travel-prep' }
     ]
   };
 
   const socialLinks = [
-    { name: 'Instagram', url: '#', icon: '📷' },
-    { name: 'Facebook', url: '#', icon: '👥' },
-    { name: 'Twitter', url: '#', icon: '🐦' },
-    { name: 'YouTube', url: '#', icon: '🎥' }
+    { name: 'Instagram', url: 'https://instagram.com/ikhayakamavacations', icon: '📷' },
+    { name: 'Facebook', url: 'https://facebook.com/ikhayakamavacations', icon: '👥' },
+    { name: 'WhatsApp', url: 'https://wa.me/2026991940', icon: '💬' }
   ];
 
   const handleCopyrightClick = () => {
