@@ -105,49 +105,6 @@
   }
 }
 
-.valuesSection {
-  text-align: center;
-}
-
-.valuesGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: var(--space-4);
-  margin-top: var(--space-6);
-}
-
-.valueCard {
-  @include card;
-  text-align: center;
-  padding: var(--space-6);
-  position: relative;
-  
-  &:hover {
-    transform: translateY(-4px);
-  }
-}
-
-.valueNumber {
-  font-family: var(--font-serif);
-  font-size: 3rem;
-  font-weight: 700;
-  color: var(--brand-3);
-  margin-bottom: var(--space-3);
-  opacity: 0.3;
-}
-
-.valueTitle {
-  @include heading-md;
-  color: white;
-  margin: 0 0 var(--space-3) 0;
-}
-
-.valueDescription {
-  @include body-text;
-  color: rgba(255, 255, 255, 0.9);
-  line-height: 1.6;
-  margin: 0;
-}
 
 .ctaSection {
   text-align: center;
@@ -185,13 +142,3 @@
   padding: var(--space-3) var(--space-6);
 }
 
-// Reduced motion support
-@media (prefers-reduced-motion: reduce) {
-  .valueCard {
-    transition: none;
-    
-    &:hover {
-      transform: none;
-    }
-  }
-}

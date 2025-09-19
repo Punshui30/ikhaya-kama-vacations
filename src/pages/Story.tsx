@@ -84,20 +84,6 @@ const Story: React.FC = () => {
         </div>
       </Section>
 
-      <Section background="pattern" padding="large">
-        <div className={styles.valuesSection}>
-          <h2 className={styles.sectionTitle}>What Drives Us</h2>
-          <div className={styles.valuesGrid}>
-            {copy.brand.values.map((value, index) => (
-              <div key={index} className={styles.valueCard}>
-                <div className={styles.valueNumber}>{String(index + 1).padStart(2, '0')}</div>
-                <h3 className={styles.valueTitle}>{value.title}</h3>
-                <p className={styles.valueDescription}>{value.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </Section>
 
       <Section padding="large">
         <div className={styles.ctaSection}>
