@@ -579,75 +579,86 @@ img {
   }
 }
 
-/* ===== DESTINATIONS TILE CAROUSEL: BULLETPROOF HOTFIX ===== */
+/* ===== DESTINATIONS TILE CAROUSEL: MOBILE-OPTIMIZED FIXES ===== */
 
-/* Shell: normal positioning with new hero */
-.destinations-rail { position: relative; z-index: 3; margin-top: 0; }
+/* 1) Stop the hero from clipping the carousel */
+.hero,
+.hero-inner,
+.hero-grid {
+  overflow: visible !important;
+  position: relative;
+  z-index: 1;
+}
 
-/* Viewport: horizontal snap-scroller */
-.destinations-rail .carousel-viewport {
+/* 2) Base carousel structure */
+.destinations-rail {
+  position: relative;
+  z-index: 3;
+}
+
+.carousel-viewport {
   overflow-x: auto;
-  overflow-y: visible;
+  overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   scroll-snap-type: x mandatory;
-  padding: 0 24px;
+  scrollbar-width: none;           /* Firefox */
+}
+.carousel-viewport::-webkit-scrollbar { display: none; }  /* WebKit */
+
+/* Track */
+.carousel-track {
+  display: flex;
+  gap: 16px;
+  padding-block: 8px;
 }
 
-/* Track MUST be flex (not grid) */
-.destinations-rail .carousel-track {
-  display: flex !important;   /* override any grid */
-  gap: 24px;
-}
-
-/* Items: never stretch; fixed basis, responsive */
-.destinations-rail .carousel-item {
-  flex: 0 0 88% !important;   /* mobile: 1 card (peeking next) */
-  max-width: 88% !important;
+/* Items */
+.carousel-item {
+  flex: 0 0 280px;
   scroll-snap-align: start;
-  min-width: 0 !important;    /* prevent overflow from inner content */
 }
 
-/* Tablet: show ~2 cards */
-@media (min-width: 640px) {
-  .destinations-rail .carousel-item { flex-basis: 48% !important; max-width: 48% !important; }
+/* Cards inside items */
+.carousel-item .postcard {
+  width: 100%;
+  max-width: 280px;
 }
 
-/* Desktop: ~4 cards */
-@media (min-width: 1024px) {
-  .destinations-rail .carousel-item { flex-basis: 24% !important; max-width: 24% !important; }
+/* 3) Mobile overrides - the important bit */
+@media (max-width: 600px) {
+  /* Make the viewport expand edge-to-edge including safe areas */
+  .carousel-viewport {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);   /* kill container padding pushing it off-screen */
+    padding-inline: max(16px, env(safe-area-inset-left)) max(16px, env(safe-area-inset-right));
+    scroll-padding-inline: 16px;     /* snap to visible edge */
+  }
+
+  /* Show ~1 card with a peek of the next, fully in frame */
+  .carousel-item {
+    flex: 0 0 clamp(78vw, 86vw, 92vw);
+    max-width: 420px;
+  }
+
+  .carousel-track {
+    gap: 12px;
+  }
 }
 
-/* Cards: block-level container that cannot balloon */
-.destinations-rail .carousel-item .postcard {
-  display: block;
-  width: auto !important;     /* kill width:100% overrides */
-  max-width: 100% !important;
-  min-width: 0 !important;
-  height: 100%;
-  box-sizing: border-box;
+/* 4) Ensure no ancestor re-clips it */
+@media (max-width: 600px) {
+  header, .hero::after {
+    pointer-events: auto;           /* avoid intercepting swipes */
+  }
+  .hero-overlay,
+  .pattern-strip {
+    z-index: 0;                     /* keep overlays behind carousel */
+  }
 }
 
-/* Any inner wrappers/images that might force expansion */
-.destinations-rail .carousel-item .postcard > * { min-width: 0 !important; }
-
-.destinations-rail .carousel-item .postcard img {
-  display: block;
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover;
-}
-
-/* Legacy grid rules that may still be around: neutralize them here */
-.destinations,
-.destinations-grid,
-[class*="destinations"]:not(.destinations-rail) {
-  display: revert !important;
-  grid-template-columns: revert !important;
-  grid-auto-flow: revert !important;
-}
-
-/* Optional: pretty edge fade for the viewport (purely visual) */
-.destinations-rail .carousel-viewport {
-  -webkit-mask-image: linear-gradient(to right, transparent, black 40px, black calc(100% - 40px), transparent);
-          mask-image: linear-gradient(to right, transparent, black 40px, black calc(100% - 40px), transparent);
+/* 5) Don't let transforms push it off-screen */
+.destinations-rail,
+.carousel-viewport,
+.carousel-track {
+  transform: none !important;       /* remove accidental translateX/scale on mobile */
 }

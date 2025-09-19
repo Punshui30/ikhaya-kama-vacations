@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import destinations from '../content/destinations.json';
@@ -7,6 +7,24 @@ import './BookDestinations.module.scss';
 const BookDestinations: React.FC = () => {
   const [isTurning, setIsTurning] = useState<boolean>(false);
   const navigate = useNavigate();
+
+  // Snap carousel into view on mount and resize
+  useEffect(() => {
+    const snapCarouselIntoView = (viewport: HTMLElement | null) => {
+      if (!viewport) return;
+      const firstItem = viewport.querySelector<HTMLElement>('.carousel-item');
+      if (!firstItem) return;
+      const left = firstItem.offsetLeft - 16; // match scroll-padding
+      viewport.scrollTo({ left, behavior: 'instant' as ScrollBehavior });
+    };
+
+    const vp = document.querySelector<HTMLElement>('.carousel-viewport');
+    snapCarouselIntoView(vp);
+    
+    const onResize = () => snapCarouselIntoView(vp);
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
 
   const handleDestinationClick = (index: number) => {
     if (isTurning) return;
