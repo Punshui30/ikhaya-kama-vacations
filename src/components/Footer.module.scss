@@ -293,6 +293,10 @@
   overflow-y: auto;
   flex: 1;
   -webkit-overflow-scrolling: touch;
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
   
   h3 {
     color: var(--brand-1);
@@ -305,6 +309,15 @@
     margin-top: var(--space-4);
     margin-bottom: var(--space-2);
     font-size: var(--fs-md);
+  }
+  
+  a {
+    color: #2c5aa0;
+    text-decoration: underline;
+    
+    &:hover {
+      color: #1a4480;
+    }
   }
 }
 
