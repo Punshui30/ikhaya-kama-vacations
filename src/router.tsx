@@ -36,7 +36,7 @@ const App: React.FC = () => {
       <ScrollToTop />
       <PageTheme />
       <Analytics />
-      <div className="app">
+      <div className="app ik-root">
         <Header />
         <main>
           <Routes>
