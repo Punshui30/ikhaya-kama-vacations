@@ -131,6 +131,124 @@
   background:#fff; 
 }
 
+/* ===== DETAIL PAGE HERO CENTERING & CROP FIXES ===== */
+
+/* Detail hero wrapper - centers card and prevents header overlap */
+:global(.detail-hero) {
+  display: grid;
+  justify-items: center;
+  scroll-margin-top: 96px; /* adjust if header height differs */
+}
+
+/* Consistent card sizing across breakpoints */
+:global(.detail-hero .media-card) {
+  --card-max-w: 560px;
+  --card-radius: 16px;
+  --card-shadow: 0 12px 30px rgba(0,0,0,.25);
+
+  width: min(92vw, var(--card-max-w));
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  background: #0b0f14; /* fallback while image loads */
+  overflow: hidden;
+  aspect-ratio: 29 / 36; /* portrait card */
+}
+
+/* Viewport should clip slides and stay centered */
+:global(.detail-hero .carousel-viewport),
+:global(.detail-hero .media-card .carousel-viewport),
+:global(.detail-hero .card-carousel) {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+/* The track must center each slide exactly */
+:global(.detail-hero .carousel-track) {
+  display: flex;
+  height: 100%;
+  gap: 0; /* remove stray gap */
+  will-change: transform; /* prevent sub-pixel jitter */
+}
+
+/* Each slide fills the card */
+:global(.detail-hero .carousel-slide),
+:global(.detail-hero .hero-photo) {
+  flex: 0 0 100%;
+  height: 100%;
+}
+
+/* Image fit - centered to avoid top-cropping bias */
+:global(.detail-hero .carousel-slide img),
+:global(.detail-hero .hero-photo) {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: 50% 50%; /* dead-center so titles at top aren't chopped */
+}
+
+/* Dots/pagination - responsive sizing */
+:global(.detail-hero .carousel-dots),
+:global(.detail-hero .card-dots) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 14px;
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+/* Base dot size (desktop/tablet) */
+:global(.detail-hero .carousel-dot),
+:global(.detail-hero .card-dots .dot) {
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, .35);
+  border: 1px solid rgba(255, 255, 255, .5);
+  transition: transform .2s ease, background-color .2s ease, opacity .2s ease;
+  cursor: pointer;
+}
+
+:global(.detail-hero .carousel-dot.is-active),
+:global(.detail-hero .card-dots .dot.on) {
+  background: #f4c26b; /* gold accent */
+  border-color: #f4c26b;
+  transform: scale(1.25);
+}
+
+/* Mobile: shrink dots & tighten spacing */
+@media (max-width: 480px) {
+  :global(.detail-hero .media-card) {
+    --card-max-w: 480px; /* narrower phones */
+    border-radius: 14px;
+  }
+
+  :global(.detail-hero .carousel-dots),
+  :global(.detail-hero .card-dots) { 
+    gap: 8px; 
+    margin-top: 10px; 
+  }
+
+  :global(.detail-hero .carousel-dot),
+  :global(.detail-hero .card-dots .dot) {
+    width: 6px;
+    height: 6px;
+    border-width: 1px;
+  }
+
+  :global(.detail-hero .carousel-dot.is-active),
+  :global(.detail-hero .card-dots .dot.on) {
+    transform: scale(1.35);
+  }
+}
+
 /* CLEAN TEXT - SIMPLE SHADOWS */
 :global(.copy h1){ 
   color: #FFFFFF; 

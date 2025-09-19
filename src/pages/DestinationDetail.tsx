@@ -160,7 +160,7 @@ const DestinationDetail: React.FC = () => {
         }}
       />
       
-      <section className={`hero hero--${destination.slug}`}>
+      <section className={`hero hero--${destination.slug} detail-hero`}>
         <div className="container">
           <div className="hero-grid">
             <figure className="media-card">
