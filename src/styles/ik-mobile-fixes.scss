@@ -1,0 +1,93 @@
+/* All fixes are scoped to .ik-root and only on phones */
+@media (max-width: 768px) {
+  .ik-root {
+
+    /* ---------- A) PREVIEW TILES ---------- */
+    /* We force a consistent window and only bias the 4 tall images */
+    .postcard {
+      aspect-ratio: 4 / 5 !important;
+      max-height: 420px !important;
+      border-radius: 18px !important;
+      overflow: hidden !important;
+    }
+
+    .postcard img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: center center !important;  /* default for square/rwanda */
+      display: block !important;
+    }
+
+    /* Only bias the 4 tall images UP so baked-in names are visible */
+    .postcard[data-slug="south-africa"] img { object-position: center 10% !important; }
+    .postcard[data-slug="botswana"]     img { object-position: center 12% !important; }
+    .postcard[data-slug="morocco"]      img { object-position: center 14% !important; }
+    .postcard[data-slug="zimbabwe"]     img { object-position: center 11% !important; }
+
+    /* ---------- B) DETAIL HERO CARD ---------- */
+    .hero { display: grid !important; place-items: center !important; padding-inline: 16px !important; }
+
+    .media-card {
+      width: min(92vw, 420px) !important;
+      aspect-ratio: 4 / 5 !important;
+      margin: 0 auto !important;
+      border-radius: 18px !important;
+      overflow: hidden !important;
+      position: relative !important;
+    }
+
+    .media-card img,
+    .media-card picture,
+    .media-card video {
+      width: 100% !important;
+      height: 100% !important;
+      max-width: 100% !important;
+      object-fit: cover !important;
+      object-position: center 28% !important; /* slight top bias so horizon/logo isn't chopped */
+      transform: none !important;
+    }
+
+    /* ---------- C) SMALL DOTS INSIDE THE CARD ---------- */
+    .carousel-dots,
+    .swiper-pagination-bullets {
+      position: absolute !important;
+      left: 50% !important;
+      transform: translateX(-50%) !important;
+      bottom: 10px !important;    /* inside the card */
+      display: flex !important;
+      gap: 6px !important;
+      z-index: 2 !important;
+    }
+
+    .carousel-dots .dot,
+    .carousel-dots button,
+    .swiper-pagination-bullet {
+      width: 7px !important;
+      height: 7px !important;
+      border-radius: 50% !important;
+      background: rgba(255,255,255,0.85) !important;
+      border: 1px solid rgba(0,0,0,0.18) !important;
+      opacity: 0.85 !important;
+      transform: none !important;
+    }
+
+    .carousel-dots .dot--active,
+    .carousel-dots button[aria-current="true"],
+    .swiper-pagination-bullet-active {
+      background: #fff !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    /* Kill any leftover horizontal scrollbars under tiles on mobile */
+    .destinations-rail, .carousel-viewport, .carousel-track { overflow-x: visible !important; }
+  }
+}
+
+/* Desktop guard: explicitly keep desktop looking as before */
+@media (min-width: 769px) {
+  .ik-root .media-card { width: 640px; }  /* original desktop width */
+  .ik-root .carousel-dots .dot,
+  .ik-root .swiper-pagination-bullet { width: 9px; height: 9px; } /* normal desktop size */
+}
