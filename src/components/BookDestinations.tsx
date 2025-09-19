@@ -65,7 +65,8 @@ const BookDestinations: React.FC = () => {
               style={needsFix && focalY ? ({ ['--focal-y' as any]: focalY } as React.CSSProperties) : undefined}
             >
               <motion.a
-                className={`postcard ${isTurning ? 'turning' : ''}`}
+                className={`postcard ${needsFix ? 'postcard--topTitle' : ''} ${isTurning ? 'turning' : ''}`}
+                data-slug={destination.slug}
                 href={`/destinations/${destination.slug}`}
                 data-hero={destination.poster}
                 onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {

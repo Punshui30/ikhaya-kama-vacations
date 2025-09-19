@@ -249,6 +249,80 @@
   }
 }
 
+/* ===== MOBILE HERO CARD CENTERING & CROP FIXES ===== */
+
+@media (max-width: 768px) {
+  :global(.hero) {
+    /* make sure the card box can center */
+    display: grid;
+    place-items: center;
+    padding-inline: 16px;
+  }
+
+  :global(.media-card) {
+    margin: 0 auto;             /* center the card */
+    width: min(92vw, 420px);
+    aspect-ratio: 4 / 5;
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  :global(.media-card img),
+  :global(.media-card picture),
+  :global(.media-card video),
+  :global(.hero-photo) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Bias a bit toward the top so horizons/titles aren't chopped */
+    object-position: center 28%;
+  }
+
+  /* Fix the pager dots (size + spacing) */
+  :global(.carousel-dots),
+  :global(.card-dots) {
+    position: absolute;
+    bottom: 10px;            /* inside the card, on the photo */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px;
+    z-index: 2;
+  }
+
+  :global(.carousel-dots button),
+  :global(.carousel-dots .dot),
+  :global(.card-dots button),
+  :global(.card-dots .dot) {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    opacity: 0.7;
+    background: rgba(255,255,255,0.7);
+    border: 1px solid rgba(0,0,0,0.15);
+    cursor: pointer;
+  }
+
+  :global(.carousel-dots .dot--active),
+  :global(.carousel-dots button[aria-current="true"]),
+  :global(.card-dots .dot.on) {
+    opacity: 1;
+    background: #fff;
+  }
+}
+
+/* Ensure container doesn't fight the centering */
+@media (max-width: 768px) {
+  :global(.hero-grid) {
+    display: block;  /* avoid two-column grid side-effects on phones */
+  }
+  
+  :global(.copy) {
+    padding-inline: 16px;
+  }
+}
+
 /* CLEAN TEXT - SIMPLE SHADOWS */
 :global(.copy h1){ 
   color: #FFFFFF; 

@@ -97,3 +97,53 @@
     text-shadow: 0 1px 5px rgba(0, 0, 0, 0.8);
   }
 }
+
+/* ===== MOBILE PREVIEW TILES: CONSISTENT ASPECT RATIO & TOP BIAS ===== */
+
+/* Base tile structure */
+:global(.postcard) {
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+/* Ensure consistent viewport for images in the tile */
+:global(.postcard .thumb),
+:global(.postcard img) {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Mobile-only rules for preview tiles */
+@media (max-width: 768px) {
+  /* Make all cards share the same window */
+  :global(.postcard) {
+    aspect-ratio: 4 / 5;      /* matches current card vibe on mobile */
+    max-height: 420px;        /* safety cap so text below doesn't jump */
+  }
+
+  /* Default crop for most tiles */
+  :global(.postcard img) {
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  /* Bias the crop upward ONLY for the 4 tall assets with baked-in titles */
+  :global(.postcard--topTitle img) {
+    object-position: center 12%;
+  }
+
+  /* Fine-tune per country if needed */
+  :global(.postcard[data-slug="south-africa"] img) { 
+    object-position: center 10%; 
+  }
+  :global(.postcard[data-slug="botswana"] img) { 
+    object-position: center 12%; 
+  }
+  :global(.postcard[data-slug="morocco"] img) { 
+    object-position: center 14%; 
+  }
+  :global(.postcard[data-slug="zimbabwe"] img) { 
+    object-position: center 11%; 
+  }
+}
