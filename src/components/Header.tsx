@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import clsx from 'clsx';
-import { useSecretUnlock } from '../hooks/useSecretUnlock';
-import OwnerPanel from './OwnerPanel';
 import styles from './Header.module.scss';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
-  const { open, setOpen } = useSecretUnlock();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,7 +39,7 @@ const Header: React.FC = () => {
     <header className={clsx(styles.header, { [styles.scrolled]: isScrolled })}>
       <div className={styles.container}>
         <Link to="/" className={styles.logo} onClick={closeMenu}>
-          <span className={styles.logoText} data-owner-unlock style={{cursor:"default", userSelect:"text"}}>Ikhaya KaMa</span>
+          <span className={styles.logoText}>Ikhaya KaMa</span>
           <span className={styles.logoSubtext}>Vacations</span>
         </Link>
 
@@ -82,7 +79,6 @@ const Header: React.FC = () => {
           </button>
         </div>
       </div>
-      {open && <OwnerPanel onClose={()=>setOpen(false)} />}
     </header>
   );
 };
