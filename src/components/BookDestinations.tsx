@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import destinations from '../content/destinations.json';
@@ -7,7 +7,6 @@ import styles from './BookDestinations.module.scss';
 const BookDestinations: React.FC = () => {
   const [isTurning, setIsTurning] = useState<boolean>(false);
   const navigate = useNavigate();
-  const containerRef = useRef<HTMLElement>(null);
 
   // No more mobile image fixes needed - using properly sized images now
 
@@ -36,7 +35,7 @@ const BookDestinations: React.FC = () => {
   };
 
   return (
-    <section ref={containerRef} className={styles.destinationsRail}>
+    <section className={styles.destinationsRail}>
       <div className={styles.carouselViewport}>
         <div className={styles.carouselTrack}>
           {destinations.map((destination, index) => {
