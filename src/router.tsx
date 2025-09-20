@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import PageTheme from './components/PageTheme';
 import Analytics from './components/Analytics';
-import { TileDiagnostics } from './components/TileDiagnostics';
+// import { TileDiagnostics } from './components/TileDiagnostics'; // Re-enable for debugging
 import { scrollToTopInstant } from './utils/scrollToTop';
 
 // Pages
@@ -37,7 +37,7 @@ const App: React.FC = () => {
       <ScrollToTop />
       <PageTheme />
       <Analytics />
-      <TileDiagnostics />
+      {/* <TileDiagnostics /> */}
       <div className="app ik-root">
         <Header />
         <main>
