@@ -58,9 +58,9 @@
   
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    min-height: 60vh;
+    min-height: 65vh;
     gap: 32px;
-    padding-top: 200px; /* Add space below the top pattern */
+    padding-top: 180px; /* Slightly less padding, bit more height */
   }
 }
 
