@@ -40,8 +40,8 @@ const BookDestinations: React.FC = () => {
         <div className={styles.carouselTrack}>
           {destinations.map((destination, index) => {
             const isPortrait = portraitTiles.has(destination.slug);
-            
-            // All images are now properly sized - no special handling needed
+            const boringTiles = ['zimbabwe', 'morocco', 'botswana', 'south-africa'];
+            const isBoring = boringTiles.includes(destination.slug);
             
             const objectPosition = isPortrait 
               ? tilePositions[destination.slug] || 'center 10%'
@@ -52,6 +52,7 @@ const BookDestinations: React.FC = () => {
               <motion.a
                 className={`${styles.postcard} ${isTurning ? styles.turning : ''}`}
                 data-slug={destination.slug}
+                data-mode={isBoring ? "boring" : undefined}
                 href={`/destinations/${destination.slug}`}
                 onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
                   e.preventDefault();
@@ -67,10 +68,12 @@ const BookDestinations: React.FC = () => {
                   <img
                     src={destination.poster}
                     alt={destination.title}
-                    style={{ 
+                    style={isBoring ? {
+                      objectFit: 'contain',
+                      objectPosition: 'center'
+                    } : { 
                       objectPosition: objectPosition
                     }}
-                    // onError disabled to prevent DOM manipulation during load
                   />
                 </div>
               </motion.a>
