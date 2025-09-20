@@ -1,5 +1,4 @@
 import React from 'react';
-import Section from '../components/Section';
 import HeadTags from '../components/HeadTags';
 import HeroVideo from '../components/HeroVideo';
 import DestinationsRail from '../components/DestinationsRail';
