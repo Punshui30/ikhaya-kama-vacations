@@ -377,8 +377,19 @@ img {
   height: 100% !important; /* Override global height: auto */
 }
 
+/* Destination tile width overrides */
+.destinations .carouselItem {
+  flex: 0 0 500px !important;
+}
+
+@media (max-width: 768px) {
+  .destinations .carouselItem {
+    flex: 0 0 250px !important;
+  }
+}
+
 /* Override global img reset for postcard images */
-.destinations .postcard__inner > img {
+.destinations .postcardInner > img {
   max-width: none !important;
   width: 100% !important;
   height: 100% !important;
