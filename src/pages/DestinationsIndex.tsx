@@ -35,12 +35,6 @@ const DestinationsIndex: React.FC = () => {
       
       <HeroVideo theme="luxury" />
       <DestinationsRail cards={cards} />
-      
-      <Section background="default" padding="large">
-        <div id="destinations" className={styles.destinationsSection}>
-          {/* Additional content can go here */}
-        </div>
-      </Section>
     </div>
   );
 };

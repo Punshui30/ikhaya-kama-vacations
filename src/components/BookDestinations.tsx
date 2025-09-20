@@ -9,18 +9,33 @@ const BookDestinations: React.FC = () => {
   const navigate = useNavigate();
   const containerRef = useRef<HTMLElement>(null);
 
-  // Force mobile image fixes after render
+  // NUCLEAR APPROACH: Force mobile image fixes with MutationObserver
   useEffect(() => {
     if (typeof window === 'undefined' || window.innerWidth > 768) return;
     
-    const applyMobileFixes = () => {
-      const squareImages = ['south-africa', 'botswana', 'morocco', 'zimbabwe'];
-      
+    const squareImages = ['south-africa', 'botswana', 'morocco', 'zimbabwe'];
+    
+    const forceImageFixes = () => {
       squareImages.forEach(slug => {
         const images = document.querySelectorAll(`[data-slug="${slug}"] img`);
         images.forEach((img: Element) => {
           const htmlImg = img as HTMLImageElement;
-          // Force styles with maximum specificity
+          
+          // NUCLEAR: Remove all existing styles and classes that might interfere
+          htmlImg.removeAttribute('style');
+          htmlImg.removeAttribute('class');
+          
+          // Force styles with setAttribute (highest specificity)
+          htmlImg.setAttribute('style', `
+            object-fit: contain !important;
+            object-position: center center !important;
+            background-color: #2a2a2a !important;
+            width: 100% !important;
+            height: 100% !important;
+            display: block !important;
+          `);
+          
+          // Also set via style properties as backup
           htmlImg.style.setProperty('object-fit', 'contain', 'important');
           htmlImg.style.setProperty('object-position', 'center center', 'important');
           htmlImg.style.setProperty('background-color', '#2a2a2a', 'important');
@@ -28,21 +43,41 @@ const BookDestinations: React.FC = () => {
       });
     };
 
-    // Apply immediately and with delays to catch any overrides
-    applyMobileFixes();
-    setTimeout(applyMobileFixes, 100);
-    setTimeout(applyMobileFixes, 500);
-    setTimeout(applyMobileFixes, 1000);
+    // Apply immediately
+    forceImageFixes();
+    
+    // Apply with multiple delays
+    [50, 100, 200, 500, 1000, 2000].forEach(delay => {
+      setTimeout(forceImageFixes, delay);
+    });
 
-    // Also apply on window resize
+    // NUCLEAR: Watch for ANY changes to the DOM and reapply fixes
+    const observer = new MutationObserver(() => {
+      forceImageFixes();
+    });
+    
+    // Observe everything
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['style', 'class'],
+      characterData: true
+    });
+
+    // Also watch for resize
     const handleResize = () => {
       if (window.innerWidth <= 768) {
-        applyMobileFixes();
+        setTimeout(forceImageFixes, 10);
       }
     };
     
     window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   // Portrait tiles that need top-focused cropping for country names
