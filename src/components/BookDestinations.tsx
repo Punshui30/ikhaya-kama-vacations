@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import destinations from '../content/destinations.json';
@@ -7,6 +7,43 @@ import styles from './BookDestinations.module.scss';
 const BookDestinations: React.FC = () => {
   const [isTurning, setIsTurning] = useState<boolean>(false);
   const navigate = useNavigate();
+  const containerRef = useRef<HTMLElement>(null);
+
+  // Force mobile image fixes after render
+  useEffect(() => {
+    if (typeof window === 'undefined' || window.innerWidth > 768) return;
+    
+    const applyMobileFixes = () => {
+      const squareImages = ['south-africa', 'botswana', 'morocco', 'zimbabwe'];
+      
+      squareImages.forEach(slug => {
+        const images = document.querySelectorAll(`[data-slug="${slug}"] img`);
+        images.forEach((img: Element) => {
+          const htmlImg = img as HTMLImageElement;
+          // Force styles with maximum specificity
+          htmlImg.style.setProperty('object-fit', 'contain', 'important');
+          htmlImg.style.setProperty('object-position', 'center center', 'important');
+          htmlImg.style.setProperty('background-color', '#2a2a2a', 'important');
+        });
+      });
+    };
+
+    // Apply immediately and with delays to catch any overrides
+    applyMobileFixes();
+    setTimeout(applyMobileFixes, 100);
+    setTimeout(applyMobileFixes, 500);
+    setTimeout(applyMobileFixes, 1000);
+
+    // Also apply on window resize
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        applyMobileFixes();
+      }
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Portrait tiles that need top-focused cropping for country names
   const portraitTiles = new Set(['south-africa', 'botswana', 'morocco', 'zimbabwe']);
@@ -33,7 +70,7 @@ const BookDestinations: React.FC = () => {
   };
 
   return (
-    <section className={styles.destinationsRail}>
+    <section ref={containerRef} className={styles.destinationsRail}>
       <div className={styles.carouselViewport}>
         <div className={styles.carouselTrack}>
           {destinations.map((destination, index) => {
