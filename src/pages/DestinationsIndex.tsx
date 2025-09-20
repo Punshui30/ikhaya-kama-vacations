@@ -10,11 +10,11 @@ const DestinationsIndex: React.FC = () => {
     { title: "South Africa", image: "/images/SouthAfrica.png", href: "/destinations/south-africa" },
     { title: "Kenya", image: "/images/Kenya.png", href: "/destinations/kenya" },
     { title: "Tanzania", image: "/images/Tanzania.png", href: "/destinations/tanzania" },
-    { title: "Namibia", image: "/img/destinations/namibia/hero.jpg", href: "/destinations/namibia" },
-    { title: "Botswana", image: "/img/destinations/botswana/hero.jpg", href: "/destinations/botswana" },
-    { title: "Morocco", image: "/img/destinations/morocco/hero.jpg", href: "/destinations/morocco" },
-    { title: "Zimbabwe", image: "/img/destinations/zimbabwe/hero.jpg", href: "/destinations/zimbabwe" },
-    { title: "Uganda", image: "/img/destinations/uganda/hero.jpg", href: "/destinations/uganda" },
+    { title: "Namibia", image: "/images/Namibia.png", href: "/destinations/namibia" },
+    { title: "Botswana", image: "/images/Botswana.png", href: "/destinations/botswana" },
+    { title: "Morocco", image: "/images/Morocco.png", href: "/destinations/morocco" },
+    { title: "Zimbabwe", image: "/images/Zimbabwe.png", href: "/destinations/zimbabwe" },
+    { title: "Uganda", image: "/images/Uganda.png", href: "/destinations/uganda" },
   ];
 
   return (

@@ -86,27 +86,7 @@
     display: block;
     transition: transform 0.3s ease;
     
-    /* Mobile fixes for square images */
-    @media (max-width: 768px) {
-      // Square images (1024x1024) need contain to show baked-in text
-      [data-slug="south-africa"] &,
-      [data-slug="botswana"] &,
-      [data-slug="morocco"] &,
-      [data-slug="zimbabwe"] & {
-        object-fit: contain !important;
-        object-position: center center !important;
-        background: #2a2a2a !important;
-      }
-      
-      // Rectangular images keep cover
-      [data-slug="kenya"] &,
-      [data-slug="tanzania"] &,
-      [data-slug="namibia"] &,
-      [data-slug="uganda"] & {
-        object-fit: cover !important;
-        object-position: center center !important;
-      }
-    }
+    /* All tiles now use properly sized PNGs - no special handling needed */
   }
 }
 

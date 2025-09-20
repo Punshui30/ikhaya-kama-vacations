@@ -56,48 +56,11 @@
       width: 100% !important;
       height: 100% !important;
       object-fit: cover !important;
-      object-position: center 15% !important; /* Default top bias for all tiles */
+      object-position: center center !important;
       display: block !important;
     }
     
-    /* ===== SPECIFIC FIXES FOR SQUARE TILES WITH BAKED-IN TEXT ===== */
-    
-    /* South Africa (1024x1024) - center to show baked-in text */
-    .ik-root .destinations .postcard[data-slug="south-africa"] .postcard__inner img {
-      object-position: center center !important;
-      object-fit: contain !important;
-      background: #2a2a2a !important;
-    }
-    
-    /* Botswana (1024x1024) - center to show baked-in text */
-    .ik-root .destinations .postcard[data-slug="botswana"] .postcard__inner img {
-      object-position: center center !important;
-      object-fit: contain !important;
-      background: #2a2a2a !important;
-    }
-    
-    /* Morocco (1024x1024) - center to show baked-in text */
-    .ik-root .destinations .postcard[data-slug="morocco"] .postcard__inner img {
-      object-position: center center !important;
-      object-fit: contain !important;
-      background: #2a2a2a !important;
-    }
-    
-    /* Zimbabwe (1024x1024) - center to show baked-in text */
-    .ik-root .destinations .postcard[data-slug="zimbabwe"] .postcard__inner img {
-      object-position: center center !important;
-      object-fit: contain !important;
-      background: #2a2a2a !important;
-    }
-    
-    /* Rectangular tiles (Kenya, Tanzania, etc.) - keep cover with centered positioning */
-    .ik-root .destinations .postcard[data-slug="kenya"] .postcard__inner img,
-    .ik-root .destinations .postcard[data-slug="tanzania"] .postcard__inner img,
-    .ik-root .destinations .postcard[data-slug="namibia"] .postcard__inner img,
-    .ik-root .destinations .postcard[data-slug="uganda"] .postcard__inner img {
-      object-position: center center !important;
-      object-fit: cover !important;
-    }
+    /* All tiles now use properly sized PNGs - consistent aspect ratios, no special handling needed */
     
     /* ===== DETAIL PAGE HERO CARD FIXES ===== */
     

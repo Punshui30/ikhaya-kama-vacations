@@ -377,7 +377,7 @@ img {
   max-width: none !important;
   width: 100% !important;
   height: 100% !important;
-  object-fit: cover !important;
+  /* object-fit handled by component-specific CSS - removed global override */
 }
 
 /* Destination sections should sit on the themed page background */
@@ -586,5 +586,4 @@ img {
 
 /* Mobile fixes are now imported at the top of the file */
 
-/* NUCLEAR MOBILE IMAGE FIXES - LOAD ABSOLUTELY LAST */
-@import './mobile-image-fixes.css';
+/* Mobile image fixes now handled by component CSS - no global overrides needed */
