@@ -39,7 +39,7 @@
 }
 
 .carouselItem {
-  flex: 0 0 400px;
+  flex: 0 0 450px;
   scroll-snap-align: start;
   
   @media (max-width: 768px) {
@@ -60,7 +60,7 @@
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
   background: #000;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 1250 / 1024;
   
   &:hover {
     transform: translateY(-4px);
