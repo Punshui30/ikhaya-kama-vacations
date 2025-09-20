@@ -60,26 +60,34 @@
       display: block !important;
     }
     
-    /* ===== SPECIFIC FIXES FOR PORTRAIT TILES WITH BAKED-IN NAMES ===== */
+    /* ===== SPECIFIC FIXES FOR SQUARE TILES WITH BAKED-IN TEXT ===== */
     
-    /* South Africa - show country name at top */
+    /* South Africa (1024x1024) - center to show baked-in text */
     .postcard[data-slug="south-africa"] img {
-      object-position: center 8% !important;
+      object-position: center center !important;
+      object-fit: contain !important;
+      background: #2a2a2a !important;
     }
     
-    /* Botswana - show country name at top */
+    /* Botswana (1024x1024) - center to show baked-in text */
     .postcard[data-slug="botswana"] img {
-      object-position: center 10% !important;
+      object-position: center center !important;
+      object-fit: contain !important;
+      background: #2a2a2a !important;
     }
     
-    /* Morocco - show country name at top */
+    /* Morocco (1024x1024) - center to show baked-in text */
     .postcard[data-slug="morocco"] img {
-      object-position: center 12% !important;
+      object-position: center center !important;
+      object-fit: contain !important;
+      background: #2a2a2a !important;
     }
     
-    /* Zimbabwe - show country name at top */
+    /* Zimbabwe (1024x1024) - center to show baked-in text */
     .postcard[data-slug="zimbabwe"] img {
-      object-position: center 9% !important;
+      object-position: center center !important;
+      object-fit: contain !important;
+      background: #2a2a2a !important;
     }
     
     /* Square tiles (Kenya, Tanzania, etc.) - keep centered */
