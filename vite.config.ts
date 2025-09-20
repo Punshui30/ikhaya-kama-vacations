@@ -17,7 +17,7 @@ export default defineConfig({
       output: {
         // Add timestamp to CSS files for cache busting
         assetFileNames: (assetInfo) => {
-          if (assetInfo.name && assetInfo.name.endsWith('.css')) {
+          if (assetInfo.name && assetInfo.name.includes('.css')) {
             return `assets/[name]-[hash]-${Date.now()}[extname]`;
           }
           return 'assets/[name]-[hash][extname]';
