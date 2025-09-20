@@ -12,7 +12,7 @@ export default function DestinationsRail({ cards }: { cards: Card[] }) {
   const scrollByCard = (dir: number) => {
     const el = ref.current; if (!el) return;
     const card = el.querySelector<HTMLElement>(".dr-card");
-    const w = card ? card.offsetWidth : 400;
+    const w = card ? card.offsetWidth : 450;
     el.scrollBy({ left: dir * (w + 24), behavior: "smooth" });
   };
   return (
