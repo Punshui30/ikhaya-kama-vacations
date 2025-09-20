@@ -353,11 +353,17 @@
   ul, ol {
     margin: var(--space-2) 0;
     padding-left: var(--space-4);
+    color: #333; /* Fix white text on white background */
   }
   
   li {
     margin-bottom: var(--space-1);
     line-height: 1.5;
+    color: #333; /* Fix white text on white background */
+  }
+  
+  p {
+    color: #333; /* Fix white text on white background */
   }
   
   strong {

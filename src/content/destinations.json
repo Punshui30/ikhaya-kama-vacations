@@ -292,7 +292,7 @@
       "2 nights Moremi Game Reserve",
       "2 nights Kalahari Desert"
     ],
-    "poster": "/img/destinations/botswana/hero.jpg",
+    "poster": "/images/Botswana.png",
     "heroImages": [
       "/images/hyena-pan-hide-Andrea-Kozil.jpg",
       "/images/botswana-romantic-safari-fp-875x365.jpg",
@@ -338,7 +338,7 @@
       "2 nights Fez",
       "2 nights Casablanca"
     ],
-    "poster": "/img/destinations/morocco/hero.jpg",
+    "poster": "/images/Morocco.png",
     "heroImages": [
       "/images/chefchaouen-and-spanish-mosque.jpg",
       "/images/What-Makes-Moroccan-Street-Markets-So-Vibrant-and-Captivating-2.png",
@@ -412,7 +412,7 @@
       "2 nights Mana Pools",
       "2 nights Great Zimbabwe"
     ],
-    "poster": "/img/destinations/zimbabwe/hero.jpg",
+    "poster": "/images/Zimbabwe.png",
     "heroImages": [
       "/images/article-animals-of-zimbabwe3.jpg",
       "/images/Zimbabwe-Victoria-Falls-Sunset.jpg",
