@@ -31,8 +31,8 @@
       padding: 8px 0;
     }
     
-    .carousel-item {
-      flex: 0 0 250px;
+    .carouselItem {
+      flex: 0 0 250px !important;
       scroll-snap-align: start;
     }
     
@@ -46,7 +46,7 @@
       position: relative !important;
     }
     
-    .postcard__inner {
+    .postcardInner {
       width: 100% !important;
       height: 100% !important;
       position: relative !important;
@@ -185,7 +185,7 @@
 @media (min-width: 769px) {
   .ik-root {
     /* Desktop destination tile sizing */
-    .carousel-item {
+    .carouselItem {
       flex: 0 0 500px !important;
     }
     
