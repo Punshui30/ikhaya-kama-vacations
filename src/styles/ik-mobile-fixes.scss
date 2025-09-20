@@ -63,39 +63,40 @@
     /* ===== SPECIFIC FIXES FOR SQUARE TILES WITH BAKED-IN TEXT ===== */
     
     /* South Africa (1024x1024) - center to show baked-in text */
-    .postcard[data-slug="south-africa"] img {
+    .ik-root .postcard[data-slug="south-africa"] img {
       object-position: center center !important;
       object-fit: contain !important;
       background: #2a2a2a !important;
     }
     
     /* Botswana (1024x1024) - center to show baked-in text */
-    .postcard[data-slug="botswana"] img {
+    .ik-root .postcard[data-slug="botswana"] img {
       object-position: center center !important;
       object-fit: contain !important;
       background: #2a2a2a !important;
     }
     
     /* Morocco (1024x1024) - center to show baked-in text */
-    .postcard[data-slug="morocco"] img {
+    .ik-root .postcard[data-slug="morocco"] img {
       object-position: center center !important;
       object-fit: contain !important;
       background: #2a2a2a !important;
     }
     
     /* Zimbabwe (1024x1024) - center to show baked-in text */
-    .postcard[data-slug="zimbabwe"] img {
+    .ik-root .postcard[data-slug="zimbabwe"] img {
       object-position: center center !important;
       object-fit: contain !important;
       background: #2a2a2a !important;
     }
     
-    /* Square tiles (Kenya, Tanzania, etc.) - keep centered */
-    .postcard[data-slug="kenya"] img,
-    .postcard[data-slug="tanzania"] img,
-    .postcard[data-slug="namibia"] img,
-    .postcard[data-slug="uganda"] img {
+    /* Rectangular tiles (Kenya, Tanzania, etc.) - keep cover with centered positioning */
+    .ik-root .postcard[data-slug="kenya"] img,
+    .ik-root .postcard[data-slug="tanzania"] img,
+    .ik-root .postcard[data-slug="namibia"] img,
+    .ik-root .postcard[data-slug="uganda"] img {
       object-position: center center !important;
+      object-fit: cover !important;
     }
     
     /* ===== DETAIL PAGE HERO CARD FIXES ===== */
