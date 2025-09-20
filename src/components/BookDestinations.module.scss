@@ -84,9 +84,8 @@
     object-fit: contain; /* No cropping - show full image with letterboxing */
     object-position: center center;
     display: block;
-    aspect-ratio: 2/3; /* Explicit aspect ratio for layout stability */
+    transition: transform 0.3s ease;
     background: #1a1a1a; /* Dark background for letterboxing */
-    /* NO TRANSITIONS - prevents flicker during load */
     
     /* Mobile: ensure baked-in text is fully visible */
     @media (max-width: 768px) {
@@ -96,10 +95,9 @@
   }
 }
 
-/* Hover effects disabled to prevent any transform transitions */
-/* .postcard:hover .postcardInner img {
+.postcard:hover .postcardInner img {
   transform: scale(1.05);
-} */
+}
 
 /* ===== FALLBACK STYLING ===== */
 
@@ -128,4 +126,5 @@
     opacity: 0.9;
     text-shadow: 0 1px 5px rgba(0, 0, 0, 0.8);
   }
+}
 }

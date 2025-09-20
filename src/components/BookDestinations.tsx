@@ -70,7 +70,20 @@ const BookDestinations: React.FC = () => {
                     style={{ 
                       objectPosition: objectPosition
                     }}
-                    // onError disabled to prevent DOM manipulation during load
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                      const parent = target.parentElement;
+                      if (parent) {
+                        parent.classList.add('blackTile');
+                        parent.innerHTML = `
+                          <div class="${styles.tileText}">
+                            <h3>${destination.title}</h3>
+                            <p>${destination.tagline}</p>
+                          </div>
+                        `;
+                      }
+                    }}
                   />
                 </div>
               </motion.a>
