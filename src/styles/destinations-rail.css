@@ -37,7 +37,7 @@
 
 .dr-card {
   display: block; 
-  width: 280px; 
+  width: 500px; 
   height: 380px; 
   position: relative;
   border-radius: 14px; 
@@ -130,9 +130,9 @@
   }
   
   .dr-card { 
-    width: 75vw; 
+    width: 50vw; 
     height: 60vw; 
-    max-width: 300px;
+    max-width: 250px;
     max-height: 380px;
     min-height: 250px;
   }
