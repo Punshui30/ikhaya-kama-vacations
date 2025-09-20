@@ -63,38 +63,38 @@
     /* ===== SPECIFIC FIXES FOR SQUARE TILES WITH BAKED-IN TEXT ===== */
     
     /* South Africa (1024x1024) - center to show baked-in text */
-    .ik-root .postcard[data-slug="south-africa"] img {
+    .ik-root .destinations .postcard[data-slug="south-africa"] .postcard__inner img {
       object-position: center center !important;
       object-fit: contain !important;
       background: #2a2a2a !important;
     }
     
     /* Botswana (1024x1024) - center to show baked-in text */
-    .ik-root .postcard[data-slug="botswana"] img {
+    .ik-root .destinations .postcard[data-slug="botswana"] .postcard__inner img {
       object-position: center center !important;
       object-fit: contain !important;
       background: #2a2a2a !important;
     }
     
     /* Morocco (1024x1024) - center to show baked-in text */
-    .ik-root .postcard[data-slug="morocco"] img {
+    .ik-root .destinations .postcard[data-slug="morocco"] .postcard__inner img {
       object-position: center center !important;
       object-fit: contain !important;
       background: #2a2a2a !important;
     }
     
     /* Zimbabwe (1024x1024) - center to show baked-in text */
-    .ik-root .postcard[data-slug="zimbabwe"] img {
+    .ik-root .destinations .postcard[data-slug="zimbabwe"] .postcard__inner img {
       object-position: center center !important;
       object-fit: contain !important;
       background: #2a2a2a !important;
     }
     
     /* Rectangular tiles (Kenya, Tanzania, etc.) - keep cover with centered positioning */
-    .ik-root .postcard[data-slug="kenya"] img,
-    .ik-root .postcard[data-slug="tanzania"] img,
-    .ik-root .postcard[data-slug="namibia"] img,
-    .ik-root .postcard[data-slug="uganda"] img {
+    .ik-root .destinations .postcard[data-slug="kenya"] .postcard__inner img,
+    .ik-root .destinations .postcard[data-slug="tanzania"] .postcard__inner img,
+    .ik-root .destinations .postcard[data-slug="namibia"] .postcard__inner img,
+    .ik-root .destinations .postcard[data-slug="uganda"] .postcard__inner img {
       object-position: center center !important;
       object-fit: cover !important;
     }
