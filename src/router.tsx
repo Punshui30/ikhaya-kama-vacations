@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import PageTheme from './components/PageTheme';
 import Analytics from './components/Analytics';
+import { MobileImageFixer } from './components/MobileImageFixer';
 import { scrollToTopInstant } from './utils/scrollToTop';
 
 // Pages
@@ -36,6 +37,7 @@ const App: React.FC = () => {
       <ScrollToTop />
       <PageTheme />
       <Analytics />
+      <MobileImageFixer />
       <div className="app ik-root">
         <Header />
         <main>

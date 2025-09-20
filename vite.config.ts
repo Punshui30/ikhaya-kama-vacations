@@ -12,6 +12,19 @@ export default defineConfig({
       }
     }
   },
+  build: {
+    rollupOptions: {
+      output: {
+        // Add timestamp to CSS files for cache busting
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name && assetInfo.name.endsWith('.css')) {
+            return `assets/[name]-[hash]-${Date.now()}[extname]`;
+          }
+          return 'assets/[name]-[hash][extname]';
+        }
+      }
+    }
+  },
   server: {
     port: 5174,
     open: true
