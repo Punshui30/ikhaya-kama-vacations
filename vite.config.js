@@ -7,7 +7,20 @@ export default defineConfig({
     css: {
         preprocessorOptions: {
             scss: {
-                additionalData: "@use \"./src/styles/tokens.scss\" as *;"
+                additionalData: `@use "./src/styles/tokens.scss" as *;`
+            }
+        }
+    },
+    build: {
+        rollupOptions: {
+            output: {
+                // Add timestamp to CSS files for cache busting
+                assetFileNames: (assetInfo) => {
+                    if (assetInfo.name && assetInfo.name.endsWith('.css')) {
+                        return `assets/[name]-[hash]-${Date.now()}[extname]`;
+                    }
+                    return 'assets/[name]-[hash][extname]';
+                }
             }
         }
     },
