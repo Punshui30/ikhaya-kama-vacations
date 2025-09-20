@@ -12,7 +12,9 @@ export default function DestinationsRail({ cards }: { cards: Card[] }) {
   const scrollByCard = (dir: number) => {
     const el = ref.current; if (!el) return;
     const card = el.querySelector<HTMLElement>(".dr-card");
-    const w = card ? card.offsetWidth : 450;
+    // Use responsive width: 1104px for mobile, 450px for desktop
+    const isMobile = window.innerWidth <= 768;
+    const w = card ? card.offsetWidth : (isMobile ? 1104 : 450);
     el.scrollBy({ left: dir * (w + 24), behavior: "smooth" });
   };
   return (
