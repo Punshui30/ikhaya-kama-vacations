@@ -55,13 +55,12 @@
     .postcard img {
       width: 100% !important;
       height: 100% !important;
-      object-fit: contain !important; /* No cropping on mobile - show full image */
+      object-fit: cover !important; /* Standard cover - assets have letterboxing baked in */
       object-position: center center !important;
       display: block !important;
-      background: #2a2a2a !important; /* Dark background for letterboxing */
     }
     
-    /* Mobile policy: no cropping, allow letterboxing to show baked-in text */
+    /* All assets standardized with proper letterboxing - no special handling needed */
     
     /* ===== DETAIL PAGE HERO CARD FIXES ===== */
     
