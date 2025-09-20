@@ -55,6 +55,13 @@
   gap: 60px; 
   align-items: center; 
   min-height: 80vh;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    min-height: 60vh;
+    gap: 32px;
+    padding-top: 200px; /* Add space below the top pattern */
+  }
 }
 
 @media (min-width: 2000px){
@@ -73,11 +80,12 @@
   background: #000; /* fallback while first img loads */
   
   @media (max-width: 768px) {
-    width: min(90vw, 380px);
+    width: min(75vw, 320px);
     aspect-ratio: 4 / 5;
     border-radius: 16px;
     border: 2px solid #fff;
     margin: 0 auto;
+    height: auto; /* Let aspect-ratio control height */
   }
   
   @media (max-width: 480px) {
