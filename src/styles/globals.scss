@@ -372,6 +372,11 @@ img {
   display: block;
 }
 
+/* Exception: destination tiles need controlled dimensions */
+.destinations .postcard img {
+  height: 100% !important; /* Override global height: auto */
+}
+
 /* Override global img reset for postcard images */
 .destinations .postcard__inner > img {
   max-width: none !important;

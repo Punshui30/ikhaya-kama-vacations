@@ -55,12 +55,13 @@
     .postcard img {
       width: 100% !important;
       height: 100% !important;
-      object-fit: cover !important;
+      object-fit: contain !important; /* No cropping on mobile - show full image */
       object-position: center center !important;
       display: block !important;
+      background: #2a2a2a !important; /* Dark background for letterboxing */
     }
     
-    /* All tiles now use properly sized PNGs - consistent aspect ratios, no special handling needed */
+    /* Mobile policy: no cropping, allow letterboxing to show baked-in text */
     
     /* ===== DETAIL PAGE HERO CARD FIXES ===== */
     

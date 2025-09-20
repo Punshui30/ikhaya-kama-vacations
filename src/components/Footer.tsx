@@ -352,8 +352,8 @@ const Footer: React.FC = () => {
                 </>
               ) : (
                 <>
-                  <h3>🔧 Technical Documentation for Developers</h3>
-                  <p><strong>Complete technical specifications and handoff information for web professionals.</strong></p>
+                  <h3 style={{color: '#333'}}>🔧 Technical Documentation for Developers</h3>
+                  <p style={{color: '#333'}}><strong>Complete technical specifications and handoff information for web professionals.</strong></p>
                   
                   <div className={styles.seoSection}>
                     <h4>🏗️ Complete Tech Stack</h4>
