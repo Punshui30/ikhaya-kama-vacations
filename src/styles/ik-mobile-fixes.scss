@@ -32,14 +32,14 @@
     }
     
     .carousel-item {
-      flex: 0 0 280px;
+      flex: 0 0 250px;
       scroll-snap-align: start;
     }
     
     /* ===== STANDARDIZE ALL TILE ASPECT RATIOS ===== */
     
     .postcard {
-      aspect-ratio: 4 / 5 !important;
+      aspect-ratio: 1250 / 1024 !important;
       max-height: 350px !important;
       border-radius: 16px !important;
       overflow: hidden !important;
@@ -184,6 +184,11 @@
 /* Desktop preservation - ensure no mobile fixes affect desktop */
 @media (min-width: 769px) {
   .ik-root {
+    /* Desktop destination tile sizing */
+    .carousel-item {
+      flex: 0 0 500px !important;
+    }
+    
     /* Restore original desktop media card sizing */
     .media-card {
       width: 400px !important;
