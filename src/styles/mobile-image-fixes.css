@@ -1,0 +1,35 @@
+/* NUCLEAR CSS APPROACH - Load this LAST to override everything */
+/* Mobile image fixes that MUST stick - using extreme specificity */
+
+@media (max-width: 768px) {
+  /* Force square images to use contain - MAXIMUM SPECIFICITY */
+  .ik-root .destinations .postcard[data-slug="south-africa"] .postcard__inner > img,
+  .ik-root .destinations .postcard[data-slug="botswana"] .postcard__inner > img,
+  .ik-root .destinations .postcard[data-slug="morocco"] .postcard__inner > img,
+  .ik-root .destinations .postcard[data-slug="zimbabwe"] .postcard__inner > img {
+    object-fit: contain !important;
+    object-position: center center !important;
+    background-color: #2a2a2a !important;
+    background: #2a2a2a !important;
+  }
+
+  /* Rectangular images keep cover */
+  .ik-root .destinations .postcard[data-slug="kenya"] .postcard__inner > img,
+  .ik-root .destinations .postcard[data-slug="tanzania"] .postcard__inner > img,
+  .ik-root .destinations .postcard[data-slug="namibia"] .postcard__inner > img,
+  .ik-root .destinations .postcard[data-slug="uganda"] .postcard__inner > img {
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
+}
+
+/* FALLBACK - Use inline style level specificity if needed */
+@media (max-width: 768px) {
+  [data-slug="south-africa"] img[src*="SouthAfrica"],
+  [data-slug="botswana"] img[src*="Botswana"], 
+  [data-slug="morocco"] img[src*="Morocco"],
+  [data-slug="zimbabwe"] img[src*="Zimbabwe"] {
+    object-fit: contain !important;
+    background: #2a2a2a !important;
+  }
+}

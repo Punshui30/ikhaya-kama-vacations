@@ -585,3 +585,6 @@ img {
 /* Clean mobile destinations implementation - no conflicts */
 
 /* Mobile fixes are now imported at the top of the file */
+
+/* NUCLEAR MOBILE IMAGE FIXES - LOAD ABSOLUTELY LAST */
+@import './mobile-image-fixes.css';
