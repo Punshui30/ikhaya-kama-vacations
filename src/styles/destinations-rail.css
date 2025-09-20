@@ -59,9 +59,9 @@
 }
 
 .dr-card img {
-  width: 1024px; 
-  height: 1024px; 
-  object-fit: contain; 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
   object-position: center;
   display: block; 
   filter: saturate(1.02) contrast(1.02);
@@ -135,8 +135,11 @@
   }
   
   .dr-card { 
-    width: 1104px; 
-    height: 1024px; 
+    width: 50vw; 
+    height: 60vw; 
+    max-width: 250px;
+    max-height: 380px;
+    min-height: 250px;
   }
   
   .dr-title {
@@ -171,5 +174,29 @@
   
   .dr-title {
     font-size: 16px;
+  }
+}
+
+/* Desktop-only tile sizing (min-width: 992px) */
+@media (min-width: 992px) {
+  .dr-card {
+    width: 420px;
+    height: 420px;
+  }
+  
+  .dr-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+  
+  /* Disable hover zoom on desktop */
+  .dr-card:hover {
+    transform: translateY(-4px);
+  }
+  
+  .dr-card img:hover {
+    transform: none;
   }
 }
