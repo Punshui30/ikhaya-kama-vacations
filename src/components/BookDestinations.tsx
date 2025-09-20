@@ -38,6 +38,12 @@ const BookDestinations: React.FC = () => {
         <div className={styles.carouselTrack}>
           {destinations.map((destination, index) => {
             const isPortrait = portraitTiles.has(destination.slug);
+            
+            // Mobile fixes for square images (1024x1024)
+            const squareImages = ['south-africa', 'botswana', 'morocco', 'zimbabwe'];
+            const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+            const isSquareImage = squareImages.includes(destination.slug);
+            
             const objectPosition = isPortrait 
               ? tilePositions[destination.slug] || 'center 10%'
               : 'center center';
@@ -63,7 +69,15 @@ const BookDestinations: React.FC = () => {
                     src={destination.poster}
                     alt={destination.title}
                     style={{ 
-                      objectPosition: objectPosition
+                      objectPosition: objectPosition,
+                      // Mobile fixes applied via inline styles (highest specificity)
+                      ...(isMobile && isSquareImage ? {
+                        objectFit: 'contain',
+                        objectPosition: 'center center',
+                        backgroundColor: '#2a2a2a'
+                      } : {
+                        objectFit: 'cover'
+                      })
                     }}
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
