@@ -39,12 +39,12 @@
 }
 
 .carouselItem {
-  flex: 0 0 450px;
+  flex: 0 0 500px;
   scroll-snap-align: start;
   
   @media (max-width: 768px) {
-    flex: 0 0 60vw;
-    max-width: 280px;
+    flex: 0 0 50vw;
+    max-width: 250px;
   }
 }
 
