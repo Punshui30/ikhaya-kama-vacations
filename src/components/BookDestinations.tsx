@@ -69,14 +69,14 @@ const BookDestinations: React.FC = () => {
                     src={destination.poster}
                     alt={destination.title}
                     style={{ 
-                      objectPosition: objectPosition,
                       // Mobile fixes applied via inline styles (highest specificity)
                       ...(isMobile && isSquareImage ? {
                         objectFit: 'contain',
                         objectPosition: 'center center',
                         backgroundColor: '#2a2a2a'
                       } : {
-                        objectFit: 'cover'
+                        objectFit: 'cover',
+                        objectPosition: objectPosition
                       })
                     }}
                     onError={(e) => {

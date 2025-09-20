@@ -358,15 +358,15 @@ const Footer: React.FC = () => {
                   <div className={styles.seoSection}>
                     <h4>🏗️ Complete Tech Stack</h4>
                     
-                    <div style={{display: 'grid', gap: '12px', marginBottom: '24px'}}>
-                      <div><strong>Framework:</strong> React 18.2.0 with TypeScript 5.2.2</div>
-                      <div><strong>Build Tool:</strong> Vite 5.0.8 with hot module replacement</div>
-                      <div><strong>Styling:</strong> SCSS Modules with CSS Custom Properties and design tokens</div>
-                      <div><strong>Routing:</strong> React Router DOM 6.21.1 with client-side navigation</div>
-                      <div><strong>Package Manager:</strong> pnpm (required - not npm or yarn)</div>
-                      <div><strong>Deployment:</strong> Netlify with automatic SPA redirects configured</div>
-                      <div><strong>Domain:</strong> Custom domain ready via Netlify DNS management</div>
-                      <div><strong>Node Version:</strong> 18+ required for build process</div>
+                    <div style={{display: 'grid', gap: '12px', marginBottom: '24px', color: '#333'}}>
+                      <div style={{color: '#333'}}><strong>Framework:</strong> React 18.2.0 with TypeScript 5.2.2</div>
+                      <div style={{color: '#333'}}><strong>Build Tool:</strong> Vite 5.0.8 with hot module replacement</div>
+                      <div style={{color: '#333'}}><strong>Styling:</strong> SCSS Modules with CSS Custom Properties and design tokens</div>
+                      <div style={{color: '#333'}}><strong>Routing:</strong> React Router DOM 6.21.1 with client-side navigation</div>
+                      <div style={{color: '#333'}}><strong>Package Manager:</strong> pnpm (required - not npm or yarn)</div>
+                      <div style={{color: '#333'}}><strong>Deployment:</strong> Netlify with automatic SPA redirects configured</div>
+                      <div style={{color: '#333'}}><strong>Domain:</strong> Custom domain ready via Netlify DNS management</div>
+                      <div style={{color: '#333'}}><strong>Node Version:</strong> 18+ required for build process</div>
                     </div>
                   </div>
                   
